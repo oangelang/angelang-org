@@ -29,7 +29,7 @@
     {t:'Global health',h:'MSPH, Johns Hopkins',w:'2019',d:'Global Disease Epidemiology and Control, Humanitarian Health concentration.'},
     {t:'Global health',h:'USAID WASH study, DRC',d:'Supervised data collection for a 500-household study and trained 20 field and lab assistants.'},
     {t:'Global health',h:'Fieldwork in seven countries',d:'Bangladesh, India, the DRC, South Africa, Zimbabwe, Rwanda, and Qatar.'},
-    {t:'Leadership',h:'Director of Business Innovation, CMU',w:'Oct 2019 to Aug 2026',d:'Managed a $6M annual budget and a 14-person team across Pittsburgh, Qatar, and Rwanda. Founded an Innovation Studio with 30 resident trainees.'},
+    {t:'Leadership',h:'Director of Business Innovation, CMU',w:'Oct 2019 to Oct 2026',d:'Managed a $6M annual budget and a 14-person team across Pittsburgh, Qatar, and Rwanda. Founded an Innovation Studio with 30 resident trainees.'},
     {t:'Water',h:'Folia Water',w:'2015 to 2017',d:'Product engineer and microbiologist. Helped raise $1.5M as the organization became a social enterprise. Silver nanoparticle filters tested in villages across Bangladesh and South Africa.'},
     {t:'Mental health',h:'Creator, The Mindfulness Room',d:'Proposed, designed, and built a student wellness space from nothing at Carnegie Mellon. Now in colleges, hospitals, and high schools worldwide.'},
     {t:'Climate',h:'First EcoCampus Green Flag in MENA',d:'Built the program at CMU-Q, the first in the Middle East and North Africa. CMU Andy Award, 2024.'}

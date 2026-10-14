@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'self'">
+<title>Portfolio | Angela Ng</title>
+<meta name="description" content="Selected work by Angela Ng in AI safety, global health evidence, data tools, and field-building.">
+<meta name="theme-color" content="#0a2266">
+<link rel="canonical" href="https://angelang.org/portfolio">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Portfolio | Angela Ng">
+<meta property="og:description" content="Selected work by Angela Ng in AI safety, global health evidence, data tools, and field-building.">
+<meta property="og:url" content="https://angelang.org/portfolio">
+<meta property="og:site_name" content="Angela Ng">
+<meta property="og:image" content="https://angelang.org/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Portfolio | Angela Ng">
+<meta name="twitter:description" content="Selected work in AI safety, global health evidence, data tools, and field-building.">
+<meta name="twitter:image" content="https://angelang.org/og.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/atkinson-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Fraunces';font-style:normal;font-weight:100 900;font-display:swap;src:url(/fonts/fraunces-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Fraunces';font-style:normal;font-weight:100 900;font-display:swap;src:url(/fonts/fraunces-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Atkinson Hyperlegible Next';font-style:normal;font-weight:400 800;font-display:swap;src:url(/fonts/atkinson-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Atkinson Hyperlegible Next';font-style:normal;font-weight:400 800;font-display:swap;src:url(/fonts/atkinson-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+
+:root{
+  --surface:#0a2266;--mid:#061748;--abyss:#010616;
+  --navy:#02103a;--white:#ffffff;--soft:#e3eaff;--sky:#4cd0ff;
+  --panel:rgba(255,255,255,0.09);
+  --display:"Fraunces",Georgia,serif;
+  --body:"Atkinson Hyperlegible Next","Segoe UI",system-ui,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box;font-style:normal;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:linear-gradient(180deg,#0a2266,#061748 45%,#010616);color:var(--white);font-family:var(--body);font-size:18px;line-height:1.6;overflow-x:hidden}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+:focus-visible{outline:3px solid var(--sky);outline-offset:3px}
+a{color:var(--white)}
+img{display:block;max-width:100%;height:auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{max-width:1280px;margin:0 auto;padding-inline:clamp(20px,5vw,72px)}
+.display{font-family:var(--display);font-weight:900;font-variation-settings:"SOFT" 100,"WONK" 1;letter-spacing:-0.025em;line-height:0.98;color:var(--white);text-wrap:balance}
+h1.display{font-size:clamp(46px,7vw,92px)}
+h2.display{font-size:clamp(34px,4vw,56px);line-height:1.02}
+h3.display{font-size:28px;line-height:1.08;text-wrap:balance}
+.mark{background:var(--white);color:var(--navy);padding:0 .12em;border-radius:4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.text{color:var(--soft);max-width:34em}
+.link{color:var(--white);font-weight:800;font-size:16px;text-decoration:underline;text-decoration-thickness:3px;text-decoration-color:var(--sky);text-underline-offset:5px}
+.link:hover{text-decoration-color:var(--white)}
+.btn{display:inline-flex;align-items:center;min-height:52px;padding:14px 28px;border-radius:14px;background:var(--white);color:var(--navy);font-weight:800;font-size:18px;text-decoration:none;transition:background-color 120ms linear}
+.btn:hover{background:#dbe4ff}
+
+.nav{display:flex;justify-content:space-between;align-items:center;gap:16px 32px;flex-wrap:wrap;padding-block:28px 0}
+.nav .name{font-family:var(--display);font-weight:900;font-variation-settings:"SOFT" 100,"WONK" 1;font-size:26px;letter-spacing:-0.02em;color:var(--white);text-decoration:none}
+.nav ul{display:flex;gap:8px 28px;list-style:none;flex-wrap:wrap}
+.nav ul a{color:var(--white);font-weight:700;text-decoration:none;padding:12px 0;min-height:44px;display:inline-flex;align-items:center;border-bottom:3px solid transparent}
+.nav ul a:hover{border-bottom-color:var(--sky)}
+.nav ul a[aria-current]{border-bottom-color:var(--sky)}
+
+.hero{padding-top:80px;padding-bottom:72px}
+.hero-row{display:flex;flex-wrap:wrap;gap:40px 48px;align-items:flex-start}
+.hero-text{flex:1 1 440px;display:flex;flex-direction:column;gap:20px;align-items:flex-start}
+.hero-text .eyebrow{font-weight:700;font-size:16px}
+.hero-text .lede{font-size:22px;font-weight:600;max-width:28em}
+.hero-shark{flex:1 1 420px;min-height:256px;position:relative}
+.hero-shark canvas{width:100%;height:100%;position:absolute;inset:0}
+
+.section{margin-top:112px}
+.section h2.display{max-width:14em}
+.cards{display:flex;flex-wrap:wrap;gap:56px 48px;margin-top:48px}
+.case-card{flex:1 1 440px;display:flex;flex-direction:column;gap:14px;min-width:0}
+figure.photo{position:relative;margin:0;width:100%;aspect-ratio:16/9;border-radius:22px;background:var(--panel);overflow:hidden}
+figure.photo img{width:100%;height:100%;object-fit:cover}
+figure.photo figcaption{position:absolute;left:14px;bottom:14px;background:var(--white);color:var(--navy);font-weight:700;font-size:14px;line-height:1.2;padding:7px 12px;border-radius:999px}
+.case-card .case-body{display:flex;flex-direction:column;gap:8px}
+.case-card .case-body dt{font-weight:800;font-size:15px;color:var(--white);display:inline}
+.case-card .case-body dd{display:inline;color:var(--soft);font-size:16px;line-height:1.55;margin:0}
+.case-card .case-body dd::after{content:"";display:block;margin-bottom:2px}
+.case-card .case-body .limits{border-left:3px solid var(--sky);padding-left:12px}
+.case-card .case-body .limits dt,.case-card .case-body .limits dd{font-size:15px}
+.case-card .case-links{display:flex;flex-wrap:wrap;gap:4px 20px;margin-top:4px}
+.case-card .text-only{color:var(--soft);font-size:16px;line-height:1.55;max-width:34em}
+
+.awards{margin-top:112px;padding-top:56px;border-top:2px solid rgba(255,255,255,0.08)}
+.awards h2{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:var(--soft);margin-bottom:24px}
+.awards-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.awards-list li{display:flex;gap:16px;align-items:baseline;font-size:16px;color:var(--soft)}
+.awards-list .year{font-weight:800;color:var(--white);min-width:3.5em}
+.awards-list a{color:var(--white);font-weight:700;text-decoration:underline;text-decoration-thickness:2px;text-decoration-color:var(--sky);text-underline-offset:4px}
+.awards-list a:hover{text-decoration-color:var(--white)}
+
+.cta{margin-top:128px;display:flex;flex-direction:column;gap:24px;align-items:flex-start}
+.cta h2.display{font-size:clamp(36px,5vw,64px);line-height:1;max-width:12em}
+
+.foot{margin-top:auto;padding-top:72px;padding-bottom:56px}
+.foot .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px 32px;font-weight:700;font-size:15px;color:var(--soft)}
+.foot ul{display:flex;gap:8px 28px;list-style:none}
+.foot ul a{color:var(--soft);font-weight:700;text-decoration:none;padding:12px 0;min-height:44px;display:inline-flex;align-items:center}
+.foot ul a:hover{color:var(--white)}
+</style>
+</head><body>
+
+<a href="#content" class="sr">Skip to content</a>
+
+<header class="hero">
+  <div class="wrap">
+    <nav class="nav" aria-label="Main">
+      <a class="name" href="/">Angela Ng</a>
+      <ul>
+        <li><a href="/#about">About</a></li>
+        <li><a href="/portfolio" aria-current="page">Portfolio</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="hero-row" style="margin-top:80px">
+      <div class="hero-text">
+        <p class="eyebrow">Selected work</p>
+        <h1 class="display">Global health evidence. AI safety <span class="mark">judgment.</span></h1>
+
+      </div>
+      <div class="hero-shark" aria-hidden="true">
+        <canvas id="shark-canvas"></canvas>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="content">
+
+  <!-- 1. AI SAFETY AND GOVERNANCE -->
+  <section class="section">
+    <div class="wrap">
+      <h2 class="display">AI safety and governance</h2>
+      <div class="cards">
+
+        <!-- Humanity in the Room -->
+        <div class="case-card">
+          <figure class="photo">
+            <img src="/images/portfolio/humanity-event.webp" alt="Humanity in the Room event, audience in a lecture hall with AI for Good NYC presentation on screen" loading="lazy">
+            <figcaption>Humanity in the Room</figcaption>
+          </figure>
+          <h3 class="display">Humanity in the Room (formerly AI for Good NYC)</h3>
+          <dl class="case-body">
+            <div><dt>Problem: </dt><dd>Institutional leaders are being pushed to adopt AI but rarely sit in the same room as the people who build it or the communities it affects.</dd></div>
+            <div><dt>My role: </dt><dd>Co-founded with Paulina Munoz (Do Good Capital). Convene events, run a weekly newsletter, and advise organizations deciding how to use AI.</dd></div>
+            <div><dt>Approach: </dt><dd>Events and a newsletter that bring together engineers, AI safety researchers, nonprofit leaders, funders, and social entrepreneurs.</dd></div>
+            <div><dt>Result: </dt><dd>Eight events, more than 2,000 members (per organizer records: 1,631 RSVPs<sup>1</sup>, 480 confirmed attendees<sup>2</sup>). Fiscally sponsored.</dd></div>
+            <div class="limits"><dt>Limits: </dt><dd>Attendance and membership measure reach, not whether anyone changed an AI decision. Outcome measurement is in development.</dd></div>
+          </dl>
+          <div class="case-links">
+            <a class="link" href="https://humanityintheroom.substack.com/" target="_blank" rel="noopener noreferrer">Newsletter</a>
+            <span class="link" style="font-size:14px;text-decoration:none;color:rgba(255,255,255,0.4);font-weight:400;cursor:default">Source: organizer records</span>
+          </div>
+          <p style="font-size:13px;color:rgba(255,255,255,0.35);margin-top:4px"><sup>1</sup> RSVP = registered on Luma. <sup>2</sup> Confirmed = checked in or confirmed by the host.</p>
+        </div>
+
+        <!-- Globethics -->
+        <div class="case-card">
+          <figure class="photo">
+            <img src="/images/portfolio/ai-for-good-summit.jpg" alt="Angela Ng at the AI for Good Global Summit 2026 in Geneva" loading="lazy" style="object-position:center 35%">
+            <figcaption>AI for Good Global Summit, 2026</figcaption>
+          </figure>
+          <h3 class="display">Globethics: AI ethics frameworks and implementation failures</h3>
+          <dl class="case-body">
+            <div><dt>Problem: </dt><dd>AI ethics frameworks are written at the top and often fail when civil society organizations in the Global Majority try to implement them.</dd></div>
+            <div><dt>My role: </dt><dd>Fellow. Authored a comparative report and a three-lens toolkit.</dd></div>
+            <div><dt>Approach: </dt><dd>Compared published frameworks against documented implementation failures.</dd></div>
+            <div><dt>Result: </dt><dd>Comparative report and toolkit, 2026. Attended the AI for Good Global Summit (2026) and the first Global Dialogue on AI Governance. Report available on request.</dd></div>
+            <div class="limits"><dt>Limits: </dt><dd>A comparative document review, not an empirical trial.</dd></div>
+          </dl>
+          <div class="case-links">
+            <a class="link" href="https://globethics.net/fellows/angela-ng" target="_blank" rel="noopener noreferrer">Fellow profile</a>
+            <a class="link" href="https://www.youtube.com/shorts/nMlelt9p9LY" target="_blank" rel="noopener noreferrer">Video</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. GLOBAL HEALTH AND EVIDENCE -->
+  <section class="section">
+    <div class="wrap">
+      <h2 class="display">Global health and evidence</h2>
+      <div class="cards">
+
+        <!-- Maternal health phone surveys (LEAD CARD) -->
+        <div class="case-card">
+          <figure class="photo">
+            <img src="/images/portfolio/india-fieldwork.webp" alt="Community health workers reviewing phone survey instruments at a table in Madhya Pradesh, India" loading="lazy">
+            <figcaption>Madhya Pradesh, India</figcaption>
+          </figure>
+          <h3 class="display">Phone surveys for maternal health in rural India</h3>
+          <dl class="case-body">
+            <div><dt>Problem: </dt><dd>Measuring maternal and child health knowledge by face-to-face survey is expensive. Phone surveys are cheaper but their reliability was unknown in rural India.</dd></div>
+            <div><dt>My role: </dt><dd>First author. Led the analyses, wrote the manuscript.</dd></div>
+            <div><dt>Approach: </dt><dd>Cross-sectional study in four districts of Madhya Pradesh. A face-to-face baseline survey (5,095 pregnant women), then a test-retest face-to-face subsample (n=205) and caller-attended phone interviews (n=375).</dd></div>
+            <div><dt>Result: </dt><dd>Population-level knowledge estimates were similar by phone and in person.</dd></div>
+            <div class="limits"><dt>Limits: </dt><dd>Data collected pre-COVID. Phone ownership and literacy have changed substantially since then, and reliability for individual women was poor, so phone surveys suit population estimates, not individual tracking.</dd></div>
+          </dl>
+          <div class="case-links">
+            <a class="link" href="https://doi.org/10.1136/bmjopen-2021-056076" target="_blank" rel="noopener noreferrer">BMJ Open, 2022</a>
+            <a class="link" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8915337" target="_blank" rel="noopener noreferrer">Full text (PMC)</a>
+          </div>
+          <p style="font-size:14px;color:rgba(255,255,255,0.4);margin-top:4px">Funded by the Bill and Melinda Gates Foundation.</p>
+        </div>
+
+        <!-- Folia Water -->
+        <div class="case-card">
+          <figure class="photo">
+            <img src="/images/portfolio/folia-water.jpg" alt="Silver nanoparticle water filter paper being tested during a Folia Water field pilot in Bangladesh" loading="lazy">
+            <figcaption>Folia Water</figcaption>
+          </figure>
+          <h3 class="display">Folia Water and the Drinkable Book</h3>
+          <dl class="case-body">
+            <div><dt>Problem: </dt><dd>Billions lack safe drinking water, and filters were hard to distribute and use in low- and middle-income countries (LMICs).</dd></div>
+            <div><dt>My role: </dt><dd>Product engineer and microbiologist (2015 to 2017). Ran microbiology evaluation of the filter paper, then product and interaction design, field pilots, and business models.</dd></div>
+            <div><dt>Approach: </dt><dd>Silver nanoparticle filter paper with multilingual materials, tested in field pilots in Bangladesh and South Africa.</dd></div>
+            <div><dt>Result: </dt><dd>NSF Nanosystems ERC Best Poster Award, 2016. Product covered by international press (see below).</dd></div>
+            <div class="limits"><dt>Limits: </dt><dd>Individual water filters address downstream symptoms. Upstream fixes (infrastructure, regulation, governance) are what governments and institutions should provide. Household education alone cannot solve systemic access failures.</dd></div>
+          </dl>
+          <div class="case-links">
+            <a class="link" href="https://www.bbc.com/news/science-environment-33954763" target="_blank" rel="noopener noreferrer">BBC, 2015</a>
+            <a class="link" href="https://www.cnn.com/videos/world/2015/08/18/drinkable-book-water-contamination-filtration-orig-mss.cnn" target="_blank" rel="noopener noreferrer">CNN, 2015</a>
+            <a class="link" href="https://time.com/4001048/drinkable-book/" target="_blank" rel="noopener noreferrer">Time, 2015</a>
+            <a class="link" href="https://www.npr.org/sections/goatsandsoda/2015/08/19/432854450/this-is-one-book-that-you-want-to-get-all-wet" target="_blank" rel="noopener noreferrer">NPR, 2015</a>
+            <a class="link" href="https://www.washingtonpost.com/news/morning-mix/wp/2015/08/19/drinkable-book-filters-filthy-water-and-makes-it-safe-to-drink-researchers-say/" target="_blank" rel="noopener noreferrer">Washington Post, 2015</a>
+            <a class="link" href="https://www.youtube.com/watch?v=Icxxzhmu-fE" target="_blank" rel="noopener noreferrer">Smithsonian</a>
+            <a class="link" href="https://www.cmu.edu/cmtoday/engineering_innovation/filter-aims-to-clean-world-s-drinking-water/index.html" target="_blank" rel="noopener noreferrer">CMU Today</a>
+          </div>
+        </div>
+
+        <!-- Drones -->
+        <div class="case-card">
+          <figure class="photo">
+            <img src="/images/portfolio/drones.jpg" alt="Diagram of drone applications across the humanitarian disaster lifecycle" loading="lazy">
+            <figcaption>Johns Hopkins</figcaption>
+          </figure>
+          <h3 class="display">Integrating drones into humanitarian emergencies</h3>
+          <dl class="case-body">
+            <div><dt>Problem: </dt><dd>Humanitarian agencies lacked a framework for when and how drones improve disaster response.</dd></div>
+            <div><dt>My role: </dt><dd>Authored the master's thesis at Johns Hopkins Bloomberg School of Public Health.</dd></div>
+            <div><dt>Approach: </dt><dd>Literature review and framework mapping drone use cases to disaster lifecycle phases.</dd></div>
+            <div><dt>Result: </dt><dd>Framework for drone integration across mapping, blood delivery, search and rescue, and public health prevention.</dd></div>
+            <div class="limits"><dt>Limits: </dt><dd>Literature review, not field testing.</dd></div>
+          </dl>
+          <div class="case-links">
+            <a class="link" href="#" data-contact>Thesis available on request</a>
+          </div>
+        </div>
+
+        <!-- Prosthetic foot -->
+        <div class="case-card">
+          <figure class="photo">
+            <img src="/images/portfolio/prosthetic.jpg" alt="Low-cost transfemoral prosthetic foot prototype made from PVC pipes and tires" loading="lazy">
+            <figcaption>Carnegie Mellon</figcaption>
+          </figure>
+          <h3 class="display">Low-cost transfemoral prosthetic foot</h3>
+          <dl class="case-body">
+            <div><dt>Problem: </dt><dd>Prosthetic legs cost thousands of dollars, putting them out of reach in LMICs.</dd></div>
+            <div><dt>My role: </dt><dd>Designed and prototyped the foot as a Carnegie Mellon capstone.</dd></div>
+            <div><dt>Approach: </dt><dd>Used locally available PVC pipes and tires to build a functional prototype.</dd></div>
+            <div><dt>Result: </dt><dd>Working prototype documented in a project report.</dd></div>
+            <div class="limits"><dt>Limits: </dt><dd>Capstone prototype, not a clinical trial.</dd></div>
+          </dl>
+          <div class="case-links">
+            <a class="link" href="https://drive.google.com/file/d/0B7RMoLSetTmBYlEwVkVYMkRzOXBUeUFRcUZHQkw5VkgxUVQ4/view?usp=sharing" target="_blank" rel="noopener noreferrer">Project report</a>
+          </div>
+        </div>
+
+        <!-- Outbreak investigation -->
+        <div class="case-card">
+          <figure class="photo">
+            <img src="/images/portfolio/outbreak.jpg" alt="Students working through the Outbreak Investigation contact tracing simulation game" loading="lazy">
+            <figcaption>Outbreak Investigation</figcaption>
+          </figure>
+          <h3 class="display">Outbreak investigation (classroom simulation)</h3>
+          <dl class="case-body">
+            <div><dt>Problem: </dt><dd>Students in grade 9 and up needed hands-on practice with epidemiological contact tracing.</dd></div>
+            <div><dt>My role: </dt><dd>Designed and built the simulation during COVID-19.</dd></div>
+            <div><dt>Approach: </dt><dd>A game where students trace a fictional outbreak using real epidemiological methods.</dd></div>
+            <div><dt>Result: </dt><dd>Published facilitator guide and materials available online.</dd></div>
+            <div class="limits"><dt>Limits: </dt><dd>Teaching tool, not a validated assessment instrument.</dd></div>
+          </dl>
+          <div class="case-links">
+            <a class="link" href="https://sites.google.com/view/angela-ng/portfolio/outbreak-investigation" target="_blank" rel="noopener noreferrer">Materials and facilitator guide</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. DATA AND TOOLS -->
+  <section class="section">
+    <div class="wrap">
+      <h2 class="display">Data and tools</h2>
+      <div class="cards">
+
+        <!-- CMU IronViz -->
+        <div class="case-card">
+          <figure class="photo">
+            <img src="/images/portfolio/ironviz.jpg" alt="The Mystery of the Classroom data visualization built in Power BI for the 2024 CMU IronViz competition" loading="lazy">
+            <figcaption>CMU IronViz</figcaption>
+          </figure>
+          <h3 class="display">CMU IronViz Data Competition</h3>
+          <dl class="case-body">
+            <div><dt>Problem: </dt><dd>University data teams needed better ways to surface patterns in student and course data.</dd></div>
+            <div><dt>My role: </dt><dd>Built the dashboards and competed.</dd></div>
+            <div><dt>Result: </dt><dd>First place in 2023 (Seeds of Success: Planting Financial Wellness, Power BI, not public). Second place in 2024 (The Mystery of the Classroom).</dd></div>
+          </dl>
+          <div class="case-links">
+            <a class="link" href="https://app.powerbi.com/view?r=eyJrIjoiZWUyOGQ1MjEtMjZlOS00NjJlLWI5Y2ItODQyMTY4ZTJhM2RiIiwidCI6ImUzNmVlMzhmLTkxYjgtNGRjYS05YjEzLWNhYTUzNjBjOTcxNCIsImMiOjF9" target="_blank" rel="noopener noreferrer">2024 dashboard (Power BI)</a>
+          </div>
+        </div>
+
+        <!-- Syllabus Dashboard -->
+        <div class="case-card">
+          <figure class="photo">
+            <img src="/images/portfolio/syllabus-dashboard.jpg" alt="Syllabus Dashboard interface showing AI-powered extraction of course learning objectives" loading="lazy">
+            <figcaption>Syllabus Dashboard</figcaption>
+          </figure>
+          <h3 class="display">Syllabus Dashboard</h3>
+          <dl class="case-body">
+            <div><dt>Problem: </dt><dd>Academic programs needed a way to track learning objectives and assessment methods across hundreds of syllabi.</dd></div>
+            <div><dt>My role: </dt><dd>Designed and built the system.</dd></div>
+            <div><dt>Approach: </dt><dd>Airtable, Zapier, and Google Drive pipeline that extracts objectives and tracks changes across semesters.</dd></div>
+            <div><dt>Result: </dt><dd>Internal tool used at CMU. Not publicly available.</dd></div>
+          </dl>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. FIELD-BUILDING AND EDUCATION -->
+  <section class="section">
+    <div class="wrap">
+      <h2 class="display">Field-building and education</h2>
+      <div class="cards">
+
+        <!-- EcoCampus -->
+        <div class="case-card">
+          <figure class="photo">
+            <img src="/images/climate-clock.jpg" alt="Angela Ng holding a climate clock showing fossil fuel divestment at a Carnegie Mellon event" loading="lazy">
+            <figcaption>Doha, Qatar</figcaption>
+          </figure>
+          <h3 class="display">EcoCampus and the MENA Green Flag</h3>
+          <dl class="case-body">
+            <div><dt>Problem: </dt><dd>No university in the Middle East and North Africa had earned a FEE EcoCampus Green Flag.</dd></div>
+            <div><dt>My role: </dt><dd>Led CMU-Qatar to the first certification in the MENA region.</dd></div>
+            <div><dt>Approach: </dt><dd>Carbon auditing, transport reform, biodiversity programming, and campus culture change.</dd></div>
+            <div><dt>Result: </dt><dd>First FEE EcoCampus Green Flag in MENA. CMU Andy Award, 2024.</dd></div>
+            <div class="limits"><dt>Limits: </dt><dd>Annual student turnover means re-education every year. Sustaining culture change requires ongoing effort, not a one-time certification.</dd></div>
+          </dl>
+          <div class="case-links">
+            <a class="link" href="https://www.qatar-tribune.com/article/152164/nation/cmu-q-earns-first-fee-ecocampus-green-flag-designation-in-the-mena-region" target="_blank" rel="noopener noreferrer">Qatar Tribune</a>
+            <a class="link" href="https://www.qatar.cmu.edu/news/ecocampus-wins-cmu-andy-award/" target="_blank" rel="noopener noreferrer">Andy Award</a>
+            <a class="link" href="https://www.ecologicprograms.org/blog/submerged-in-a-sea-of-awareness-the-power-of-art-and-action" target="_blank" rel="noopener noreferrer">Blog post</a>
+          </div>
+        </div>
+
+        <!-- Mindfulness Room -->
+        <div class="case-card">
+          <figure class="photo">
+            <img src="/images/mindfulness-room.jpg" alt="The Mindfulness Room at Carnegie Mellon, a 24-hour rest space with meditation cushions" loading="lazy">
+            <figcaption>The Mindfulness Room</figcaption>
+          </figure>
+          <h3 class="display">The Mindfulness Room</h3>
+          <dl class="case-body">
+            <div><dt>Problem: </dt><dd>Carnegie Mellon had no dedicated space for student rest and stress recovery.</dd></div>
+            <div><dt>My role: </dt><dd>Founded the room in 2012. Proposed, designed, and built it.</dd></div>
+            <div><dt>Approach: </dt><dd>A 24-hour rest space, now replicated at colleges, high schools, and hospitals.</dd></div>
+            <div><dt>Result: </dt><dd>National press coverage and replication at other institutions.</dd></div>
+          </dl>
+          <div class="case-links">
+            <a class="link" href="https://www.nytimes.com/2014/11/02/education/edlife/space-to-be-mindful.html" target="_blank" rel="noopener noreferrer">The New York Times, 2014</a>
+            <a class="link" href="https://www.usatoday.com/story/college/2016/03/15/om-colleges-turn-to-meditation-to-help-you-destress/37413705/" target="_blank" rel="noopener noreferrer">USA Today, 2016</a>
+            <a class="link" href="https://www.nbcnews.com/feature/college-game-plan/mindfulness-meditation-may-help-students-combat-high-levels-stress-depression-n759971" target="_blank" rel="noopener noreferrer">NBC News</a>
+          </div>
+          <details style="margin-top:4px">
+            <summary style="font-size:14px;font-weight:700;color:var(--soft);cursor:pointer">More press</summary>
+            <div class="case-links" style="margin-top:8px">
+              <a class="link" href="https://thetartan.org/2014/2/2/news/mindfulness" target="_blank" rel="noopener noreferrer">The Tartan, 2014</a>
+              <a class="link" href="https://www.mindful.org/a-place-to-be-mindful-on-campus/" target="_blank" rel="noopener noreferrer">Mindful.org</a>
+              <a class="link" href="https://www.nami.org/person-with-mental-illness/creating-a-community-of-support-on-campus/" target="_blank" rel="noopener noreferrer">NAMI</a>
+              <a class="link" href="https://www.pittsburghmagazine.com/cmus-newest-campus-life-venture-is-decidedly-low-tech/" target="_blank" rel="noopener noreferrer">Pittsburgh Magazine</a>
+            </div>
+          </details>
+        </div>
+
+        <!-- Paws to Relax -->
+        <div class="case-card">
+          <figure class="photo">
+            <img src="/images/portfolio/paws-to-relax.jpg" alt="Students petting a therapy dog during the Paws to Relax program at Carnegie Mellon" loading="lazy">
+            <figcaption>Paws to Relax</figcaption>
+          </figure>
+          <h3 class="display">Paws to Relax</h3>
+          <dl class="case-body">
+            <div><dt>Problem: </dt><dd>Students needed accessible stress relief during exam periods.</dd></div>
+            <div><dt>My role: </dt><dd>Ran the therapy dog program at Carnegie Mellon since 2015.</dd></div>
+            <div><dt>Result: </dt><dd>Ongoing program covered in local press.</dd></div>
+          </dl>
+          <div class="case-links">
+            <a class="link" href="https://www.post-gazette.com/pets/2016/04/30/Pet-Tales-Dogs-give-CMU-students-a-study-break/stories/201604300067" target="_blank" rel="noopener noreferrer">Pittsburgh Post-Gazette, 2016</a>
+          </div>
+        </div>
+
+        <!-- Rwanda and Zimbabwe -->
+        <div class="case-card">
+          <figure class="photo">
+            <img src="/images/portfolio/rwanda-zimbabwe.jpg" alt="Students at Agahozo-Shalom Youth Village in Rwanda working on computers during a programming hackathon" loading="lazy">
+            <figcaption>Rwanda and Zimbabwe</figcaption>
+          </figure>
+          <h3 class="display">Capacity building in Rwanda and Zimbabwe</h3>
+          <dl class="case-body">
+            <div><dt>Problem: </dt><dd>Schools in Rwanda and Zimbabwe needed student information systems and STEM programming support.</dd></div>
+            <div><dt>My role: </dt><dd>Built a student information system at Agahozo-Shalom Youth Village, ran a programming hackathon, and led the S.Y.STEM Coalition in Zimbabwe.</dd></div>
+            <div><dt>Result: </dt><dd>System deployed, coalition active from 2021 to 2025.</dd></div>
+          </dl>
+          <div class="case-links">
+            <a class="link" href="https://systemcoalition.org/" target="_blank" rel="noopener noreferrer">S.Y.STEM Coalition</a>
+          </div>
+        </div>
+
+        <!-- Women and Climate -->
+        <div class="case-card">
+          <figure class="photo">
+            <img src="/images/portfolio/women-climate.png" alt="Angela Ng with colleagues at the Qatar National Dialogue on Climate Change" loading="lazy">
+            <figcaption>Qatar National Dialogue on Climate</figcaption>
+          </figure>
+          <h3 class="display">Women and Climate, Doha chapter</h3>
+          <dl class="case-body">
+            <div><dt>My role: </dt><dd>City lead, 2022 to 2025.</dd></div>
+          </dl>
+          <div class="case-links">
+            <a class="link" href="https://womenandclimate.co/" target="_blank" rel="noopener noreferrer">Women and Climate</a>
+            <a class="link" href="https://thepeninsulaqatar.com/article/20/02/2021/Education-City-panel-marks-International-Day-for-Women-and-Girls-in-Science" target="_blank" rel="noopener noreferrer">The Peninsula Qatar, 2021</a>
+          </div>
+        </div>
+
+        <!-- COVID-19 masks -->
+        <div class="case-card">
+          <figure class="photo">
+            <img src="/images/portfolio/covid-masks.webp" alt="Angela Ng sewing fabric face masks on a Brother sewing machine during the COVID-19 pandemic" loading="lazy">
+            <figcaption>Pittsburgh, 2020</figcaption>
+          </figure>
+          <h3 class="display">COVID-19 fabric masks</h3>
+          <dl class="case-body">
+            <div><dt>My role: </dt><dd>Organized production of more than 1,000 masks in Pittsburgh during the early pandemic (per organizer records).</dd></div>
+          </dl>
+          <div class="case-links">
+            <a class="link" href="https://www.cmu.edu/piper/news/archives/2020/april/face-masks.html" target="_blank" rel="noopener noreferrer">The Piper (CMU), 2020</a>
+          </div>
+        </div>
+
+        <!-- Experiential learning -->
+        <div class="case-card">
+          <figure class="photo">
+            <img src="/images/portfolio/experiential-learning.webp" alt="Students hugging trees in a moss-covered Norwegian forest during a sustainability expedition" loading="lazy">
+            <figcaption>Norway expedition</figcaption>
+          </figure>
+          <h3 class="display">Experiential learning: Norway and Bhutan</h3>
+          <dl class="case-body">
+            <div><dt>Norway: </dt><dd>Planned an expedition examining the paradox of a nation celebrated for green credentials while simultaneously being a major gas exporter and pursuing deep-sea mining. Through interviews and surveys with Norwegian citizens, students explored how people reconcile environmental leadership with fossil fuel production. The investigation surfaced contrasts with Qatar, another energy exporter facing different perceptions despite similar resource extraction. Participants gained critical insights into how national sustainability narratives are constructed, challenging simplistic notions of what makes a country "green."</dd></div>
+            <div><dt>Bhutan: </dt><dd>Led a journey centered on Gross National Happiness and Bhutan's achievement of carbon negativity. Students witnessed the kingdom's commitment to environmental protection through growing electric vehicle infrastructure and preservation of cultural traditions that support sustainable living. Seeing how Bhutan prioritizes wellbeing over GDP and maintains forest coverage while developing sustainably proved transformative.</dd></div>
+            <div><dt>Result: </dt><dd>Returning to CMU-Q, students channeled their learning into campus improvements: a vegetable garden, composting systems, and sound healing practices, directly translating Bhutanese principles of holistic wellbeing.</dd></div>
+          </dl>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SELECTED AWARDS -->
+  <div class="wrap">
+    <div class="awards">
+      <h2>Selected awards</h2>
+      <ul class="awards-list">
+        <li><span class="year">2026</span> NYC Climate Week Climate Hackathon Winner: Model Routing</li>
+        <li><span class="year">2026</span> Tech Week AI for Humans Hackathon, 3rd place</li>
+        <li><span class="year">2024</span> CMU IronViz Data Analytics, 2nd place <a href="https://app.powerbi.com/view?r=eyJrIjoiZWUyOGQ1MjEtMjZlOS00NjJlLWI5Y2ItODQyMTY4ZTJhM2RiIiwidCI6ImUzNmVlMzhmLTkxYjgtNGRjYS05YjEzLWNhYTUzNjBjOTcxNCIsImMiOjF9" target="_blank" rel="noopener noreferrer">Dashboard</a></li>
+        <li><span class="year">2024</span> CMU Andy Award (EcoCampus) <a href="https://www.qatar.cmu.edu/news/ecocampus-wins-cmu-andy-award/" target="_blank" rel="noopener noreferrer">Announcement</a></li>
+        <li><span class="year">2023</span> CMU IronViz Data Analytics, 1st place (on request)</li>
+        <li><span class="year">2023</span> Charles Thorpe Service Award</li>
+        <li><span class="year">2018</span> Johns Hopkins Student Spirit Award</li>
+        <li><span class="year">2017</span> Carnegie Mellon Alumni Student Service Award</li>
+        <li><span class="year">2016</span> Western Pennsylvania Engineers' George Washington Prize</li>
+        <li><span class="year">2016</span> Environmental Research Prize</li>
+        <li><span class="year">2016</span> NSF Nanosystems ERC Best Poster (water treatment)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="wrap">
+    <div class="cta">
+      <h2 class="display">Ready to build something that <span class="mark">matters?</span></h2>
+      <a class="btn" href="/#contact">Work with me</a>
+    </div>
+  </div>
+</main>
+
+<footer class="foot"><div class="wrap">
+  <span>Angela Ng.</span>
+  <ul>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/portfolio">Portfolio</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+</div></footer>
+
+<script src="/js/shark-settle.js" defer></script>
+<script src="/js/email.js" defer></script>
+</body></html>

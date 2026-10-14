@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'self'">
+<title>Angela Ng | Global health evidence, AI safety judgment</title>
+<meta name="description" content="Angela Ng: global health researcher and field-builder working on AI safety and governance. MSPH Johns Hopkins, first-author BMJ Open paper, co-founder of Humanity in the Room.">
+<meta name="theme-color" content="#0a2266">
+<link rel="canonical" href="https://angelang.org/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Angela Ng | Global health evidence, AI safety judgment">
+<meta property="og:description" content="Global health researcher and field-builder working on AI safety and governance. MSPH Johns Hopkins, first-author BMJ Open paper, co-founder of Humanity in the Room.">
+<meta property="og:url" content="https://angelang.org/">
+<meta property="og:site_name" content="Angela Ng">
+<meta property="og:image" content="https://angelang.org/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Angela Ng | Global health evidence, AI safety judgment">
+<meta name="twitter:description" content="Global health researcher and field-builder working on AI safety and governance.">
+<meta name="twitter:image" content="https://angelang.org/og.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/atkinson-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Fraunces';font-style:normal;font-weight:100 900;font-display:swap;src:url(/fonts/fraunces-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Fraunces';font-style:normal;font-weight:100 900;font-display:swap;src:url(/fonts/fraunces-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Atkinson Hyperlegible Next';font-style:normal;font-weight:400 800;font-display:swap;src:url(/fonts/atkinson-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Atkinson Hyperlegible Next';font-style:normal;font-weight:400 800;font-display:swap;src:url(/fonts/atkinson-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+
+:root {
+  --surface:#0a2266;--mid:#061748;--abyss:#010616;
+  --navy:#02103a;--white:#ffffff;--soft:#e3eaff;--sky:#4cd0ff;
+  --panel:rgba(255,255,255,0.09);
+  --display:"Fraunces",Georgia,serif;
+  --body:"Atkinson Hyperlegible Next","Segoe UI",system-ui,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box;font-style:normal;margin:0;padding:0}
+em,i,cite,blockquote{font-style:normal;font-weight:800}
+html{scroll-behavior:smooth}
+body{background:var(--surface);color:var(--white);font-family:var(--body);font-size:18px;line-height:1.6;overflow-x:hidden}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+:focus-visible{outline:3px solid var(--sky);outline-offset:3px}
+a{color:var(--white)}
+img{display:block;max-width:100%;height:auto}
+
+html{overflow-x:hidden}
+#dots{position:fixed;inset:0;width:100%;height:100vh;z-index:0;pointer-events:none}
+header,main,footer{position:relative;z-index:1}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{max-width:1280px;margin:0 auto;padding-inline:clamp(20px,5vw,72px)}
+
+.display{font-family:var(--display);font-weight:900;font-variation-settings:"SOFT" 100,"WONK" 1;letter-spacing:-0.025em;line-height:0.98;color:var(--white);text-wrap:balance}
+h1.display{font-size:clamp(46px,7vw,104px)}
+h2.display{font-size:clamp(34px,4vw,56px);line-height:1.02}
+.mark{background:var(--white);color:var(--navy);padding:0 .12em;border-radius:4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.lede{font-size:21px;line-height:1.5;font-weight:600;max-width:30em}
+.text{color:var(--soft);max-width:34em}
+
+.nav{display:flex;justify-content:space-between;align-items:center;gap:16px 32px;flex-wrap:wrap;padding-block:28px 0}
+.nav .name{font-family:var(--display);font-weight:900;font-variation-settings:"SOFT" 100,"WONK" 1;font-size:26px;letter-spacing:-0.02em;color:var(--white);text-decoration:none}
+.nav ul{display:flex;gap:8px 28px;list-style:none;flex-wrap:wrap}
+.nav ul a{color:var(--white);font-weight:700;text-decoration:none;padding:12px 0;min-height:44px;display:inline-flex;align-items:center;border-bottom:3px solid transparent}
+.nav ul a:hover{border-bottom-color:var(--sky)}
+
+.btn{display:inline-flex;align-items:center;min-height:52px;padding:14px 28px;border-radius:14px;background:var(--white);color:var(--navy);font-weight:800;font-size:18px;text-decoration:none;transition:background-color 120ms linear}
+.btn:hover{background:#dbe4ff}
+.link{color:var(--white);font-weight:800;font-size:18px;text-decoration:underline;text-decoration-thickness:3px;text-decoration-color:var(--sky);text-underline-offset:6px;padding-block:12px}
+.link:hover{text-decoration-color:var(--white)}
+.link-text{color:var(--white);font-weight:700;font-size:18px;padding-block:12px;user-select:all}
+.actions{display:flex;flex-wrap:wrap;align-items:center;gap:8px 24px}
+
+.depth{display:inline-flex;align-items:center;gap:12px;font-weight:700;font-size:16px;color:var(--white)}
+.depth b{background:var(--white);color:var(--navy);padding:3px 10px;border-radius:8px;font-weight:800;font-variant-numeric:tabular-nums}
+
+.hero{padding-block:0 112px}
+.hero-body{display:flex;flex-direction:column;align-items:flex-start;gap:28px;padding-top:96px;max-width:980px}
+.cred-strip{display:flex;flex-wrap:wrap;gap:6px 20px;font-size:16px;font-weight:700;color:var(--soft);margin-top:8px;list-style:none}
+.cred-strip a{color:var(--soft);text-decoration:underline;text-decoration-color:var(--sky);text-underline-offset:4px;text-decoration-thickness:2px;padding:4px 0;min-height:24px;display:inline-flex;align-items:center}
+.cred-strip a:hover{color:var(--white)}
+.cred-strip li{padding:4px 0;min-height:24px;display:inline-flex;align-items:center}
+.cred-strip li::after{content:" \00b7";color:rgba(255,255,255,0.3)}
+.cred-strip li:last-child::after{content:""}
+
+.story{padding-block:72px}
+.story-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(32px,6vw,88px);align-items:center}
+.story.flip .story-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)}
+.story.flip .photo{order:2}
+.story-text{display:flex;flex-direction:column;align-items:flex-start;gap:22px;min-width:0}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-weight:700;font-size:15px;line-height:1;padding:8px 14px;border:2px solid rgba(255,255,255,.75);border-radius:999px;color:var(--white)}
+.tag.fill{background:var(--white);color:var(--navy);border-color:var(--white)}
+figure.photo{position:relative;margin:0;width:100%;aspect-ratio:4/3;max-width:100%;border-radius:22px;background:var(--panel);overflow:hidden}
+figure.photo img{width:100%;height:100%;object-fit:cover}
+figure.photo figcaption{position:absolute;left:14px;bottom:14px;background:var(--white);color:var(--navy);font-weight:700;font-size:14px;line-height:1.2;padding:7px 12px;border-radius:999px}
+@media(max-width:800px){
+  .story-grid,.story.flip .story-grid{grid-template-columns:1fr}
+  .story.flip .photo{order:0}
+}
+
+.band{padding-block:104px}
+.reading .read{max-width:38em;margin-top:28px}
+.reading .read p{font-size:21px;line-height:1.7}
+.pull{font-family:var(--display);font-weight:900;font-variation-settings:"SOFT" 100,"WONK" 1;letter-spacing:-0.02em;line-height:1.06;font-size:clamp(30px,3.6vw,50px);margin-block:56px;max-width:17em;color:var(--white);text-wrap:balance}
+.card{max-width:38em;border-radius:20px;background:rgba(255,255,255,.08);padding:28px;display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.card h3{font-family:var(--display);font-weight:900;font-variation-settings:"SOFT" 100,"WONK" 1;font-size:28px;letter-spacing:-0.025em;color:var(--white)}
+.card p{color:var(--soft)}
+.card .card-meta{font-size:14px;color:rgba(255,255,255,0.55)}
+.q-list{list-style:none;padding:0;margin-top:28px;display:flex;flex-direction:column;gap:14px}
+.q-list li{border-left:3px solid var(--sky);padding-left:14px;color:var(--soft);font-size:17px;line-height:1.5}
+
+.recent-posts{list-style:none;margin-top:24px;display:flex;flex-direction:column;gap:12px}
+.recent-posts li{display:flex;flex-wrap:wrap;gap:4px 16px;align-items:baseline}
+.recent-posts a{color:var(--white);font-weight:700;font-size:17px;text-decoration:underline;text-decoration-color:var(--sky);text-underline-offset:4px;text-decoration-thickness:2px}
+.recent-posts a:hover{text-decoration-color:var(--white)}
+.recent-posts time{font-size:14px;color:rgba(255,255,255,0.55)}
+
+.frames{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:44px}
+.frames figure.photo{aspect-ratio:4/3}
+@media(max-width:760px){.frames{grid-template-columns:1fr}.frames figure.photo{aspect-ratio:4/3}}
+
+.deep{padding-block:112px 40px}
+.deep-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(32px,5vw,72px);align-items:center}
+.deep-text{display:flex;flex-direction:column;gap:22px;align-items:flex-start;min-width:0}
+.deep-text .text{max-width:31em}
+.shark-space{min-height:clamp(220px,40vw,440px)}
+@media(max-width:860px){.deep-grid{grid-template-columns:1fr}}
+
+.contact{padding-block:88px 72px}
+.contact-inner{display:flex;flex-direction:column;gap:24px;align-items:flex-start;max-width:640px}
+.contact-inner .text{font-size:17px}
+.foot{padding-block:0 56px}
+.foot .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px 32px;font-weight:700;font-size:15px;color:var(--soft)}
+.foot ul{display:flex;gap:8px 28px;list-style:none}
+.foot ul a{color:var(--soft);font-weight:700;text-decoration:none;padding:12px 0;min-height:44px;display:inline-flex;align-items:center}
+.foot ul a:hover{color:var(--white)}
+
+.hud{position:fixed;z-index:5;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));background:var(--white);color:var(--navy);border-radius:12px;padding:9px 14px;font-weight:700;font-size:14px;line-height:1.3;pointer-events:none;font-variant-numeric:tabular-nums}
+.hud b{font-weight:800}
+.dots-pause{position:fixed;z-index:6;left:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));background:rgba(255,255,255,0.12);color:var(--white);border:none;border-radius:10px;width:40px;height:40px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;pointer-events:auto;transition:background 120ms}
+.dots-pause:hover{background:rgba(255,255,255,0.22)}
+
+.hint{border-left:3px solid var(--sky);padding-left:14px;font-weight:700;color:var(--white);max-width:31em}
+.hint-touch{display:none}
+@media(hover:none){.hint-mouse{display:none}.hint-touch{display:inline}}
+body.dot-hover{cursor:pointer}
+.dot-card{position:fixed;z-index:7;width:min(320px,calc(100vw - 32px));background:var(--white);color:var(--navy);border-radius:16px;padding:16px 18px 14px;box-shadow:0 12px 40px rgba(1,6,22,.45);display:flex;flex-direction:column;gap:6px;opacity:0;transform:translateY(4px);transition:opacity 140ms linear,transform 140ms linear}
+.dot-card[hidden]{display:none}
+.dot-card.on{opacity:1;transform:none}
+.dot-card .dot-k{font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#2a45b8}
+.dot-card h3{font-family:var(--display);font-weight:900;font-variation-settings:"SOFT" 100,"WONK" 1;font-size:21px;line-height:1.1;letter-spacing:-.02em;color:var(--navy);padding-right:28px}
+.dot-card .dot-d{font-size:16px;line-height:1.45;color:#1b2a5c}
+.dot-card .dot-w{font-size:14px;font-weight:700;color:#41538f}
+.dot-card .dot-s{color:var(--navy);font-weight:800;font-size:15px;text-decoration:underline;text-decoration-color:var(--sky);text-decoration-thickness:3px;text-underline-offset:4px;align-self:flex-start;min-height:24px;display:inline-flex;align-items:center}
+.dot-card .dot-x{display:none;position:absolute;top:4px;right:4px;width:40px;height:40px;border:none;background:transparent;color:var(--navy);font-size:26px;line-height:1;cursor:pointer;border-radius:10px}
+.dot-card.pinned .dot-x{display:block}
+.dot-card .dot-x:hover{background:rgba(2,16,58,.08)}
+@media(prefers-reduced-motion:reduce){.dot-card{transition:none;transform:none}}
+
+.about{padding-block:72px 40px}
+.about-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,6vw,88px);align-items:start}
+.about figure.portrait{aspect-ratio:4/5;position:sticky;top:32px}
+.about figure.portrait img{object-position:58% 30%}
+.about-text{display:flex;flex-direction:column;align-items:flex-start;gap:22px;min-width:0}
+.about-text .lede{max-width:24em}
+.roles{list-style:none;display:flex;flex-direction:column;gap:12px;border-left:3px solid var(--sky);padding-left:16px;max-width:36em}
+.roles li{color:var(--soft);font-size:17px;line-height:1.5}
+.roles strong{color:var(--white);font-weight:800}
+@media(max-width:860px){.about-grid{grid-template-columns:1fr}.about figure.portrait{position:static;max-width:420px}}
+.top-link{color:var(--white);font-weight:800;font-size:16px;text-decoration:none;border:2px solid rgba(255,255,255,.75);border-radius:999px;padding:10px 20px;min-height:44px;display:inline-flex;align-items:center;gap:8px;transition:background-color 120ms linear,color 120ms linear}
+.top-link:hover{background:var(--white);color:var(--navy)}
+.to-top{display:flex;justify-content:center;padding-bottom:36px}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Angela Ng","url":"https://angelang.org","jobTitle":"Global health researcher and AI safety consultant","alumniOf":[{"@type":"CollegeOrUniversity","name":"Johns Hopkins Bloomberg School of Public Health"},{"@type":"CollegeOrUniversity","name":"Carnegie Mellon University"}],"sameAs":["https://www.linkedin.com/in/angelaonwahng","https://humanityintheroom.substack.com"],"knowsAbout":["Global health","AI governance","AI safety","Evaluation design"],"worksFor":{"@type":"Organization","name":"Humanity in the Room","url":"https://humanityintheroom.org"}}
+</script>
+</head><body>
+
+<a href="#work" class="sr">Skip to content</a>
+<canvas id="dots" aria-hidden="true"></canvas>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <nav class="nav" aria-label="Main">
+      <a class="name" href="/">Angela Ng</a>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="/portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="hero-body">
+      <h1 class="display">Global health evidence. AI safety <span class="mark">judgment.</span></h1>
+      <p class="lede">I help institutions decide whether, when, and how to adopt AI without harming the people they serve.</p>
+      <ul class="cred-strip">
+        <li><a href="https://www.jhsph.edu/" target="_blank" rel="noopener noreferrer">MSPH, Johns Hopkins Bloomberg School of Public Health</a></li>
+        <li><a href="https://doi.org/10.1136/bmjopen-2021-056076" target="_blank" rel="noopener noreferrer">First author, BMJ Open (2022)</a></li>
+        <li><a href="https://globethics.net/fellows/angela-ng" target="_blank" rel="noopener noreferrer">Globethics Emerging Leader Fellow in Ethical AI Governance (2026)</a></li>
+        <li>BlueDot Impact, AGI Strategy course (alumna)</li>
+      </ul>
+      <p class="text" style="margin-top:12px"><a href="https://humanityintheroom.org/" target="_blank" rel="noopener noreferrer" class="link" style="font-size:16px">Humanity in the Room</a> (co-founder), consulting, writing.</p>
+      <div class="actions">
+        <a class="btn" href="/portfolio">See the work</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="work">
+
+  <section class="about" id="about">
+    <div class="wrap"><div class="about-grid">
+      <figure class="photo portrait">
+        <img src="/images/headshot-teal.jpg" alt="Angela Ng smiling with arms crossed, wearing a teal top and a Sustainable Development Goals pin" loading="lazy">
+      </figure>
+      <div class="about-text">
+        <h2 class="display">A <span class="mark">doer.</span></h2>
+        <p class="lede">I am a strategic leader operating at the intersection of AI innovation, global health, and climate resilience.</p>
+        <p class="text">I translate complex technologies into human-centered solutions, building and scaling data-driven programs that create sustainable, real-world outcomes. I believe in getting things done with patient urgency.</p>
+        <ul class="roles">
+          <li><strong>Engineer.</strong> Civil and Environmental Engineering, Carnegie Mellon.</li>
+          <li><strong>Researcher.</strong> MSPH, Johns Hopkins. First author, BMJ Open.</li>
+          <li><strong>Innovator.</strong> Director of Business Innovation, Carnegie Mellon.</li>
+          <li><strong>Builder.</strong> The Mindfulness Room, the first MENA Green Flag, Humanity in the Room.</li>
+        </ul>
+        <p class="text">Worked in Bangladesh, India, the DRC, South Africa, Zimbabwe, Rwanda, and Qatar.</p>
+      </div>
+    </div></div>
+  </section>
+  <section class="story">
+    <div class="wrap"><div class="story-grid">
+      <figure class="photo">
+        <img src="/images/portfolio/humanity-event.webp" alt="Humanity in the Room event, audience in a lecture hall with AI for Good NYC presentation on screen" loading="lazy">
+        <figcaption>Humanity in the Room</figcaption>
+      </figure>
+      <div class="story-text">
+        <h2 class="display">AI needs to work for <span class="mark">everyone.</span></h2>
+        <p class="text">Co-founded Humanity in the Room (formerly AI for Good NYC) to bring together the people who build AI and the people who know what tools are actually useful in their communities. Eight events, more than 2,000 members.</p>
+        <div class="tags"><span class="tag fill">AI governance</span><span class="tag">Field-building</span></div>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="story flip">
+    <div class="wrap"><div class="story-grid">
+      <figure class="photo">
+        <img src="/images/folia-water-south-africa.jpg" alt="Angela Ng testing water filters in South Africa with the Folia Water team" loading="lazy">
+        <figcaption>Folia Water, South Africa</figcaption>
+      </figure>
+      <div class="story-text">
+        <h2 class="display">Cleaning drinking water through <span class="mark">field pilots.</span></h2>
+        <p class="text">Product engineer and microbiologist on the Drinkable Book. Silver nanoparticle filters tested in villages across Bangladesh and South Africa (2015 to 2017).</p>
+        <div class="tags"><span class="tag fill">Water</span><span class="tag">Global health</span></div>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="story">
+    <div class="wrap"><div class="story-grid">
+      <figure class="photo">
+        <img src="/images/mindfulness-room.jpg" alt="The Mindfulness Room at Carnegie Mellon, a calm space with meditation cushions and soft lighting" loading="lazy">
+        <figcaption>The Mindfulness Room</figcaption>
+      </figure>
+      <div class="story-text">
+        <h2 class="display">Built from scratch, <span class="mark">replicated globally.</span></h2>
+        <p class="text">Proposed, designed, and built a student wellness space from nothing at Carnegie Mellon. Now in colleges, hospitals, and high schools worldwide.</p>
+        <div class="tags"><span class="tag fill">Mental health</span><span class="tag">Field-building</span></div>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="story flip">
+    <div class="wrap"><div class="story-grid">
+      <figure class="photo">
+        <img src="/images/headshot-cmq.jpg" alt="Angela Ng at Carnegie Mellon University Qatar campus in Doha" loading="lazy">
+        <figcaption>Doha, Qatar</figcaption>
+      </figure>
+      <div class="story-text">
+        <h2 class="display">First MENA university to earn a <span class="mark">Green Flag.</span></h2>
+        <p class="text">Led CMU-Q to the first FEE EcoCampus certification in the Middle East and North Africa. Carbon offsets, transport, biodiversity, culture change.</p>
+        <div class="tags"><span class="tag fill">Climate</span><span class="tag">Education</span></div>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="band reading" id="writing">
+    <div class="wrap">
+      <h2 class="display" style="margin-top:22px">Notes on AI and <span class="mark">philanthropy.</span></h2>
+      <div class="read">
+        <p>Weekly notes on where AI money is going, what is being evaluated, and what nonprofits should ask. Written for program officers, nonprofit leaders, and the people who build AI.</p>
+        <p style="margin-top:14px;font-size:17px;color:rgba(255,255,255,0.55)">Notes and themes, with a source on every claim.</p>
+      </div>
+
+      <ul class="q-list">
+        <li>What should a nonprofit do this year to be ready for the new tech money?</li>
+        <li>Who pays for evaluation, and what should we measure to know whether AI is affecting health, climate, education, and economic mobility?</li>
+        <li>How do we measure the effect of AI on enabled emissions?</li>
+      </ul>
+
+      <div class="card" style="margin-top:44px">
+        <h3>Humanity in the Room (formerly AI for Good NYC)</h3>
+        <p>The latest from the newsletter on AI philanthropy, evaluations, and governance.</p>
+        <p class="card-meta">By Angela Ng and Paulina Munoz</p>
+        <ul class="recent-posts" id="newsletter-posts">
+          <li><a href="https://humanityintheroom.substack.com/p/ai-for-good-nyc-what-we-heard-at" target="_blank" rel="noopener noreferrer">AI for Good NYC: What we heard at UNGA and Climate Week (Part I)</a> <time datetime="2026-10-12">Oct 12, 2026</time></li>
+        </ul>
+        <a class="btn" href="https://humanityintheroom.substack.com/" target="_blank" rel="noopener noreferrer">Subscribe on Substack</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="why">
+    <div class="wrap">
+      <h2 class="display" style="margin-top:22px;max-width:16em">Nature is why I think about AI and <span class="mark">climate</span> together.</h2>
+      <p class="text" style="margin-top:22px;max-width:36em">These ecosystems shaped how I think about responsible technology. AI can help us monitor reefs, track species, and model emissions. It also consumes energy and resources. Both things are true, and both need measurement. I dive to see how healthy the ocean actually is.</p>
+      <div class="frames">
+        <figure class="photo">
+          <img src="/images/dive-manta.jpg" alt="Manta rays gliding through open water in the Maldives" loading="lazy">
+          <figcaption>Manta rays, Maldives</figcaption>
+        </figure>
+        <figure class="photo">
+          <img src="/images/dive-shark.jpg" alt="A thresher shark in the Philippines" loading="lazy">
+          <figcaption>Thresher shark, Philippines</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="deep" id="deep">
+    <p class="sr">The dots that have been drifting across the page come together into a whale shark.</p>
+    <div class="wrap"><div class="deep-grid">
+      <div class="deep-text">
+        <h2 class="display">The work I want to do <span class="mark">goes deep.</span></h2>
+        <p class="text">Depth means evidence you can trace. Like a whale shark's spots, every case here is its own pattern, and I keep the sources next to it.</p>
+        <p class="text">Whale sharks are the largest fish in the sea, and they have been tracked diving more than a kilometer down. Each one wears a pattern of spots that belongs to it alone. Researchers use those spots to tell individuals apart and follow them across oceans.</p>
+        <p class="text">They are endangered, and they feed on the plankton that the whole ocean depends on. That is how I think about the communities I work with. Every dot is different, and the work only holds when we see each one.</p>
+        <p class="hint"><span class="hint-mouse">Swim your mouse through the dots. A few of the dots in the shark are special. Click one to find out something about me.</span><span class="hint-touch">A few of the dots in the shark are special. Tap one to find out something about me.</span></p>
+      </div>
+      <div class="shark-space" aria-hidden="true"></div>
+    </div></div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap"><div class="contact-inner">
+      <h2 class="display">Let's build something that <span class="mark">matters.</span></h2>
+      <p class="text">I take on: research on AI adoption and safety in nonprofits and public-sector health, evaluation design, and convening.</p>
+      <p class="text">Funders and program officers: the fastest way to understand my work is the <a href="https://doi.org/10.1136/bmjopen-2021-056076" target="_blank" rel="noopener noreferrer" class="link" style="font-size:17px">maternal health paper</a>, the <a href="https://humanityintheroom.substack.com/" target="_blank" rel="noopener noreferrer" class="link" style="font-size:17px">newsletter</a>, and the <a href="/resume" class="link" style="font-size:17px">resume</a>.</p>
+      <div class="actions">
+        <a class="btn" href="#" data-contact>Work with me</a>
+        <noscript><span class="link-text">angelang1201 [at] gmail [dot] com</span></noscript>
+        <a class="link" href="https://www.linkedin.com/in/angelaonwahng" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a class="link" href="/resume">Resume</a>
+        <a class="link" href="https://humanityintheroom.substack.com/" target="_blank" rel="noopener noreferrer">Substack</a>
+      </div>
+    </div></div>
+  </section>
+</main>
+
+<footer class="foot">
+<div class="to-top"><a class="top-link" href="#top">Back to top <span aria-hidden="true">&uarr;</span></a></div>
+<div class="wrap">
+  <span>Angela Ng.</span>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="/portfolio">Portfolio</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="/resume">Resume</a></li>
+  </ul>
+</div></footer>
+
+<div class="hud" aria-hidden="true">Depth <b id="hd">0</b> m</div>
+<button class="dots-pause" id="dots-pause" type="button" aria-label="Pause animation">&#x23F8;</button>
+
+<script src="/js/shark-scroll.v2.js" defer></script>
+<script src="/js/email.js" defer></script>
+</body></html>

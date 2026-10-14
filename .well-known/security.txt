@@ -1,0 +1,4 @@
+Contact: mailto:angelang1201@gmail.com
+Preferred-Languages: en
+Canonical: https://angelang.org/.well-known/security.txt
+Expires: 2027-10-13T00:00:00.000Z

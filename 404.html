@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'self'">
+<title>Page not found | Angela Ng</title>
+<meta name="theme-color" content="#0a2266">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="preload" href="/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/atkinson-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Fraunces';font-style:normal;font-weight:100 900;font-display:swap;src:url(/fonts/fraunces-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Atkinson Hyperlegible Next';font-style:normal;font-weight:400 800;font-display:swap;src:url(/fonts/atkinson-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+:root{--surface:#0a2266;--navy:#02103a;--white:#ffffff;--soft:#e3eaff;--sky:#4cd0ff;--display:"Fraunces",Georgia,serif;--body:"Atkinson Hyperlegible Next","Segoe UI",system-ui,sans-serif;color-scheme:dark}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--surface);color:var(--white);font-family:var(--body);font-size:18px;line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+a{color:var(--white)}
+:focus-visible{outline:3px solid var(--sky);outline-offset:3px}
+.wrap{max-width:1280px;margin:0 auto;padding-inline:clamp(20px,5vw,72px);width:100%}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:16px 32px;flex-wrap:wrap;padding-block:28px 0}
+.nav .name{font-family:var(--display);font-weight:900;font-variation-settings:"SOFT" 100,"WONK" 1;font-size:26px;letter-spacing:-0.02em;color:var(--white);text-decoration:none}
+.nav ul{display:flex;gap:8px 28px;list-style:none;flex-wrap:wrap}
+.nav ul a{color:var(--white);font-weight:700;text-decoration:none;padding:12px 0;border-bottom:3px solid transparent}
+.nav ul a:hover{border-bottom-color:var(--sky)}
+.display{font-family:var(--display);font-weight:900;font-variation-settings:"SOFT" 100,"WONK" 1;letter-spacing:-0.025em;line-height:0.98;color:var(--white)}
+.mark{background:var(--white);color:var(--navy);padding:0 .12em;border-radius:4px}
+main{flex:1;display:flex;align-items:center;justify-content:center;padding:80px 20px;text-align:center}
+.error{display:flex;flex-direction:column;gap:20px;align-items:center;max-width:480px}
+.error h1{font-size:clamp(42px,7vw,80px)}
+.error p{color:var(--soft);font-size:18px}
+.btn{display:inline-flex;align-items:center;min-height:52px;padding:14px 28px;border-radius:14px;background:var(--white);color:var(--navy);font-weight:800;font-size:18px;text-decoration:none;transition:background-color 120ms linear}
+.btn:hover{background:#dbe4ff}
+.foot{padding-block:24px 56px}
+.foot .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px 32px;font-weight:700;font-size:15px;color:var(--soft)}
+.foot ul{display:flex;gap:8px 28px;list-style:none}
+.foot ul a{color:var(--soft);font-weight:700;text-decoration:none}
+.foot ul a:hover{color:var(--white)}
+</style>
+</head><body>
+<header class="wrap">
+  <nav class="nav" aria-label="Main">
+    <a class="name" href="/">Angela Ng</a>
+    <ul>
+      <li><a href="/#about">About</a></li>
+      <li><a href="/portfolio">Portfolio</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+  <div class="error">
+    <h1 class="display">Page not <span class="mark">found.</span></h1>
+    <p>This page does not exist or has been moved.</p>
+    <a class="btn" href="/">Back to the surface</a>
+  </div>
+</main>
+<footer class="foot"><div class="wrap">
+  <span>Angela Ng.</span>
+  <ul>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/portfolio">Portfolio</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+</div></footer>
+</body></html>

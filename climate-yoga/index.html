@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Wild Roots is a screen-free climate education practice rooted in yoga. Breath, body and movement, five lessons, and an optional soundscape, from Angela Ng.">
+<meta name="theme-color" content="#D3E7E1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'self'">
+<link rel="canonical" href="https://angelang.org/climate-yoga">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Wild Roots">
+<meta property="og:description" content="Wild Roots is a screen-free climate education practice rooted in yoga. Breath, body and movement, five lessons, and an optional soundscape, from Angela Ng.">
+<meta property="og:url" content="https://angelang.org/climate-yoga">
+<meta property="og:site_name" content="Angela Ng">
+<meta property="og:image" content="https://angelang.org/climate-yoga/img/climate-yoga.jpg">
+<meta property="og:image:width" content="800">
+<meta property="og:image:height" content="800">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Wild Roots">
+<meta name="twitter:description" content="Wild Roots is a screen-free climate education practice rooted in yoga. Breath, body and movement, five lessons, and an optional soundscape, from Angela Ng.">
+<meta name="twitter:image" content="https://angelang.org/climate-yoga/img/climate-yoga.jpg">
+<title>Wild Roots</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/hanken-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/spline-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:300 800;font-stretch:75% 100%;font-display:swap;src:url(/fonts/bricolage-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Bricolage Grotesque';font-style:normal;font-weight:300 800;font-stretch:75% 100%;font-display:swap;src:url(/fonts/bricolage-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:400 700;font-display:swap;src:url(/fonts/hanken-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:400 700;font-display:swap;src:url(/fonts/hanken-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Spline Sans Mono';font-style:normal;font-weight:400 500;font-display:swap;src:url(/fonts/spline-mono-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Spline Sans Mono';font-style:normal;font-weight:400 500;font-display:swap;src:url(/fonts/spline-mono-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+/* Layout concept: a pale breathing sky over a ground line, then a dark underground where a root system of dots grows down the page as you scroll. */
+:root {
+  --sky: #D3E7E1;
+  --ink: #0B2A26;
+  --soil-a: #0C2B27;
+  --soil-b: #040E0D;
+  --bone: #E6F2EE;
+  --mute: #9DBDB5;
+  --accent: #6FE0C5;
+  --hl: #7EE3CB;
+  --line: rgba(230, 242, 238, 0.2);
+  --ground: 900px;
+  --display: 'Bricolage Grotesque', 'Arial Narrow', Arial, sans-serif;
+  --body: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'Spline Sans Mono', ui-monospace, Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { background: var(--soil-b); scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: linear-gradient(180deg, var(--sky) 0, var(--sky) var(--ground), var(--soil-a) var(--ground), var(--soil-b) 100%);
+  color: var(--bone);
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+#field { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none; }
+main, header, footer { position: relative; z-index: 1; }
+.wrap {
+  max-width: 1180px;
+  margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.hero :focus-visible { outline-color: var(--ink); }
+mark { background: var(--hl); color: var(--ink); padding: 0 0.14em; border-radius: 2px; }
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 18px;
+}
+h1, h2, h3 { font-family: var(--display); font-weight: 800; font-stretch: 78%; letter-spacing: -0.02em; margin: 0; text-wrap: balance; }
+h2 { font-size: clamp(2.5rem, 6.4vw, 5rem); line-height: 0.95; }
+p { margin: 0; }
+
+/* HERO */
+.hero { color: var(--ink); padding-block: 22px 150px; }
+.top { display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: space-between; align-items: center; font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; }
+.top nav { display: flex; flex-wrap: wrap; gap: 6px 22px; }
+.top a { text-decoration: none; border-bottom: 1px solid transparent; }
+.top a:hover { border-bottom-color: var(--ink); }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 40px 56px; align-items: end; margin-top: clamp(40px, 8vw, 96px); }
+h1 { font-size: clamp(4.6rem, 15vw, 11.5rem); line-height: 0.82; font-stretch: 75%; letter-spacing: -0.035em; }
+.ask { font-family: var(--display); font-weight: 500; font-stretch: 90%; font-size: clamp(1.35rem, 2.6vw, 2rem); line-height: 1.22; max-width: 34ch; margin-top: clamp(24px, 4vw, 44px); }
+.sub { margin-top: 18px; max-width: 46ch; font-size: 1.05rem; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+.btn {
+  font: 500 0.95rem var(--body);
+  padding: 13px 22px;
+  border-radius: 999px;
+  border: 2px solid currentColor;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+.btn.solid { background: var(--ink); border-color: var(--ink); color: var(--sky); }
+.btn:hover { transform: translateY(-1px); }
+.orb-wrap { display: grid; justify-items: center; gap: 18px; }
+.orb-box { width: clamp(170px, 24vw, 260px); aspect-ratio: 1; display: grid; place-items: center; }
+.orb {
+  width: 100%; height: 100%; border-radius: 50%;
+  border: 2px solid var(--ink);
+  background: radial-gradient(circle, rgba(11, 42, 38, 0.14) 0 52%, transparent 53%);
+  display: grid; place-items: center;
+  font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase;
+  transform: scale(0.86);
+}
+.orb span { display: block; transform: none; }
+.orb-note { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; text-align: center; }
+.edge { position: absolute; left: 0; right: 0; bottom: -1px; width: 100%; height: 64px; display: block; fill: var(--soil-a); }
+
+/* SECTIONS */
+section { padding-block: clamp(72px, 11vw, 150px); }
+.lead { font-family: var(--display); font-weight: 500; font-stretch: 92%; font-size: clamp(1.3rem, 2.4vw, 1.9rem); line-height: 1.28; max-width: 40ch; margin-top: 26px; }
+.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 56px; margin-top: 64px; }
+.term { font-family: var(--display); font-weight: 800; font-stretch: 75%; font-size: clamp(3rem, 8vw, 6.4rem); line-height: 0.9; letter-spacing: -0.03em; }
+.gloss { font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin: 10px 0 18px; }
+.col p.body { max-width: 40ch; }
+.ground2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 56px; margin-top: clamp(72px, 10vw, 130px); padding-top: 40px; border-top: 1px solid var(--line); }
+.ground2 ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 22px; }
+.ground2 li { display: grid; grid-template-columns: 7rem minmax(0, 1fr); gap: 16px; align-items: baseline; }
+.ground2 li b { font-family: var(--display); font-stretch: 78%; font-weight: 800; font-size: 2rem; line-height: 1; }
+.compound { margin-top: 48px; max-width: 62ch; color: var(--bone); }
+.compound p + p { margin-top: 16px; }
+
+/* MIXER */
+.mixer { margin-top: 48px; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 48px; align-items: start; }
+.sliders { display: grid; gap: 22px; }
+.row { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr) 3rem; gap: 16px; align-items: center; font-family: var(--mono); font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; }
+.row output { text-align: right; color: var(--mute); }
+input[type=range] { width: 100%; accent-color: var(--accent); height: 28px; }
+.presets { display: flex; flex-wrap: wrap; gap: 10px; }
+.chip { font: 500 0.9rem var(--body); padding: 10px 18px; border-radius: 999px; border: 1.5px solid var(--line); background: transparent; color: var(--bone); cursor: pointer; }
+.chip:hover, .chip[aria-pressed=true] { border-color: var(--accent); color: var(--accent); }
+.hint { color: var(--mute); margin-top: 18px; max-width: 38ch; font-size: 0.98rem; }
+
+/* LESSONS */
+.lessons { margin-top: 56px; border-bottom: 1px solid var(--line); }
+.lesson { border-top: 1px solid var(--line); }
+.lesson > button {
+  width: 100%; display: grid; grid-template-columns: 5rem minmax(0, 1fr) 2.5rem; align-items: baseline; gap: 12px;
+  background: none; border: 0; color: var(--bone); text-align: left; padding: 26px 0; cursor: pointer; font: inherit;
+}
+.lesson > button .n { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
+.lesson > button .name { font-family: var(--display); font-weight: 800; font-stretch: 76%; font-size: clamp(2.2rem, 6.5vw, 4.6rem); line-height: 1; letter-spacing: -0.02em; }
+.lesson > button .pm { font-family: var(--mono); font-size: 1.6rem; text-align: right; color: var(--accent); }
+.lesson > button:hover .name { color: var(--accent); }
+.panel { display: grid; grid-template-columns: 5rem minmax(0, 1.3fr) minmax(0, 1fr); gap: 12px 32px; padding: 0 0 40px; }
+.panel[hidden] { display: none; }
+.panel .l { grid-column: 2; grid-row: 1; }
+.panel .r { grid-column: 2; grid-row: 2; margin-top: 18px; display: grid; gap: 22px; align-content: start; }
+.panel .lab { font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+.panel .big { font-family: var(--display); font-weight: 500; font-stretch: 92%; font-size: 1.3rem; line-height: 1.3; }
+.acts { display: flex; flex-wrap: wrap; gap: 10px; }
+.acts .chip { border-color: var(--bone); }
+
+.lhead { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 300px); gap: 40px; align-items: end; }
+.series, .cover { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 14px; display: block; }
+.cover { max-width: 400px; grid-column: 3; grid-row: 1 / span 2; align-self: start; }
+@media (max-width: 820px) { .lhead { grid-template-columns: minmax(0, 1fr); } .series { max-width: 300px; } }
+
+/* SHARE */
+.qs { margin: 48px 0 0; padding: 0; list-style: none; display: grid; gap: 0; }
+.qs li { padding: 24px 0; border-top: 1px solid var(--line); font-family: var(--display); font-weight: 500; font-stretch: 90%; font-size: clamp(1.4rem, 3vw, 2.2rem); line-height: 1.2; max-width: 30ch; }
+.qs li:last-child { border-bottom: 1px solid var(--line); }
+.book { margin-top: clamp(64px, 9vw, 110px); display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 40px; align-items: end; }
+.mail { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.mailbtn { background: var(--accent); border-color: var(--accent); color: var(--ink); font-weight: 700; padding: 16px 30px; font-size: 1.05rem; }
+footer { padding-block: 40px 120px; border-top: 1px solid var(--line); color: var(--mute); font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+
+/* SOUND PILL */
+#sound {
+  position: fixed; z-index: 5;
+  right: max(16px, env(safe-area-inset-right, 0px));
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  display: flex; align-items: center; gap: 10px;
+  background: var(--accent); color: var(--ink); border: 0; border-radius: 999px;
+  padding: 13px 20px; font: 700 0.9rem var(--body); cursor: pointer;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+}
+#sound i { width: 10px; height: 10px; border-radius: 50%; background: var(--ink); opacity: 0.35; }
+#sound[aria-pressed=true] i { opacity: 1; }
+
+@media (max-width: 820px) {
+  .hero-grid, .two, .ground2, .mixer, .book { grid-template-columns: minmax(0, 1fr); }
+  .hero { padding-bottom: 120px; }
+  .ground2 li { grid-template-columns: 5.5rem minmax(0, 1fr); }
+  .lesson > button { grid-template-columns: minmax(0, 1fr) 2rem; }
+  .lesson > button .n { grid-column: 1 / -1; }
+  .panel { grid-template-columns: minmax(0, 1fr); }
+  .panel .l, .panel .r, .panel .cover { grid-column: 1; grid-row: auto; }
+  .row { grid-template-columns: 4.5rem minmax(0, 1fr) 2.5rem; }
+}
+[hidden] { display: none !important; }
+</style>
+
+</head>
+<body>
+<canvas id="field" aria-hidden="true"></canvas>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="top">
+      <span>Climate Yoga by Angela Ng</span>
+      <nav aria-label="Sections">
+        <a href="#practice">Yoga</a>
+        <a href="#listen">Listen</a>
+        <a href="#lessons">Lessons</a>
+        <a href="#share">Share</a>
+      </nav>
+    </div>
+    <div class="hero-grid">
+      <div>
+        <h1>Wild<br>Roots</h1>
+        <p class="ask">What if learning about climate change required no <mark>screens</mark>, no <mark>slides</mark>, and no prior knowledge: only a body and a patch of ground?</p>
+        <p class="sub">A climate education experience rooted in yoga's oldest instructions. Climate education for the rest of the brain, the part that moves.</p>
+        <div class="cta">
+          <a class="btn solid" href="#lessons">See the five lessons</a>
+          <a class="btn" href="#listen">Hear it</a>
+        </div>
+      </div>
+      <div class="orb-wrap">
+        <div class="orb-box"><div class="orb" id="orb" role="img" aria-label="A circle that grows and shrinks to guide your breathing"><span id="orbText">Breathe in</span></div></div>
+        <p class="orb-note" id="orbNote">Four in. Six out.</p>
+      </div>
+    </div>
+  </div>
+  <svg class="edge" viewBox="0 0 1440 64" preserveAspectRatio="none" aria-hidden="true"><path d="M0 64 V34 C 110 12, 210 46, 330 26 S 530 8, 650 30 S 870 50, 990 24 S 1210 6, 1330 28 S 1410 34 1440 22 V64 Z"/></svg>
+</header>
+
+<main>
+  <section id="practice">
+    <div class="wrap">
+      <p class="eyebrow">Traditional Yoga Practice</p>
+      <h2>Two <mark>yamas</mark> to start from.</h2>
+      <p class="lead">We come at climate from yoga, using breath, body and movement to learn. Two yamas, the first of yoga's eight limbs, set the terms here.</p>
+      <div class="two">
+        <div class="col">
+          <div class="term">Ahimsa</div>
+          <p class="gloss">Yama: non-harming</p>
+          <p class="body">It starts inward. No forcing. No judging what the body cannot yet do. Then it extends outward to the ecosystems we are trying to protect.</p>
+        </div>
+        <div class="col">
+          <div class="term">Aparigraha</div>
+          <p class="gloss">Yama: non-possessiveness</p>
+          <p class="body">We need nothing but ourselves. No mat, no studio, no membership. Just breath and ground.</p>
+        </div>
+      </div>
+
+      <div class="ground2">
+        <div>
+          <p class="eyebrow">Grounding</p>
+          <h2 style="font-size: clamp(2.2rem, 5vw, 3.6rem)">It means two things at once.</h2>
+        </div>
+        <ol>
+          <li><b>Body</b><span>Reconnecting to your own physical body.</span></li>
+          <li><b>Screens</b><span>Stepping back from the technology that usually mediates your relationship to everything else.</span></li>
+        </ol>
+      </div>
+      <div class="compound">
+        <p>Before we take on the climate, the systems and the screens, we relearn something more basic: what it feels like to be in a body, on the ground, breathing.</p>
+        <p>From there we work breath by breath toward what is sustainable, what has longevity, and what will hold up for our minds, our bodies and the ecosystems we live inside of. It is a practice you return to daily, the same way you return to your breath. Over time it gets easier and more natural, and the benefits compound.</p>
+      </div>
+      <p class="eyebrow" style="margin-top:44px">Roots grow as you scroll. Rest your cursor on a thin one and it keeps growing.</p>
+    </div>
+  </section>
+
+  <section id="listen">
+    <div class="wrap">
+      <p class="eyebrow">Listen</p>
+      <h2>Hear what is <mark>at stake</mark>.</h2>
+      <p class="lead">In a live session we play sounds from around the world: wind, water, birdsong, the voices of the ecosystems we are learning about. Mix a simple version here. Sound stays off until you turn it on.</p>
+      <div class="mixer">
+        <div class="sliders">
+          <div class="row"><label for="v-wind">Wind</label><input type="range" id="v-wind" min="0" max="100" value="45"><output id="o-wind">45</output></div>
+          <div class="row"><label for="v-water">Water</label><input type="range" id="v-water" min="0" max="100" value="15"><output id="o-water">15</output></div>
+          <div class="row"><label for="v-birds">Birds</label><input type="range" id="v-birds" min="0" max="100" value="60"><output id="o-birds">60</output></div>
+          <div class="row"><label for="v-earth">Earth</label><input type="range" id="v-earth" min="0" max="100" value="30"><output id="o-earth">30</output></div>
+        </div>
+        <div>
+          <p class="eyebrow">Start from a place</p>
+          <div class="presets" role="group" aria-label="Sound presets">
+            <button class="chip" data-preset="forest" aria-pressed="false">Forest</button>
+            <button class="chip" data-preset="shore" aria-pressed="false">Shore</button>
+            <button class="chip" data-preset="ground" aria-pressed="false">Underground</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="lessons">
+    <div class="wrap">
+      <div class="lhead"><div>
+      <p class="eyebrow">Lessons</p>
+      <h2>Five places to <mark>practice</mark>.</h2>
+      <p class="lead">Each lesson pairs one climate topic with one way of moving. Open one, play its sound, and take the practice outside if you can.</p>
+      </div><img class="series" src="/climate-yoga/img/climate-yoga.jpg" alt="Climate Yoga podcast cover: a person in a cartwheel on desert dunes" width="800" height="800">
+      </div>
+      <div class="lessons" id="lessonList"></div>
+    </div>
+  </section>
+
+  <section id="share">
+    <div class="wrap">
+      <p class="eyebrow">After the session</p>
+      <h2>Carry it back to the <mark>policy table</mark>.</h2>
+      <p class="lead">Each session ends with a share-out of guided questions, resources and thoughts on each topic. Take these three back to your desk.</p>
+      <ul class="qs">
+        <li>What did your body notice that your head had missed?</li>
+        <li>What felt sustainable enough to repeat tomorrow?</li>
+        <li>How could we teach and think about this topic differently?</li>
+      </ul>
+      <div class="book">
+        <div>
+          <p class="eyebrow">Bring it to your group</p>
+          <h2 style="font-size: clamp(2rem, 4.5vw, 3.4rem)">Teach it in person.</h2>
+        </div>
+        <div class="mail"><a class="btn solid mailbtn" href="#" data-contact>Email Angela</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Wild Roots by Angela Ng</span>
+    <a href="https://angelang.org" target="_blank" rel="noopener">angelang.org</a>
+  </div>
+</footer>
+
+<button id="sound" type="button" aria-pressed="false"><i></i><span id="soundLabel">Sound off</span></button>
+
+<script src="/js/email.js"></script>
+<script src="/climate-yoga/app.js"></script>
+</body>
+</html>

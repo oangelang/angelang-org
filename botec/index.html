@@ -1,0 +1,1994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="description" content="BOTEC Gauntlet: practice back-of-the-envelope estimation on global development, health, climate and AI numbers.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BOTEC Gauntlet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #e9eef4;
+  --grid: #d3dce7;
+  --surface: #ffffff;
+  --ink: #0e1a2b;
+  --muted: #55657a;
+  --line: #c5d0dd;
+  --you: #1d4ed8;
+  --truth: #d9480f;
+  --good: #0f7a4a;
+  --mid: #a15c00;
+  --bad: #b42318;
+  --btn: #0e1a2b;
+  --btn-ink: #ffffff;
+  --soft: #f3f6fa;
+  color-scheme: light;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0b1320;
+    --grid: #15213a;
+    --surface: #111c2e;
+    --ink: #e8eef7;
+    --muted: #93a4bc;
+    --line: #26354f;
+    --you: #7aa2ff;
+    --truth: #ff8a4c;
+    --good: #4ade9a;
+    --mid: #f5b84a;
+    --bad: #ff7a70;
+    --btn: #e8eef7;
+    --btn-ink: #0b1320;
+    --soft: #0e1727;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0b1320;
+  --grid: #15213a;
+  --surface: #111c2e;
+  --ink: #e8eef7;
+  --muted: #93a4bc;
+  --line: #26354f;
+  --you: #7aa2ff;
+  --truth: #ff8a4c;
+  --good: #4ade9a;
+  --mid: #f5b84a;
+  --bad: #ff7a70;
+  --btn: #e8eef7;
+  --btn-ink: #0b1320;
+  --soft: #0e1727;
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { height: 100%; scroll-padding-top: env(safe-area-inset-top, 0px); }
+body {
+  margin: 0;
+  min-height: 100%;
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+}
+.wrap { max-width: 560px; margin: 0 auto; padding: 18px 16px 40px; }
+.display { font-family: "Bricolage Grotesque", -apple-system, "Segoe UI", Roboto, sans-serif; letter-spacing: -0.01em; }
+h1, h2 { margin: 0; }
+.card {
+  background: var(--surface);
+  border: 1.5px solid var(--ink);
+  border-radius: 6px;
+  padding: 20px 18px;
+  box-shadow: 4px 4px 0 var(--ink);
+}
+.topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; font-size: 14px; color: var(--muted); gap: 10px; }
+.topbar strong { color: var(--ink); font-variant-numeric: tabular-nums; }
+.homebtn { padding: 4px 12px; font-size: 13px; border-radius: 99px; }
+.bar { height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; margin-bottom: 16px; }
+.bar > i { display: block; height: 100%; background: var(--ink); transition: width .25s ease; }
+.q { font-size: 24px; line-height: 1.2; font-weight: 700; margin: 4px 0 6px; }
+.unit { color: var(--muted); font-size: 15px; margin-bottom: 14px; }
+label.lab { display: block; font-size: 14px; color: var(--muted); margin-bottom: 6px; }
+input[type="text"] {
+  width: 100%;
+  font: inherit;
+  font-size: 24px;
+  padding: 12px 14px;
+  border: 1.5px solid var(--ink);
+  border-radius: 6px;
+  background: var(--soft);
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+input[type="text"]:focus-visible, button:focus-visible { outline: 3px solid var(--you); outline-offset: 2px; }
+.preview { min-height: 58px; margin-top: 10px; padding: 10px 14px; font-size: 26px; font-weight: 800; line-height: 1.2; color: var(--you); border: 1.5px dashed var(--line); border-radius: 6px; background: var(--soft); font-variant-numeric: tabular-nums; word-break: break-word; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px; }
+.preview .u { font-size: 14px; font-weight: 500; color: var(--muted); }
+.preview.muted { color: var(--muted); font-weight: 500; font-size: 14px; }
+.err { color: var(--bad); font-size: 14px; min-height: 20px; }
+.row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+button {
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 12px 18px;
+  border: 1.5px solid var(--ink);
+  background: var(--surface);
+  color: var(--ink);
+}
+button:disabled { opacity: .55; cursor: default; }
+button.primary { background: var(--btn); color: var(--btn-ink); flex: 1; }
+button:active { transform: translateY(1px); }
+.keypad { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin-top: 14px; }
+.key { padding: 12px 0; font-size: 20px; background: var(--soft); border-color: var(--line); border-width: 1.5px; }
+.key.op { color: var(--you); border-color: var(--you); }
+.key.sfx { color: var(--truth); border-color: var(--truth); }
+.key.ctl { color: var(--muted); }
+.kbtoggle { margin-top: 10px; background: none; border: none; padding: 4px 0; font-size: 13px; color: var(--muted); text-decoration: underline; font-weight: 500; }
+.hint {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-left: 4px solid var(--you);
+  background: var(--soft);
+  font-size: 15px;
+}
+.hint[hidden] { display: none; }
+.verdict { font-size: 30px; font-weight: 800; line-height: 1.1; margin: 4px 0 4px; }
+.pts { font-size: 15px; color: var(--muted); margin-bottom: 18px; }
+.cleared { display: inline-block; margin-bottom: 14px; padding: 4px 10px; border-radius: 4px; border: 1.5px solid var(--good); color: var(--good); font-size: 14px; font-weight: 700; }
+.nl { position: relative; height: 96px; margin: 8px 6px 14px; }
+.nl .axis { position: absolute; left: 0; right: 0; top: 46px; height: 2px; background: var(--ink); }
+.nl .tick { position: absolute; top: 40px; width: 1.5px; height: 14px; background: var(--ink); transform: translateX(-50%); }
+.nl .tl { position: absolute; top: 58px; transform: translateX(-50%); font-size: 11px; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.nl .mk { position: absolute; transform: translateX(-50%); text-align: center; font-size: 12px; font-weight: 700; white-space: nowrap; }
+.nl .mk.y { top: 0; color: var(--you); }
+.nl .mk.t { top: 74px; color: var(--truth); }
+.nl .dot { position: absolute; top: 40px; width: 14px; height: 14px; border-radius: 50%; transform: translateX(-50%); border: 2px solid var(--surface); }
+.nl .dot.y { background: var(--you); }
+.nl .dot.t { background: var(--truth); }
+.nl .stem { position: absolute; width: 1.5px; transform: translateX(-50%); }
+.nl .stem.y { top: 16px; height: 26px; background: var(--you); }
+.nl .stem.t { top: 54px; height: 20px; background: var(--truth); }
+.kv { display: grid; grid-template-columns: 1fr auto; gap: 6px 14px; font-size: 16px; margin-bottom: 14px; }
+.kv .k { color: var(--muted); }
+.kv .v { font-weight: 700; text-align: right; font-variant-numeric: tabular-nums; }
+.kv .v.y { color: var(--you); }
+.kv .v.t { color: var(--truth); }
+.why { font-size: 15px; padding-top: 12px; border-top: 1.5px dashed var(--line); margin-top: 6px; }
+.why small { display: block; color: var(--muted); margin-top: 6px; font-size: 13px; }
+.big { font-size: 56px; font-weight: 800; line-height: 1; }
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 16px 0; }
+.stat { border: 1.5px solid var(--line); border-radius: 6px; padding: 10px 12px; background: var(--soft); }
+.stat b { display: block; font-size: 20px; font-variant-numeric: tabular-nums; }
+.stat span { font-size: 13px; color: var(--muted); }
+.hist { list-style: none; padding: 0; margin: 14px 0 0; }
+.hist li { display: flex; justify-content: space-between; gap: 10px; padding: 8px 0; border-top: 1px solid var(--line); font-size: 14px; }
+.hist li span:first-child { flex: 1; }
+.hist li b { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.intro p { margin: 10px 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.chip { padding: 8px 12px; font-size: 14px; border-radius: 99px; background: var(--surface); }
+.chip[aria-pressed="true"] { background: var(--btn); color: var(--btn-ink); }
+.chip small { font-weight: 500; opacity: .75; }
+.modes { display: grid; gap: 10px; margin-top: 16px; }
+.modes button { text-align: left; display: flex; justify-content: space-between; align-items: center; }
+.modes button small { font-weight: 500; opacity: .75; }
+.rules { font-size: 14px; color: var(--muted); margin-top: 16px; }
+.linkbtn { background: none; border: none; padding: 0; font-size: 14px; color: var(--muted); text-decoration: underline; font-weight: 500; margin-top: 10px; }
+.given { margin: 0 0 14px; padding: 10px 12px; border: 1.5px solid var(--line); border-radius: 6px; background: var(--soft); font-size: 14px; }
+.note { margin: 12px 0 0; font-size: 14px; color: var(--muted); }
+.steps { margin: 8px 0 10px; padding-left: 20px; font-size: 14px; }
+.steps li { margin-bottom: 4px; }
+.about h2 { font-size: 15px; margin: 18px 0 6px; }
+.about p, .about li { font-size: 15px; margin: 6px 0; }
+.about ul { padding-left: 20px; margin: 6px 0; }
+.about a { color: var(--you); }
+.src { margin-top: 12px; font-size: 13px; display: flex; flex-direction: column; gap: 4px; }
+.src b { color: var(--muted); font-weight: 600; }
+.src a { color: var(--you); word-break: break-word; }
+.src span { color: var(--muted); }
+.good { color: var(--good); } .mid { color: var(--mid); } .bad { color: var(--bad); }
+.nl .band { position: absolute; top: 42px; height: 10px; background: var(--you); opacity: .22; border-radius: 2px; }
+.rangebox { margin-top: 14px; padding: 12px 12px 14px; border: 1.5px dashed var(--line); border-radius: 6px; background: var(--soft); }
+.rangebox .rt { font-weight: 700; font-size: 15px; }
+.rangebox .rt small { font-weight: 500; color: var(--muted); }
+.rangebox .rs { font-size: 13px; color: var(--muted); margin: 2px 0 10px; }
+.rgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.rpv { min-height: 20px; margin-top: 8px; font-size: 14px; color: var(--muted); }
+input[type="text"].sm { font-size: 20px; padding: 10px 12px; }
+input[type="text"].lbl { font-size: 15px; padding: 9px 12px; border-color: var(--line); background: var(--surface); }
+.drow { display: grid; grid-template-columns: 46px 1fr; gap: 8px; margin-top: 10px; align-items: start; }
+.dfields { display: grid; gap: 6px; }
+.opbtn { padding: 8px 0; font-size: 20px; background: var(--soft); }
+.opfix { font-size: 12px; color: var(--muted); padding-top: 12px; text-align: center; }
+.cmp { margin: 4px 0 14px; display: grid; gap: 8px; }
+.cmprow { display: grid; grid-template-columns: 48px 1fr auto; gap: 10px; align-items: center; font-size: 14px; }
+.cmprow b { font-variant-numeric: tabular-nums; }
+.cbar { height: 10px; background: var(--soft); border: 1px solid var(--line); border-radius: 5px; overflow: hidden; }
+.cbar i { display: block; height: 100%; }
+.trend { position: relative; display: flex; align-items: flex-end; gap: 6px; height: 90px; margin: 22px 0 6px; border-bottom: 1.5px solid var(--ink); }
+.trend i { flex: 1; border-radius: 3px 3px 0 0; min-height: 2px; }
+.trend .tgt { position: absolute; left: 0; right: 0; bottom: 80%; border-top: 1.5px dashed var(--truth); pointer-events: none; }
+.trend .tgt span { position: absolute; right: 0; top: -18px; font-size: 11px; color: var(--truth); }
+.brow { padding: 10px 0; border-top: 1px solid var(--line); font-size: 14px; }
+.brow .top { display: flex; justify-content: space-between; gap: 10px; }
+.brow small { color: var(--muted); }
+.bias { position: relative; height: 8px; background: var(--soft); border: 1px solid var(--line); border-radius: 4px; margin-top: 8px; }
+.bias .mid { position: absolute; left: 50%; top: -3px; bottom: -3px; width: 1.5px; background: var(--ink); }
+.bias i { position: absolute; top: 0; bottom: 0; border-radius: 3px; }
+.sec { font-size: 17px; margin: 20px 0 4px; }
+details.bq { border-top: 1px solid var(--line); padding: 10px 0; font-size: 15px; }
+details.bq summary { cursor: pointer; font-weight: 600; }
+details.bq summary:focus-visible { outline: 3px solid var(--you); outline-offset: 2px; }
+.fin { display: flex; justify-content: space-between; align-items: center; gap: 12px; width: 100%; text-align: left; padding: 12px 14px; margin-top: 8px; background: var(--surface); font-weight: 600; border-radius: 6px; border: 1.5px solid var(--line); box-sizing: border-box; color: var(--ink); font-size: 15px; }
+.fin b { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.fin small { display: block; color: var(--muted); font-weight: 500; margin-top: 2px; }
+.fin.sel { outline: 3px solid var(--you); outline-offset: 1px; }
+.fin.flaw { border-color: var(--truth); }
+.fin s { color: var(--truth); }
+.fchoices { display: grid; gap: 8px; margin-top: 10px; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); }
+.prog { height: 8px; background: var(--soft); border: 1px solid var(--line); border-radius: 4px; margin: 8px 0 4px; overflow: hidden; }
+.prog i { display: block; height: 100%; background: var(--good); }
+textarea.codebox { width: 100%; box-sizing: border-box; min-height: 96px; font: 12px/1.35 ui-monospace, Menlo, monospace; padding: 10px; border: 1.5px solid var(--line); border-radius: 6px; background: var(--soft); color: var(--ink); margin-top: 10px; word-break: break-all; }
+@media (prefers-reduced-motion: reduce) { .bar > i { transition: none; } }
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+
+<script>
+const QUESTIONS = [
+  /* Everyday */
+  { cat: "Everyday", q: "How many seconds are in a year?", unit: "seconds", a: 31536000,
+    hint: "60 x 60 x 24 is 86,400 seconds in a day. Multiply by 365.",
+    why: "86,400 seconds a day times 365 days is about 31.5 million. A handy shortcut: a year is roughly pi x 10^7 seconds." },
+  { cat: "Everyday", q: "How many times does a heart beat in an 80 year life?", unit: "heartbeats", a: 2.9e9,
+    hint: "Start with about 70 beats a minute. How many is that per day, then per year?",
+    why: "70 per minute is about 100,000 a day, about 37 million a year, and about 2.9 billion over 80 years." },
+  { cat: "Everyday", q: "How many rides happen on the NYC subway on a typical weekday?", unit: "rides per weekday", a: 3.7e6,
+    hint: "Think about how many people ride, and how many trips each one takes.",
+    why: "Weekday ridership runs about 3.5 to 4 million rides. It was over 5 million before 2020 and has not fully recovered." },
+  { cat: "Everyday", q: "How many yellow taxi medallions exist in New York City?", unit: "medallions", a: 13500,
+    hint: "The number is capped by the city. Think about how many yellow cabs you see on a busy avenue versus the whole city.",
+    why: "The cap is about 13,600 medallions. It has barely moved in decades." },
+  { cat: "Everyday", q: "How many Starbucks stores are open worldwide?", unit: "stores", a: 40000,
+    hint: "The US has the most. China is second. Guess each, then add a long tail for everyone else.",
+    why: "Roughly 16,000 in the US, 7,000 or so in China, and the rest spread over about 80 other markets. Total near 40,000." },
+  { cat: "Everyday", q: "How many commercial flights take off worldwide in a year?", unit: "flights per year", a: 38e6,
+    hint: "Think about the busiest airport's departures per day, then how many airports are anywhere near that busy.",
+    why: "That is about 100,000 flights a day, or about 38 million a year, by industry counts. Sources vary on what counts as commercial." },
+  { cat: "Everyday", q: "How many gas stations are in the United States?", unit: "stations", a: 145000,
+    hint: "Population is about 340 million. How many people would one station serve?",
+    why: "One station per 2,300 people or so gives about 145,000. Many are small convenience stores with a few pumps." },
+  { cat: "Everyday", q: "What is the combined weight of every human on Earth?", unit: "tonnes", a: 5e8,
+    hint: "8 billion people. Do not use adult weight, because children pull the average down.",
+    why: "About 60 kg average times 8.2 billion people is roughly 5 x 10^11 kg, which is 500 million tonnes." },
+  { cat: "Everyday", q: "How many hours of video are uploaded to YouTube every minute?", unit: "hours per minute", a: 500,
+    hint: "Think of how many creators upload in a day. Then convert the days into minutes.",
+    why: "YouTube has cited about 500 hours of video per minute. That is 30,000 hours every hour." },
+  { cat: "Everyday", q: "How many liters of water does one person drink in a lifetime?", unit: "liters", a: 50000,
+    hint: "A couple of liters a day, for about 78 years. Do not count showers or food.",
+    why: "About 1.8 liters a day times 365 times 78 years is about 50,000 liters. That is only about 2 percent of one Olympic pool." },
+
+  /* Climate and energy */
+  { cat: "AI", q: "How much electricity do the world's data centers use in a year?", unit: "TWh per year", a: 415,
+    hint: "World electricity use is about 30,000 TWh a year. What share could servers plausibly take?",
+    why: "The IEA put data centers at roughly 415 TWh in 2024, around 1.5 percent of global electricity. AI is pushing it up fast." },
+  { cat: "Climate & energy", q: "How much CO2 does burning fossil fuels emit worldwide each year?", unit: "tonnes of CO2 per year", a: 37e9,
+    hint: "About 8 billion people. What is the average person's yearly footprint in tonnes?",
+    why: "The global average is around 4.6 tonnes per person, times about 8 billion people. That lands near 37 billion tonnes." },
+  { cat: "AI", q: "How much power does one Nvidia H100 GPU draw at full load?", unit: "watts", a: 700,
+    hint: "Compare to a laptop charger (about 65 W) and a hair dryer (about 1,500 W). Where does a top data center chip sit?",
+    why: "The SXM version of the H100 is rated at 700 W. A rack of eight of them draws several kilowatts before cooling." },
+  { cat: "Climate & energy", q: "How many people in the world have no access to electricity?", unit: "people", a: 685e6,
+    hint: "Sub-Saharan Africa has about 1.2 billion people. Roughly half lack power at home. Add a smaller share of South Asia.",
+    why: "The World Bank counted about 685 million in 2022, around 85 percent of them in sub-Saharan Africa. The IEA's count is somewhat higher." },
+  { cat: "Climate & energy", q: "How many people cook with wood, charcoal, dung or kerosene instead of clean fuels?", unit: "people", a: 2.1e9,
+    hint: "About one person in four on Earth. Think of how many households in South Asia and Africa still cook on open fires.",
+    why: "About 2.1 billion people in 2022 (WHO). Some estimates run to 2.3 billion." },
+  { cat: "Climate & energy", q: "How many people die each year from household air pollution, mostly from cooking fuels?", unit: "deaths per year", a: 3.2e6,
+    hint: "Take the 2.1 billion who cook with dirty fuels. What yearly death rate per 1,000 seems plausible?",
+    why: "WHO estimates about 3.2 million deaths a year (2020), including more than 200,000 children under five." },
+  { cat: "Climate & energy", q: "How many electric cars were sold worldwide in 2024?", unit: "cars", a: 17e6,
+    hint: "Global new car sales are roughly 80 to 90 million a year. What share is plug-in or fully electric?",
+    why: "About 17 million (IEA), over 20 percent of new cars. China accounted for roughly 11 million of them." },
+  { cat: "Climate & energy", q: "How much solar power capacity is installed worldwide?", unit: "GW", a: 2200,
+    hint: "A big nuclear reactor is about 1 GW. China alone added hundreds of GW of solar in a recent year.",
+    why: "IRENA reported about 2,250 GW at the end of 2024, roughly double the total just three years earlier." },
+  { cat: "Climate & energy", q: "What is the concentration of CO2 in the atmosphere?", unit: "ppm", a: 425,
+    hint: "Pre-industrial air was about 280 ppm. It has been climbing roughly 2.5 ppm a year recently.",
+    why: "About 425 ppm in 2025, up from 280 before industrialization. The seasonal peak each May is a few ppm higher." },
+  { cat: "Climate & energy", q: "How many hectares of tropical primary forest were lost in 2024?", unit: "hectares", a: 6.7e6,
+    hint: "A hectare is about two football fields. Think of a country about the size of Panama or Ireland.",
+    why: "About 6.7 million hectares (WRI, Global Forest Watch), a record, driven largely by fires. Roughly the area of Panama." },
+  { cat: "Climate & energy", q: "How many people were displaced from their homes by disasters in 2023?", unit: "displacements", a: 26e6,
+    hint: "Floods, storms, quakes and droughts. Think of the 10 or so worst events and how many people each moves.",
+    why: "IDMC counted about 26 million internal displacements by disasters in 2023, mostly weather-related." },
+  { cat: "Climate & energy", q: "What share of global CO2 emissions comes from Africa?", unit: "percent", a: 4,
+    hint: "Africa has about 18 percent of the world's people. Per person it emits roughly a fifth of the world average.",
+    why: "About 4 percent. Africa has roughly 18 percent of the population and very low per-person emissions." },
+
+  /* Health */
+  { cat: "Health", q: "How many babies are born worldwide each year?", unit: "births", a: 132e6,
+    hint: "8.2 billion people, average lifespan around 72. In a stable population births per year would be population divided by lifespan.",
+    why: "8.2 billion divided by 72 years is about 114 million as a floor. Because the population is still growing, the real figure is higher, about 132 million." },
+  { cat: "Health", q: "How many children under 5 die each year worldwide?", unit: "deaths per year", a: 4.8e6,
+    hint: "About 132 million births a year. What share die before age 5? Think roughly 1 in 27.",
+    why: "About 4.8 million in 2023 (UN IGME). Under-5 mortality is near 37 per 1,000 live births, and about half of these deaths are in sub-Saharan Africa." },
+  { cat: "Health", q: "How many people die from malaria each year?", unit: "deaths per year", a: 6e5,
+    hint: "About 250 million cases a year. What fraction might be fatal? Under 1 percent.",
+    why: "WHO estimated about 263 million cases and about 597,000 deaths in 2023. About 95 percent were in Africa, mostly children under 5." },
+  { cat: "Health", q: "How many people fall ill with tuberculosis each year?", unit: "new cases per year", a: 10.8e6,
+    hint: "Roughly 1 in 750 people worldwide. India alone has about a quarter of all cases.",
+    why: "WHO estimated 10.8 million new cases in 2023, about 130 per 100,000 people. TB is again the leading infectious killer." },
+  { cat: "Health", q: "How many women die each year from pregnancy and childbirth complications?", unit: "deaths per year", a: 2.6e5,
+    hint: "132 million births. Maternal mortality ratio worldwide is around 200 per 100,000 births.",
+    why: "About 260,000 in 2023, a ratio near 197 per 100,000 live births. About 70 percent of these deaths are in sub-Saharan Africa." },
+  { cat: "Health", q: "How many people worldwide are living with HIV?", unit: "people", a: 40e6,
+    hint: "Global prevalence among all ages is about half of one percent. 8.1 billion people.",
+    why: "About 40 million in 2023 (UNAIDS), with roughly 65 percent in sub-Saharan Africa. About 31 million were on treatment." },
+  { cat: "Health", q: "How many children under 5 are stunted?", unit: "children", a: 148e6,
+    hint: "About 660 million children under 5. Roughly one in five is too short for their age.",
+    why: "About 148 million in 2022 (JME), around 22 percent. Most live in South Asia and sub-Saharan Africa." },
+  { cat: "Health", q: "How many children got zero doses of any routine vaccine in 2023?", unit: "children", a: 14.5e6,
+    hint: "About 130 million infants a year. Coverage for the first DTP dose is around 89 percent.",
+    why: "WHO and UNICEF counted 14.5 million zero-dose children in 2023, about 11 percent of infants. More than half live in 10 countries." },
+  { cat: "Health", q: "How many people lack safely managed drinking water?", unit: "people", a: 2.2e9,
+    hint: "Safely managed means on premises, available when needed, and free of contamination. Roughly one in four people fail that test.",
+    why: "About 2.2 billion in 2022 (WHO/UNICEF JMP), about 27 percent of the world. Most of the gap is rural." },
+  { cat: "Health", q: "How many people lack safely managed sanitation?", unit: "people", a: 3.5e9,
+    hint: "A private toilet whose waste is safely treated or disposed of. Roughly four in ten people do not have one.",
+    why: "About 3.5 billion in 2022 (JMP), about 44 percent of the world." },
+  { cat: "Health", q: "How many people still practice open defecation?", unit: "people", a: 4.2e8,
+    hint: "Think South Asia and sub-Saharan Africa. The figure was over a billion in 2000.",
+    why: "About 420 million in 2022 (JMP), down from about 1.3 billion in 2000. The largest numbers are in India, Ethiopia, Nigeria and Pakistan." },
+  { cat: "Health", q: "How many children under 5 die from diarrhoea each year?", unit: "deaths per year", a: 4.4e5,
+    hint: "Start from 4.8 million under-5 deaths. Diarrhoea is one of the top infectious causes. Maybe 1 in 10?",
+    why: "WHO estimates about 440,000 child deaths a year from diarrhoeal disease, around 9 percent of under-5 deaths. Much of it is preventable with clean water, sanitation, vaccines and ORS." },
+  { cat: "Health", q: "How large is the projected global health worker shortage by 2030?", unit: "workers", a: 11e6,
+    hint: "Total health workforce is about 65 million. A shortage of 15 to 20 percent would be huge.",
+    why: "WHO projects a shortfall of about 11 million by 2030, concentrated in low and lower-middle income countries, with the largest gaps in Africa and the Eastern Mediterranean." },
+
+  /* Education */
+  { cat: "Education", q: "How many children and youth are out of school worldwide?", unit: "children and youth", a: 272e6,
+    hint: "Primary and secondary school ages, about 6 to 17. Roughly 1.6 billion people are in that age band. What share is out?",
+    why: "UNESCO's GEM Report counted about 272 million out of school in 2025, about one in six of school age: 11 percent of primary-age, 15 percent of lower-secondary and 31 percent of upper-secondary-age children." },
+  { cat: "Education", q: "How many adults worldwide cannot read or write a simple sentence?", unit: "adults", a: 754e6,
+    hint: "About 5.5 billion adults. Literacy is around 87 percent. Two-thirds of those who cannot read are women.",
+    why: "UNESCO counted about 754 million adults lacking basic literacy in 2022, roughly 14 percent." },
+  { cat: "Education", q: "What percent of 10-year-olds in low and middle income countries cannot read and understand a simple story?", unit: "percent", a: 70,
+    hint: "The World Bank calls this learning poverty. It rose after school closures. Pick a number between 50 and 90.",
+    why: "About 70 percent in 2022, up from about 57 percent before COVID. In sub-Saharan Africa it is closer to 90 percent." },
+  { cat: "Education", q: "How many additional teachers does the world need by 2030 to reach universal primary and secondary education?", unit: "teachers", a: 44e6,
+    hint: "Think of about 1.4 billion school-age children and one teacher per 25 to 35 students, then subtract those already teaching.",
+    why: "UNESCO estimates 44 million additional teachers are needed by 2030, about 15 million of them in sub-Saharan Africa." },
+  { cat: "Education", q: "How many students are enrolled in higher education worldwide?", unit: "students", a: 254e6,
+    hint: "About 640 million people are of university age. Roughly four in ten enroll.",
+    why: "UNESCO counted about 254 million in 2021, up from about 100 million in 2000. Gross enrollment is near 40 percent." },
+
+  /* Development and LMIC */
+  { cat: "Development", q: "How many people live below the World Bank's $3 a day extreme poverty line?", unit: "people", a: 8e8,
+    hint: "8.1 billion people. Roughly one in ten is below the line, and most live in sub-Saharan Africa.",
+    why: "The World Bank estimated about 808 million in 2025, 9.9 percent of the world, after raising the line from $2.15 to $3 a day in June 2025. Other recent years run slightly higher or lower, and most of the poor live in sub-Saharan Africa." },
+  { cat: "Development", q: "How much do migrants send home to low and middle income countries each year?", unit: "US dollars per year", a: 685e9,
+    hint: "Roughly 200 million migrants. If each remits a few thousand dollars a year, what is the total?",
+    why: "The World Bank put remittances to LMICs near $685 billion in 2024. India, Mexico, China and the Philippines are the biggest recipients." },
+  { cat: "Development", q: "How much official development assistance did rich countries give in 2024?", unit: "US dollars per year", a: 212e9,
+    hint: "The long-standing target is 0.7 percent of national income. Actual giving is about half of that. Rich-country income is around $65 trillion.",
+    why: "OECD figures show about $212 billion in 2024, about 0.33 percent of donor income, down several percent from the year before." },
+  { cat: "Development", q: "How many people live in sub-Saharan Africa?", unit: "people", a: 1.2e9,
+    hint: "Africa overall has about 1.5 billion. North Africa is a small slice of that.",
+    why: "About 1.2 billion. The region is projected to account for more than half of global population growth over the next few decades." },
+  { cat: "Development", q: "How many adults in the world still have no bank or mobile money account?", unit: "adults", a: 1.3e9,
+    hint: "Roughly 6 billion adults live on Earth. Nearly 80 percent now have an account.",
+    why: "Nearly 80 percent of adults had an account in 2024, up from 50 percent in 2011. That leaves about 1.3 billion adults without one (World Bank, Global Findex 2025). In sub-Saharan Africa about 58 percent have an account.",
+    src: [['World Bank, Global Findex 2025 press release', 'https://www.worldbank.org/en/news/press-release/2025/07/16/mobile-phone-technology-powers-saving-surge-in-developing-economies']] },
+  { cat: "Development", q: "What is Ethiopia's GDP per person?", unit: "US dollars per year", a: 930,
+    hint: "Sub-Saharan Africa averages about $1,600 a person and the US about $85,000. Ethiopia is among the poorer countries in the region.",
+    why: "About $930 per person in 2025 in current US dollars (World Bank World Development Indicators). That is well below the regional average, and Ethiopia has more than 130 million people.",
+    src: [['World Bank data via FRED, Ethiopia GDP per capita', 'https://fred.stlouisfed.org/series/PCAGDPETA646NWDB']] },
+  { cat: "Development", q: "How many children does the average woman in Niger have over her lifetime?", unit: "children per woman", a: 5.9,
+    hint: "The world average is a little over 2. Niger has one of the highest rates on Earth.",
+    why: "About 5.9 births per woman in 2024 (World Bank), nearly three times the world average of a little over 2.",
+    src: [['World Bank data via FRED, Niger fertility rate', 'https://fred.stlouisfed.org/series/SPDYNTFRTINNER']] },
+  { cat: "Development", q: "How much did developing countries pay in debt service on their foreign debt in 2023?", unit: "US dollars", a: 1.4e12,
+    hint: "Rich countries give about $212 billion a year in aid. Is debt repayment bigger or smaller than that, and by how many times?",
+    why: "About $1.4 trillion, a record. Interest alone was $406 billion, a 20-year high (World Bank, International Debt Report 2024). The figure covers repayments of principal plus interest on external debt.",
+    src: [['World Bank press release, December 2024', 'https://www.worldbank.org/en/news/press-release/2024/12/03/developing-countries-paid-record-1-4-trillion-on-foreign-debt-in-2023']] },
+  { cat: "Development", q: "How much did the world's poorest countries pay in debt service in 2023?", unit: "US dollars", a: 96.2e9,
+    hint: "These are the countries eligible for the World Bank's concessional lending, 78 in all. Compare with total aid of about $212 billion a year.",
+    why: "A record $96.2 billion from the poorest, IDA-eligible countries (World Bank). That is about 45 percent of the $212 billion rich countries gave in aid in 2024. The years differ but the order of magnitude is the point.",
+    src: [['World Bank press release, December 2024', 'https://www.worldbank.org/en/news/press-release/2024/12/03/developing-countries-paid-record-1-4-trillion-on-foreign-debt-in-2023']] },
+  { cat: "Development", q: "How large is the World Bank's latest financing package for the world's poorest countries (IDA21)?", unit: "US dollars", a: 100e9,
+    hint: "Donors put in a smaller amount and the Bank multiplies it by borrowing in markets. Annual aid from rich countries is about $212 billion.",
+    why: "$100 billion in total financing after leveraging, built on $23.7 billion in donor pledges and supporting 78 countries. It was announced in December 2024.",
+    src: [['World Bank press release, December 2024', 'https://www.worldbank.org/en/news/press-release/2024/12/05/donors-and-world-bank-group-boost-ida-development']] },
+  { cat: "Development", q: "What share of the world's refugees live in low and middle income countries?", unit: "percent", a: 75,
+    hint: "News coverage focuses on arrivals in Europe and North America. Think about who borders Syria, Afghanistan, Sudan and Ukraine.",
+    why: "About 75 percent at the end of 2023. Low-income countries alone hosted about 16 to 17 percent (UNHCR, which gives both figures on the same page). Rich countries host the minority.",
+    src: [['UNHCR, refugee hosting metrics', 'https://unhcr.org/refugee-statistics/insights/explainers/refugee-hosting-metrics.html']] },
+  { cat: "Development", q: "What share of the UN's 2025 humanitarian appeal had been funded by the end of October?", unit: "percent", a: 23,
+    hint: "The UN asked for about $45 billion. Think about how much of a request that large usually gets covered.",
+    why: "About 23 percent: $10.6 billion of $45.4 billion in requirements at the end of October 2025 (UN OCHA Global Humanitarian Overview tracking).",
+    src: [['UN OCHA, Global Humanitarian Overview 2025, October update', 'https://humanitarianaction.info/document/global-humanitarian-overview-2025-monthly-updates/article/october-update-0']] },
+  { cat: "Development", q: "How many girls and women alive today were married before age 18?", unit: "girls and women", a: 640e6,
+    hint: "About 4 billion women and girls are alive. Think about what share were married as children.",
+    why: "UNICEF estimates about 640 million, down from an earlier estimate of about 650 million in 2019 (UNICEF, 2023 report).",
+    src: [['Al Jazeera on the UNICEF 2023 report', 'https://www.aljazeera.com/news/2023/5/3/child-marriage-rate-falling-too-slowly-un-says-in-new-report'], ['UNICEF, 10 facts on child marriage', 'https://www.unicef.org/press-releases/fast-facts-10-facts-illustrating-why-we-must-endchildmarriage']] },
+  { cat: "Development", q: "How many girls are married as children each year?", unit: "girls per year", a: 12e6,
+    hint: "About 132 million babies are born a year, so roughly 65 million girls. What share marry before 18?",
+    why: "About 12 million a year (UNICEF, 2023), roughly 1 in 5 girls. UNICEF says progress is too slow to end the practice by 2030.",
+    src: [['Al Jazeera on the UNICEF 2023 report', 'https://www.aljazeera.com/news/2023/5/3/child-marriage-rate-falling-too-slowly-un-says-in-new-report']] },
+  { cat: "Philanthropy", q: "How big is the Gates Foundation's annual budget for 2026?", unit: "US dollars per year", a: 9e9,
+    hint: "US charities give about $592 billion a year in total. One very large foundation gives a small share of that.",
+    why: "$9 billion for 2026, approved in January 2026 as part of a plan to close the foundation in 2045. For scale, that is roughly a fifth of the $50 billion of health aid in 2024, though the two cover different things.",
+    src: [['Nonprofit Pro, Gates Foundation 2026 budget', 'https://www.nonprofitpro.com/article/gates-foundation-sets-historic-9b-budget-ahead-of-2045-wind-down']] },
+  { cat: "Development", q: "How many people worldwide are forcibly displaced by conflict, persecution and violence?", unit: "people", a: 120e6,
+    hint: "Includes refugees, asylum seekers and people displaced inside their own countries. Think of the big crises: Sudan, Syria, Ukraine, Afghanistan, DRC.",
+    why: "UNHCR counted about 123 million at end 2024, roughly 1 in 67 people on Earth. About two thirds are displaced inside their own countries." },
+
+  /* Philanthropy and grantmaking prep */
+  { cat: "Philanthropy", q: "Roughly how much does it cost a top GiveWell-recommended charity to save one life?", unit: "US dollars", a: 5000,
+    hint: "A bed net costs a few dollars. How many nets does it take to prevent one death? Then add delivery and overhead.",
+    why: "GiveWell treats about $5,000 per life saved as a conservative average across its life-saving programs. Individual programs range from about $2,000 to $8,000 or more, and the marginal cost of the next grant is closer to $7,500 to $8,000. These are modeled estimates with real uncertainty." },
+  { cat: "Philanthropy", q: "How much does it cost to buy and deliver one insecticide-treated bed net?", unit: "US dollars", a: 5,
+    hint: "Manufacturing is a couple of dollars. Add shipping, distribution campaigns and follow-up checks.",
+    why: "GiveWell estimated about $4.59 per net delivered by the Against Malaria Foundation (2020). A net lasts about three years." },
+  { cat: "Philanthropy", q: "How much does it cost to protect one child with seasonal malaria chemoprevention for a year?", unit: "US dollars", a: 7,
+    hint: "The drugs cost cents per dose, given monthly through the rainy season. Add community health worker delivery.",
+    why: "GiveWell's grants have run from about $6 to $12 per child treated depending on country and year, and $6.80 in an earlier estimate for Malaria Consortium." },
+  { cat: "Philanthropy", q: "How large is the standard GiveDirectly cash transfer per household?", unit: "US dollars", a: 1000,
+    hint: "Big enough to buy a roof or livestock, small enough to reach many households. Think about a large share of one year of rural household income.",
+    why: "About $1,000 per household in its standard program." },
+  { cat: "Philanthropy", q: "How much did Americans give to charity in 2025?", unit: "US dollars", a: 617e9,
+    hint: "US GDP is about $29 trillion. Americans give roughly 2 percent of it.",
+    why: "Giving USA reported $617 billion for 2025, up about 3 percent after inflation. That is a little over 2 percent of GDP." },
+  { cat: "Philanthropy", q: "What share of US charitable giving comes from individuals?", unit: "percent", a: 64,
+    hint: "The rest comes from foundations, bequests and corporations. Think of individuals as roughly two thirds to four fifths.",
+    why: "Individuals gave 64 percent of the dollars in 2025, down from 80 percent in 1985 (Giving USA). Foundation giving fell about 18 percent after inflation in 2025 after a near-record 2024.",
+    src: [['AP report on Giving USA 2026 (WTOP)', "https://wtop.com/national/2026/06/donors-gave-u-s-charities-617-billion-in-2025-according-to-giving-usa-report/"]] },
+  { cat: "Philanthropy", q: "How much did GiveWell commit in grants in 2025?", unit: "US dollars", a: 418e6,
+    hint: "Think of GiveWell directing a few hundred million dollars a year. Coefficient Giving and many individual donors supply the money.",
+    why: "$418 million in grants committed in 2025 (GiveWell, July 2026). GiveWell expects 2026 grantmaking to approach or even exceed $1 billion, and has already committed over $400 million so far this year.",
+    src: [['GiveWell blog, Scaling Our Impact (July 2026)', 'https://blog.givewell.org/2026/07/23/scaling-our-impact-with-support/']] },
+  { cat: "Philanthropy", q: "How much did Coefficient Giving direct in grants in 2025?", unit: "US dollars", a: 1.0e9,
+    hint: "It is the largest funder in this space. Its giving grew by more than half in 2025. Think of a figure near a billion dollars.",
+    why: "Over $1 billion in 2025, the most in its history, with total giving up more than 50 percent. Funding from donors other than Good Ventures more than doubled to over $200 million. The page gives only the 'over $1 billion' figure.",
+    src: [['Coefficient Giving, 2025 results', 'https://coefficientgiving.org/?p=36736']] },
+  { cat: "Philanthropy", q: "Early in 2026 GiveWell lowered its funding bar. How many times its cash benchmark must a program now beat?", unit: "times cash", a: 6,
+    hint: "Cash transfers to people in extreme poverty are the yardstick. The bar was 8 times before the cut. Pick a number between 3 and 10.",
+    why: "6 times, down from 8 times earlier in 2026. GiveWell estimates the change adds about $90 million in grants this year (GiveWell, July 2026). Programs are rated as a multiple of cash transfers: a program at 12 times cash means $100 to it does as much good as $1,200 in cash transfers.",
+    src: [['GiveWell blog, Scaling Our Impact (July 2026)', 'https://blog.givewell.org/2026/07/23/scaling-our-impact-with-support/'], ['GiveWell blog, how cost-effectiveness is measured', 'https://blog.givewell.org/2023/10/27/how-we-work-1-cost-effectiveness/']] },
+  { cat: "Development", q: "How much development assistance for health flowed to low and middle income countries in 2024?", unit: "US dollars", a: 50e9,
+    hint: "It peaked during COVID near $80 billion. Then donors cut back. Where does it settle?",
+    why: "IHME estimated about $49.6 billion in 2024, down from a peak of $80.3 billion in 2021. It then fell to about $39 billion in 2025 as the US, UK, France and Germany cut aid." },
+  { cat: "Health", q: "How many excess deaths did COVID-19 cause worldwide across 2020 and 2021?", unit: "deaths", a: 14.9e6,
+    hint: "Officially reported COVID deaths for those two years were about 5.4 million. Excess mortality is much higher than reported counts.",
+    why: "WHO estimated about 14.9 million excess deaths, nearly three times the officially reported count." },
+  { cat: "Earth", q: "How many land animals are slaughtered for food each year?", unit: "animals per year", a: 80e9,
+    hint: "8.2 billion people. Chickens dominate. Think of a few chickens per person, plus pigs, cattle, sheep and ducks.",
+    why: "About 80 billion a year, with chickens making up roughly 75 billion of them (FAO). Farmed fish would add a count in the hundreds of billions or more." },
+  { cat: "AI", q: "How many floating-point operations were used to train GPT-4, by Epoch AI's estimate?", unit: "FLOP", a: 2e25,
+    hint: "GPT-3 used about 3 x 10^23. Each generation has used roughly 10 to 100 times more.",
+    why: "Epoch AI estimates about 2.1 x 10^25 FLOP, with low precision. By mid-2025 it counted over 30 publicly announced models above 10^25 FLOP." },
+  { cat: "AI", q: "How much does one Nvidia H100 GPU cost to buy?", unit: "US dollars", a: 30000,
+    hint: "A top gaming GPU is about $2,000 and a family car about $30,000. Data center chips sit well above gaming cards.",
+    why: "Roughly $25,000 to $40,000 each depending on volume and year. A 10,000 chip cluster costs hundreds of millions of dollars before power and buildings." },
+  { cat: "Health", q: "How many people did smallpox kill in the 20th century?", unit: "deaths", a: 300e6,
+    hint: "It killed about 3 in 10 of those infected and circulated on every continent for most of the century.",
+    why: "WHO attributes about 300 million deaths to smallpox in the 20th century. Eradication was certified in 1980, the only human infectious disease eradicated so far." },
+  { cat: "Development", q: "How many children are in child labour worldwide?", unit: "children", a: 138e6,
+    hint: "About 2.2 billion children exist. Think of the share aged 5 to 17 doing work that harms their health or schooling.",
+    why: "ILO and UNICEF estimated 138 million in 2024, down from 160 million in 2020. About 60 percent work in agriculture." },
+  { cat: "Development", q: "What is the average annual income per person in sub-Saharan Africa?", unit: "US dollars per year", a: 1600,
+    hint: "The US is about $85,000 per person. Sub-Saharan Africa is poorer by a factor of 30 to 60.",
+    why: "About $1,600 per person in 2023 at market exchange rates (World Bank), versus about $85,000 in the US, a gap of roughly 50 times." },
+  { cat: "Everyday", q: "How many working hours are there in a typical career?", unit: "hours", a: 80000,
+    hint: "About 40 years, 50 weeks a year, 40 hours a week.",
+    why: "40 x 50 x 40 is 80,000 hours. It is the idea behind the career advice group 80,000 Hours." },
+
+  /* Earth and the world */
+  { cat: "Earth", q: "What is the circumference of the Earth?", unit: "km", a: 40075,
+    hint: "The meter was first defined as one ten-millionth of the distance from the pole to the equator.",
+    why: "About 40,000 km. That definition of the meter is why it comes out so round." },
+  { cat: "Earth", q: "How far away is the Moon?", unit: "km", a: 384400,
+    hint: "Light takes about 1.3 seconds to get there. Light travels 300,000 km every second.",
+    why: "About 384,000 km on average. You could line up roughly 30 Earths in between." },
+  { cat: "Earth", q: "How far is the Earth from the Sun?", unit: "km", a: 150e6,
+    hint: "Sunlight takes about 8 minutes to arrive. That is 480 seconds at 300,000 km per second.",
+    why: "About 150 million km, which is 1 astronomical unit." },
+  { cat: "Earth", q: "How much water is in the world's oceans?", unit: "cubic km", a: 1.33e9,
+    hint: "Earth's surface is 510 million square km, 71 percent of it ocean, with an average depth near 3.7 km.",
+    why: "About 1.33 billion cubic km, roughly 97 percent of all the water on Earth." },
+  { cat: "Earth", q: "How old is the Earth?", unit: "years", a: 4.5e9,
+    hint: "Dinosaurs died out 66 million years ago. Life began more than 3.5 billion years ago.",
+    why: "About 4.54 billion years." },
+  { cat: "Earth", q: "What is the total land area of the Earth?", unit: "square km", a: 149e6,
+    hint: "Earth's surface is 510 million square km. About 29 percent is land.",
+    why: "About 149 million square km. Antarctica alone is about 14 million of that." },
+  { cat: "Earth", q: "How many trees are on Earth?", unit: "trees", a: 3e12,
+    hint: "A commonly cited ballpark is several hundred trees per person. 8 billion people.",
+    why: "A 2015 study in Nature estimated about 3 trillion trees, roughly 400 per person." },
+  { cat: "Earth", q: "How many humans have ever been born?", unit: "people", a: 110e9,
+    hint: "A few million people 10,000 years ago, a billion by 1800, 8 billion now. Add up the generations and include childhood deaths.",
+    why: "Estimates run from about 100 to 117 billion, so roughly 13 times today's population." },
+  { cat: "Earth", q: "How much electricity does the world generate in a year?", unit: "TWh per year", a: 30000,
+    hint: "8.2 billion people. Average use is about 3,600 kWh a person, from under 500 in low-income countries to over 12,000 in the US.",
+    why: "About 30,000 TWh in 2023. Data centers take roughly 1.5 percent of it." },
+  { cat: "Earth", q: "What is the size of the world economy (GDP)?", unit: "US dollars per year", a: 110e12,
+    hint: "8.2 billion people. Average income is roughly $13,000 a person.",
+    why: "About $110 trillion in 2024 at market exchange rates. The US is roughly a quarter of it, China about 17 percent." },
+  { cat: "Earth", q: "How many cars, trucks and buses are on the road worldwide?", unit: "vehicles", a: 1.5e9,
+    hint: "The US has about 280 million registered vehicles for 340 million people. Low-income countries have under 1 per 20 people.",
+    why: "About 1.5 billion motor vehicles, roughly one for every five or six people." },
+  { cat: "Earth", q: "How many people use the internet?", unit: "people", a: 6e9,
+    hint: "About three quarters of the world is online. Those offline are concentrated in Africa and South Asia.",
+    why: "ITU counted about 6 billion users in 2025, 74 percent of the world, up from 5.5 billion in 2024. About 2.2 billion remain offline." },
+  { cat: "Earth", q: "How much food is wasted worldwide each year?", unit: "tonnes", a: 1.05e9,
+    hint: "Think about 130 kg of food wasted per person per year. 8 billion people.",
+    why: "UNEP estimated about 1.05 billion tonnes in 2022, with households responsible for about 60 percent of it." },
+  { cat: "Earth", q: "How much plastic is produced worldwide each year?", unit: "tonnes", a: 4e8,
+    hint: "Think about 50 kg per person per year. 8 billion people.",
+    why: "About 400 million tonnes a year. Production has roughly doubled since 2000." },
+  { cat: "Earth", q: "How much fresh water do humans withdraw each year?", unit: "cubic km per year", a: 4000,
+    hint: "About 500 cubic meters a person, with roughly 70 percent going to agriculture. 1 cubic km is a billion cubic meters.",
+    why: "About 4,000 cubic km a year (FAO). Farming takes about 70 percent of it." },
+  { cat: "Earth", q: "How many people die worldwide each year?", unit: "deaths per year", a: 61e6,
+    hint: "Population divided by lifespan gives about 110 million, but the population is young, so the real number is roughly half.",
+    why: "About 61 million in 2023, well under the 132 million births because the population is young and growing." },
+  { cat: "Earth", q: "What is the average life expectancy at birth worldwide?", unit: "years", a: 73,
+    hint: "It ranges from under 55 in the worst-off countries to over 84 in Japan.",
+    why: "About 73 years in 2023 (UN), up from about 47 in 1950." },
+
+  /* AI and its potential impact */
+  { cat: "AI", q: "How much electricity will data centers worldwide use in 2030, by the IEA's base case?", unit: "TWh per year", a: 945,
+    hint: "They used about 415 TWh in 2024. The IEA expects demand to more than double, driven mostly by AI.",
+    why: "About 945 TWh, slightly more than all of Japan uses today. AI-optimised data centers are projected to more than quadruple their demand. Even so, data centers make up only about a tenth of global electricity demand growth to 2030." },
+  { cat: "AI", q: "How many times cheaper did it become to run GPT-3.5-level AI between late 2022 and late 2024?", unit: "times cheaper", a: 280,
+    hint: "The price fell from about $20 per million tokens to a few cents. Divide the old price by the new one.",
+    why: "From about $20 to $0.07 per million tokens, a 280-fold drop in roughly 18 months (Stanford AI Index 2025). At a fixed capability level, prices have fallen anywhere from 9 to 900 times a year depending on the task." },
+  { cat: "AI", q: "What share of jobs worldwide is exposed to AI, by the IMF's estimate?", unit: "percent", a: 40,
+    hint: "It is much higher in rich countries and lower in poorer ones. The global average sits in between.",
+    why: "Almost 40 percent of global employment (IMF, 2024): about 60 percent in advanced economies, 40 percent in emerging markets and 26 percent in low-income countries. In rich countries, roughly half of exposed jobs may benefit from AI and half may lose out." },
+  { cat: "AI", q: "What share of jobs in low-income countries is exposed to AI, by the IMF's estimate?", unit: "percent", a: 26,
+    hint: "Lower than the global average, because poorer economies have more farming and manual work.",
+    why: "About 26 percent (IMF, 2024), versus about 60 percent in advanced economies. The IMF warns that lower exposure also means poorer countries are less ready to benefit, which could widen inequality between nations." },
+  { cat: "AI", q: "What share of people in Africa use the internet?", unit: "percent", a: 36,
+    hint: "About three quarters of the world is online. Africa is the lowest of any region. Think of about one in three.",
+    why: "About 36 percent in 2025 (ITU), versus 74 percent worldwide. In Africa, 55 percent of urban residents use the internet but only 21 percent of rural residents. Access is a precondition for benefiting from AI tools." },
+  { cat: "AI", q: "As of mid-2025, how many publicly announced AI models had been trained with over 10^25 FLOP?", unit: "models", a: 30,
+    hint: "Only a handful of labs can afford it. GPT-4 was among the first, in 2023.",
+    why: "Epoch AI counted over 30 models from 12 developers by June 2025. The count has grown quickly since, so today's number is higher." },
+  { cat: "AI", q: "By what factor has frontier AI training compute grown each year, on average?", unit: "times per year", a: 4.5,
+    hint: "Think of compute doubling every five to six months.",
+    why: "Epoch AI finds frontier training compute has grown about 4 to 5 times per year in recent years, far faster than Moore's law." },
+  { cat: "AI", q: "How much energy does one typical AI chatbot query use?", unit: "watt-hours", a: 0.3,
+    hint: "A laptop draws about 50 W. How many seconds of laptop use is a typical query worth?",
+    why: "Epoch AI estimated about 0.3 Wh for a typical GPT-4o query, about what a laptop uses in under half a minute. Long inputs and long reasoning chains use far more." },
+  { cat: "AI", q: "How much power does the human brain use?", unit: "watts", a: 20,
+    hint: "The body at rest burns roughly 100 W. The brain takes about a fifth.",
+    why: "About 20 W, around a fifth of the body's resting energy use. One H100 GPU draws 700 W, about 35 brains' worth." },
+
+  /* AI scenarios: no single true answer, scored against a plausible range */
+  { cat: "AI", q: "AI documentation tools save each clinician about 1 hour a week. How many clinician hours a year does that free up in low and middle income countries?", unit: "hours per year", a: 1.38e9, lo: 1.0e9, hi: 1.9e9,
+    given: "Assume 30 million doctors, nurses and midwives work in low and middle income countries (an assumption, real counts vary by source) and about 46 working weeks a year.",
+    hint: "Work out the hours saved per clinician per year first, then multiply by the number of clinicians.",
+    steps: ["Hours saved per clinician: 1 hour x 46 weeks = 46 hours a year.", "Across 30 million clinicians: 46 x 30 million = about 1.4 billion hours.", "Scale check: WHO projects a shortfall of about 11 million health workers by 2030. At about 1,840 hours per worker a year, that gap is roughly 20 billion hours."],
+    why: "About 1.4 billion hours, roughly 7 percent of the hours implied by the projected shortfall. Documentation tools could ease the load, but they would not close the gap on their own.",
+    src: [['WHO, health workforce fact sheet', 'https://www.who.int/news-room/fact-sheets/detail/health-workforce']] },
+  { cat: "AI", q: "Every person on Earth sends 20 AI chatbot queries a day. How much electricity does that use in a year?", unit: "TWh per year", a: 30, lo: 18, hi: 60,
+    given: "Assume 8.2 billion people and between 0.3 and 1 watt-hour per query. Epoch AI estimates about 0.3 Wh for a typical query, and long reasoning queries use more.",
+    hint: "Queries per day first, then watt-hours per day, then scale up to a year and convert to TWh (1 TWh is a trillion Wh).",
+    steps: ["Queries a day: 8.2 billion x 20 = about 160 billion.", "At 0.5 Wh each: 160 billion x 0.5 = about 82 billion Wh, which is 82 GWh a day.", "Over a year: 82 GWh x 365 = about 30,000 GWh = 30 TWh."],
+    why: "About 30 TWh a year, roughly 7 percent of the 415 TWh data centers used in 2024 and about 0.1 percent of world electricity. Text queries are cheap. Heavier uses such as video, images and long-running agents could use far more per person.",
+    src: [['Epoch AI, how much energy does ChatGPT use?', 'https://epoch.ai/gradient-updates/how-much-energy-does-chatgpt-use'], ['IEA, Energy and AI (2025)', 'https://www.iea.org/reports/energy-and-ai']] },
+  { cat: "AI", q: "Training a frontier AI model takes 10^26 FLOP. Roughly what does the compute cost to rent?", unit: "US dollars", a: 2.1e8, lo: 1.1e8, hi: 3.7e8,
+    given: "Assume each GPU delivers 10^15 FLOP per second at peak, runs at 30 to 50 percent of peak in practice, and rents for $2 to $4 an hour.",
+    hint: "Divide total FLOP by the useful FLOP per second to get GPU-seconds, convert to hours, then multiply by the hourly price.",
+    steps: ["Useful speed at 40 percent: 0.4 x 10^15 = 4 x 10^14 FLOP per second.", "GPU-seconds: 10^26 / (4 x 10^14) = 2.5 x 10^11, which is about 70 million GPU-hours.", "At $3 an hour: 70 million x $3 = about $210 million."],
+    why: "Roughly $100 to $400 million of rented compute for a single run, before staff, failed runs, data and buildings. A 10^26 run is about five times Epoch's estimate for GPT-4 (2.1 x 10^25 FLOP). As a yardstick, the same money at GiveWell's rough $5,000 per life saved would be about 40,000 lives, though the two are not substitutes.",
+    src: [['Nvidia H100 product page', 'https://www.nvidia.com/en-us/data-center/h100/'], ['Epoch AI, models over 10^25 FLOP', 'https://epoch.ai/data-insights/models-over-1e25-flop']] },
+  { cat: "AI", q: "How much electricity would it take to give each of the 685 million people without power a basic 200 kWh a year?", unit: "TWh per year", a: 137, lo: 69, hi: 206,
+    given: "Assume 685 million people lack electricity access (Tracking SDG7, 2022 data) and that 100 to 300 kWh a person covers lights, phone charging, a fan and a small fridge. 1 TWh is a billion kWh.",
+    hint: "People times kWh each gives kWh. Divide by a billion to get TWh.",
+    steps: ["685 million x 200 kWh = 137 billion kWh.", "137 billion kWh = 137 TWh a year.", "Compare: the IEA expects data centers to grow from about 415 TWh in 2024 to about 945 TWh in 2030, an increase of about 530 TWh."],
+    why: "About 137 TWh a year, roughly a third of what data centers used in 2024. Projected data center growth to 2030 is nearly four times that. The comparison shows scale, not a trade-off: power for people is mostly a financing and delivery problem, not a shortage of generation.",
+    src: [['World Bank and partners, Tracking SDG7', 'https://trackingsdg7.esmap.org/'], ['IEA, Energy and AI (2025)', 'https://www.iea.org/reports/energy-and-ai']] },
+  { cat: "AI", q: "A chatbot handles 1 billion queries a day. What does the electricity for those queries cost per day?", unit: "US dollars per day", a: 40000, lo: 15000, hi: 120000,
+    given: "Assume 0.3 to 1 watt-hour per query (Epoch AI estimates about 0.3 Wh for a typical query) and 5 to 12 cents per kWh for industrial power.",
+    hint: "Total Wh per day, convert to kWh by dividing by 1,000, then multiply by the price per kWh.",
+    steps: ["Energy a day at 0.5 Wh per query: 1 billion x 0.5 Wh = 500 million Wh = 500,000 kWh.", "At 8 cents per kWh: 500,000 x $0.08 = $40,000 a day.", "Over a year that is about $15 million."],
+    why: "Roughly $15,000 to $120,000 a day, or about $5 to $45 million a year. That is likely a small part of the total cost of running such a service, since the chips and data centers have to be paid for too.",
+    src: [['Epoch AI, how much energy does ChatGPT use?', 'https://epoch.ai/gradient-updates/how-much-energy-does-chatgpt-use'], ['U.S. EIA, Electric Power Monthly', 'https://www.eia.gov/electricity/monthly/']] },
+  { cat: "AI", q: "AI lesson-planning and marking tools save each teacher 3 hours a week. How many full-time teachers' worth of time is that worldwide?", unit: "full-time teacher equivalents", a: 5.25e6, lo: 4.0e6, hi: 6.8e6,
+    given: "Assume 70 million teachers worldwide (an assumption, counts vary by source) and a 40 hour working week.",
+    hint: "Total hours saved per week, then divide by the hours in one full-time week.",
+    steps: ["Hours saved a week: 70 million x 3 = 210 million.", "Full-time equivalents: 210 million / 40 = about 5.25 million.", "Compare: UNESCO estimates the world needs about 44 million additional teachers by 2030."],
+    why: "About 5 million full-time equivalents, around 12 percent of the 44 million additional teachers UNESCO says are needed. Time savings help at the margin, but they are far smaller than the gap.",
+    src: [['UNESCO, Teacher Task Force', 'https://www.unesco.org/en/teacher-task-force']] }
+];
+
+/* Each entry: [text found in the question, [[label, url], ...]]. A null url shows the label as plain text. */
+const SRC_MAP = [
+  ['seconds are in a year', [['Arithmetic: 60 x 60 x 24 x 365', null]]],
+  ['heart beat', [['Arithmetic from a resting rate near 70 beats a minute (American Heart Association)', 'https://www.heart.org/en/health-topics/high-blood-pressure/the-facts-about-high-blood-pressure/all-about-heart-rate-pulse']]],
+  ['NYC subway', [['MTA daily ridership data (NY Open Data)', 'https://data.ny.gov/Transportation/MTA-Daily-Ridership-Data-Beginning-2020/vxuj-8kew']]],
+  ['taxi medallions', [['NYC Taxi and Limousine Commission', 'https://www.nyc.gov/site/tlc/index.page']]],
+  ['Starbucks', [['Starbucks company profile', 'https://www.starbucks.com/about-us/company-information/starbucks-company-profile']]],
+  ['commercial flights', [['ICAO world economy data', 'https://www.icao.int/sustainability/Pages/Facts-Figures_WorldEconomyData.aspx']]],
+  ['gas stations', [['NACS industry store count', 'https://www.convenience.org/Research/FactSheets/ScopeofIndustry/IndustryStoreCount']]],
+  ['combined weight', [['Walpole et al. 2012, The weight of nations (BMC Public Health)', 'https://bmcpublichealth.biomedcentral.com/articles/10.1186/1471-2458-12-439']]],
+  ['YouTube', [['YouTube press page', 'https://blog.youtube/press/']]],
+  ['liters of water', [['Arithmetic from US National Academies water intake guidance', 'https://nap.nationalacademies.org/read/10925/chapter/1']]],
+  ['data centers use in a year', [['IEA, Energy and AI (2025)', 'https://www.iea.org/reports/energy-and-ai']]],
+  ['fossil fuels', [['Global Carbon Budget', 'https://globalcarbonbudget.org/']]],
+  ['H100 GPU draw', [['Nvidia H100 product page', 'https://www.nvidia.com/en-us/data-center/h100/']]],
+  ['no access to electricity', [['World Bank and partners, Tracking SDG7', 'https://trackingsdg7.esmap.org/']]],
+  ['cook with wood', [['WHO, household air pollution fact sheet', 'https://www.who.int/news-room/fact-sheets/detail/household-air-pollution-and-health']]],
+  ['household air pollution', [['WHO, household air pollution fact sheet', 'https://www.who.int/news-room/fact-sheets/detail/household-air-pollution-and-health']]],
+  ['electric cars', [['IEA, Global EV Outlook 2025', 'https://www.iea.org/reports/global-ev-outlook-2025']]],
+  ['solar power', [['IRENA, Renewable capacity statistics 2025', 'https://www.irena.org/Publications/2025/Mar/Renewable-capacity-statistics-2025']]],
+  ['concentration of CO2', [['NOAA Global Monitoring Laboratory, CO2 trends', 'https://gml.noaa.gov/ccgg/trends/']]],
+  ['tropical primary forest', [['Global Forest Watch, global dashboard', 'https://www.globalforestwatch.org/dashboards/global/']]],
+  ['displaced from their homes by disasters', [['IDMC, Global Report on Internal Displacement', 'https://www.internal-displacement.org/global-report/grid2024/']]],
+  ['comes from Africa', [['Our World in Data, CO2 and greenhouse gas emissions', 'https://ourworldindata.org/co2-and-greenhouse-gas-emissions']]],
+  ['babies are born', [['UN World Population Prospects', 'https://population.un.org/wpp/']]],
+  ['children under 5 die each year', [['UN IGME, child mortality estimates', 'https://childmortality.org/']]],
+  ['die from malaria', [['WHO, malaria fact sheet', 'https://www.who.int/news-room/fact-sheets/detail/malaria']]],
+  ['tuberculosis', [['WHO, tuberculosis fact sheet', 'https://www.who.int/news-room/fact-sheets/detail/tuberculosis']]],
+  ['pregnancy and childbirth', [['WHO, maternal mortality fact sheet', 'https://www.who.int/news-room/fact-sheets/detail/maternal-mortality']]],
+  ['living with HIV', [['UNAIDS global HIV statistics', 'https://www.unaids.org/en/resources/fact-sheet']]],
+  ['stunted', [['UNICEF, WHO and World Bank Joint Malnutrition Estimates', 'https://data.unicef.org/topic/nutrition/malnutrition/']]],
+  ['zero doses', [['WHO, immunization coverage fact sheet', 'https://www.who.int/news-room/fact-sheets/detail/immunization-coverage']]],
+  ['safely managed drinking water', [['WHO and UNICEF Joint Monitoring Programme', 'https://washdata.org/']]],
+  ['safely managed sanitation', [['WHO and UNICEF Joint Monitoring Programme', 'https://washdata.org/']]],
+  ['open defecation', [['WHO and UNICEF Joint Monitoring Programme', 'https://washdata.org/']]],
+  ['diarrhoea', [['WHO, diarrhoeal disease fact sheet', 'https://www.who.int/news-room/fact-sheets/detail/diarrhoeal-disease']]],
+  ['health worker shortage', [['WHO, health workforce fact sheet', 'https://www.who.int/news-room/fact-sheets/detail/health-workforce']]],
+  ['out of school worldwide', [['UNESCO Global Education Monitoring Report', 'https://www.unesco.org/gem-report']]],
+  ['read or write a simple sentence', [['UNESCO, literacy', 'https://www.unesco.org/en/literacy'], ['UNESCO Institute for Statistics data', 'https://data.uis.unesco.org/']]],
+  ['10-year-olds', [['World Bank, learning poverty', 'https://www.worldbank.org/en/topic/education/brief/learning-poverty']]],
+  ['additional teachers', [['UNESCO, Teacher Task Force', 'https://www.unesco.org/en/teacher-task-force']]],
+  ['higher education', [['UNESCO Institute for Statistics data', 'https://data.uis.unesco.org/']]],
+  ['$3 a day', [['Our World in Data, extreme poverty (World Bank data)', 'https://ourworldindata.org/grapher/projections-extreme-poverty-wb'], ['World Bank Poverty and Inequality Platform', 'https://pip.worldbank.org/']]],
+  ['migrants send home', [['KNOMAD, remittances data', 'https://www.knomad.org/data/remittances']]],
+  ['official development assistance', [['OECD, ODA 2024 preliminary figures', 'https://www.oecd.org/en/about/news/press-releases/2025/04/official-development-assistance-2024-figures.html']]],
+  ['live in sub-Saharan Africa', [['World Bank data, sub-Saharan Africa', 'https://data.worldbank.org/region/sub-saharan-africa']]],
+  ['forcibly displaced', [['UNHCR, Global Trends', 'https://www.unhcr.org/global-trends']]],
+  ['GiveWell-recommended', [['GiveWell, impact estimates', 'https://www.givewell.org/impact-estimates'], ['GiveWell, top charities', 'https://www.givewell.org/charities/top-charities']]],
+  ['bed net', [['GiveWell, Against Malaria Foundation', 'https://www.givewell.org/charities/against-malaria-foundation']]],
+  ['seasonal malaria chemoprevention', [['GiveWell, Malaria Consortium', 'https://www.givewell.org/charities/malaria-consortium']]],
+  ['GiveDirectly', [['GiveDirectly', 'https://www.givedirectly.org/']]],
+  ['Americans give', [['AP report on Giving USA 2026 (WTOP)', 'https://wtop.com/national/2026/06/donors-gave-u-s-charities-617-billion-in-2025-according-to-giving-usa-report/']]],
+  ['development assistance for health', [['IHME, Financing Global Health', 'https://www.healthdata.org/research-analysis/health-policy-planning/health-financing-research-library']]],
+  ['excess deaths did COVID', [['WHO, 14.9 million excess deaths (2022)', 'https://www.who.int/news/item/05-05-2022-14.9-million-excess-deaths-were-associated-with-the-covid-19-pandemic-in-2020-and-2021']]],
+  ['land animals', [['FAOSTAT, livestock primary data', 'https://www.fao.org/faostat/en/#data/QCL']]],
+  ['GPT-4', [['Epoch AI, models over 10^25 FLOP', 'https://epoch.ai/data-insights/models-over-1e25-flop']]],
+  ['H100 GPU cost', [['No official list price. The range comes from press reports of street prices.', null]]],
+  ['smallpox', [['WHO, history of smallpox vaccination', 'https://www.who.int/news-room/spotlight/history-of-vaccination/history-of-smallpox-vaccination']]],
+  ['child labour', [['ILO, child labour', 'https://www.ilo.org/topics-and-sectors/child-labour']]],
+  ['annual income per person', [['World Bank, GDP per capita, sub-Saharan Africa', 'https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?locations=ZG']]],
+  ['working hours', [['Arithmetic: 40 years x 50 weeks x 40 hours. See also 80,000 Hours', 'https://80000hours.org/']]],
+  ['circumference', [['NASA Earth fact sheet', 'https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html']]],
+  ['the Moon', [['NASA Moon fact sheet', 'https://nssdc.gsfc.nasa.gov/planetary/factsheet/moonfact.html']]],
+  ['from the Sun', [['NASA Sun fact sheet', 'https://nssdc.gsfc.nasa.gov/planetary/factsheet/sunfact.html']]],
+  ['water is in the world', [['NOAA, ocean facts', 'https://oceanservice.noaa.gov/facts/oceanfacts.html']]],
+  ['How old is the Earth', [['USGS, age of the Earth', 'https://pubs.usgs.gov/gip/geotime/age.html']]],
+  ['total land area', [['World Bank, land area', 'https://data.worldbank.org/indicator/AG.LND.TOTL.K2']]],
+  ['trees are on Earth', [['Crowther et al. 2015, Nature', 'https://www.nature.com/articles/nature14967']]],
+  ['ever been born', [['Population Reference Bureau', 'https://www.prb.org/articles/how-many-people-have-ever-lived-on-earth/']]],
+  ['electricity does the world generate', [['Ember, electricity data explorer', 'https://ember-energy.org/data/electricity-data-explorer/']]],
+  ['world economy', [['World Bank, GDP (current US$)', 'https://data.worldbank.org/indicator/NY.GDP.MKTP.CD']]],
+  ['cars, trucks and buses', [['OICA, vehicles in use', 'https://www.oica.net/category/vehicles-in-use/']]],
+  ['many people use the internet', [['ITU, Facts and Figures', 'https://www.itu.int/en/ITU-D/Statistics/Pages/facts/default.aspx']]],
+  ['food is wasted', [['UNEP, Food Waste Index Report 2024', 'https://www.unep.org/resources/publication/food-waste-index-report-2024']]],
+  ['plastic', [['OECD, Global Plastics Outlook', 'https://www.oecd.org/en/publications/global-plastics-outlook_de747aef-en.html']]],
+  ['fresh water', [['FAO AQUASTAT', 'https://www.fao.org/aquastat/en/']]],
+  ['die worldwide each year', [['UN World Population Prospects', 'https://population.un.org/wpp/']]],
+  ['life expectancy', [['UN World Population Prospects', 'https://population.un.org/wpp/']]],
+  ['in 2030', [['IEA, Energy and AI (2025)', 'https://www.iea.org/reports/energy-and-ai']]],
+  ['GPT-3.5-level AI', [['Stanford HAI, AI Index Report 2025', 'https://hai.stanford.edu/ai-index/2025-ai-index-report']]],
+  ['jobs worldwide', [['IMF, AI will transform the global economy (2024)', 'https://www.imf.org/en/Blogs/Articles/2024/01/14/ai-will-transform-the-global-economy-lets-make-sure-it-benefits-humanity']]],
+  ['low-income countries is exposed', [['IMF, AI will transform the global economy (2024)', 'https://www.imf.org/en/Blogs/Articles/2024/01/14/ai-will-transform-the-global-economy-lets-make-sure-it-benefits-humanity']]],
+  ['in Africa use', [['ITU, Facts and Figures 2025', 'https://www.itu.int/en/ITU-D/Statistics/Pages/facts/default.aspx']]],
+  ['over 10^25 FLOP', [['Epoch AI, models over 10^25 FLOP', 'https://epoch.ai/data-insights/models-over-1e25-flop']]],
+  ['human brain', [['Raichle and Gusnard 2002, brain energy budget (PNAS)', 'https://www.pnas.org/doi/10.1073/pnas.172399499']]],
+  ['chatbot query', [['Epoch AI, how much energy does ChatGPT use?', 'https://epoch.ai/gradient-updates/how-much-energy-does-chatgpt-use']]],
+  ['training compute grown', [['Epoch AI, trends in AI training compute', 'https://epoch.ai/trends']]]
+];
+
+const CATS = ["All", "Philanthropy", "AI", "Earth", "Health", "Climate & energy", "Education", "Development", "Everyday"];
+const TIERS = [
+  { max: 0.10, pts: 100, label: "Bullseye", cls: "good" },
+  { max: 0.20, pts: 85,  label: "Sharp",    cls: "good" },
+  { max: 0.30, pts: 70,  label: "Solid",    cls: "good" },
+  { max: 0.50, pts: 50,  label: "Same ballpark", cls: "mid" },
+  { max: 1.00, pts: 20,  label: "Within 10x", cls: "mid" },
+  { max: Infinity, pts: 0, label: "Off by 10x or more", cls: "bad" }
+];
+const SC_TIERS = [
+  { max: 0, pts: 100, label: "Inside the plausible range", cls: "good" },
+  { max: 0.15, pts: 70, label: "Just outside the range", cls: "good" },
+  { max: 0.30, pts: 50, label: "Close to the range", cls: "mid" },
+  { max: 0.70, pts: 20, label: "Off the range", cls: "mid" },
+  { max: Infinity, pts: 0, label: "Far from the range", cls: "bad" }
+];
+const CLEAR_ERR = 0.30; /* within 2x and no hint clears a question */
+
+function hid(s) { let h = 5381; for (let i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) | 0; return "q" + (h >>> 0).toString(36); }
+QUESTIONS.forEach(x => { x.id = hid(x.q); x.src = x.src || []; });
+SRC_MAP.forEach(e => {
+  const m = QUESTIONS.filter(x => !x.lo && x.q.indexOf(e[0]) >= 0);
+  if (m.length !== 1) console.warn('source key matched', m.length, e[0]);
+  m.forEach(x => { x.src = e[1]; });
+});
+function srcHtml(item) {
+  if (!item.src || !item.src.length) return '';
+  return '<div class="src"><b>Sources</b>' + item.src.map(s => s[1] ? '<a href="' + s[1] + '" target="_blank" rel="noopener noreferrer">' + s[0] + '</a>' : '<span>' + s[0] + '</span>').join('') + '</div>';
+}
+
+const SPLITS = [
+  ["seconds are in a year", [["Seconds in a minute", "*", 60], ["Minutes in an hour", "*", 60], ["Hours in a day", "*", 24], ["Days in a year", "*", 365]]],
+  ["heart beat in an 80 year", [["Heartbeats per minute", "*", 70], ["Minutes in an hour", "*", 60], ["Hours in a day", "*", 24], ["Days in a year", "*", 365], ["Years in a life", "*", 80]]],
+  ["gas stations", [["US population", "*", 340e6], ["People served by each station", "/", 2300]]],
+  ["combined weight of every human", [["People on Earth", "*", 8.2e9], ["Average weight per person, in kg", "*", 60], ["Kilograms per tonne", "/", 1000]]],
+  ["liters of water does one person drink", [["Liters drunk per day", "*", 1.8], ["Days in a year", "*", 365], ["Years of life", "*", 78]]],
+  ["children under 5 die each year worldwide", [["Births per year", "*", 132e6], ["Share who die before age 5", "*", 0.036]]],
+  ["die from malaria", [["Malaria cases per year", "*", 263e6], ["Share of cases that are fatal", "*", 0.0023]]],
+  ["pregnancy and childbirth", [["Births per year", "*", 132e6], ["Maternal deaths as a share of births", "*", 0.00197]]],
+  ["children under 5 are stunted", [["Children under 5 worldwide", "*", 660e6], ["Share who are stunted", "*", 0.224]]],
+  ["safely managed drinking water", [["People on Earth", "*", 8.2e9], ["Share without safely managed water", "*", 0.27]]],
+  ["electricity does the world generate", [["People on Earth", "*", 8.2e9], ["Average kWh used per person per year", "*", 3600], ["kWh per TWh", "/", 1e9]]],
+  ["size of the world economy", [["People on Earth", "*", 8.2e9], ["Average income per person, in dollars", "*", 13400]]],
+  ["plastic is produced", [["People on Earth", "*", 8.2e9], ["Plastic produced per person, in kg", "*", 49], ["Kilograms per tonne", "/", 1000]]],
+  ["food is wasted", [["People on Earth", "*", 8.2e9], ["Food wasted per person, in kg", "*", 128], ["Kilograms per tonne", "/", 1000]]],
+  ["burning fossil fuels emit", [["People on Earth", "*", 8.2e9], ["Tonnes of CO2 per person per year", "*", 4.5]]],
+  ["out of school worldwide", [["School-age children and youth", "*", 1.6e9], ["Share who are out of school", "*", 0.17]]],
+  ["cannot read or write a simple sentence", [["Adults on Earth", "*", 5.5e9], ["Share who cannot read or write", "*", 0.137]]],
+  ["migrants send home", [["Migrants sending money home", "*", 200e6], ["Dollars sent per migrant per year", "*", 3400]]],
+  ["cook with wood", [["People on Earth", "*", 8.2e9], ["Share who cook with polluting fuels", "*", 0.26]]],
+  ["girls are married as children each year", [["Births per year", "*", 132e6], ["Share that are girls", "*", 0.5], ["Share of girls married before 18", "*", 0.18]]],
+  ["Americans give", [["US GDP, in dollars", "*", 29e12], ["Share given to charity", "*", 0.0213]]],
+  ["students are enrolled in higher", [["People of university age", "*", 640e6], ["Share enrolled", "*", 0.4]]],
+  ["How far away is the Moon", [["Seconds light takes to arrive", "*", 1.28], ["Kilometers light travels per second", "*", 300000]]],
+  ["How far is the Earth from the Sun", [["Seconds light takes to arrive", "*", 500], ["Kilometers light travels per second", "*", 300000]]],
+  ["water is in the world's oceans", [["Earth's surface, in square km", "*", 510e6], ["Share that is ocean", "*", 0.71], ["Average ocean depth, in km", "*", 3.7]]],
+  ["total land area", [["Earth's surface, in square km", "*", 510e6], ["Share that is land", "*", 0.29]]],
+  ["working hours are there", [["Working years", "*", 40], ["Working weeks per year", "*", 50], ["Hours per week", "*", 40]]],
+  ["die from diarrhoea", [["Under-5 deaths per year", "*", 4.8e6], ["Share caused by diarrhoea", "*", 0.09]]],
+  ["data centers use in a year", [["World electricity use, in TWh", "*", 30000], ["Share used by data centers", "*", 0.014]]],
+  ["official development assistance", [["Rich-country income, in dollars", "*", 65e12], ["Share given as aid", "*", 0.0033]]],
+  ["tuberculosis", [["People on Earth", "*", 8.2e9], ["New TB cases per 100,000 people", "*", 130], ["People per 100,000", "/", 100000]]],
+  ["zero doses", [["Infants born per year", "*", 130e6], ["Share who got no dose", "*", 0.11]]],
+  ["$3 a day", [["People on Earth", "*", 8.1e9], ["Share below the line", "*", 0.099]]],
+  ["many people use the internet", [["People on Earth", "*", 8.2e9], ["Share who are online", "*", 0.74]]]
+];
+SPLITS.forEach(e => {
+  const m = QUESTIONS.filter(x => !x.lo && x.q.indexOf(e[0]) >= 0);
+  if (m.length !== 1) console.warn("split key matched", m.length, e[0]);
+  m.forEach(x => { x.split = e[1]; });
+});
+const app = document.getElementById("app");
+let state = null;
+let cat = "All";
+let confirmReset = false;
+let mastered = new Set();
+try { mastered = new Set(JSON.parse(localStorage.getItem("botec-mastered") || "[]")); } catch (e) {}
+function saveMastered() { try { localStorage.setItem("botec-mastered", JSON.stringify(Array.from(mastered))); } catch (e) {} }
+let seen = {};
+try { seen = JSON.parse(localStorage.getItem("botec-seen") || "{}"); } catch (e) {}
+function saveSeen() { try { localStorage.setItem("botec-seen", JSON.stringify(seen)); } catch (e) {} }
+function getBest() { try { return parseFloat(localStorage.getItem("botec-best")) || 0; } catch (e) { return 0; } }
+function setBest(v) { try { localStorage.setItem("botec-best", String(v)); } catch (e) {} }
+function pool(c) { return QUESTIONS.filter(q => (c === "All" || q.cat === c) && !mastered.has(q.id)); }
+let log = [];
+try { log = JSON.parse(localStorage.getItem("botec-log") || "[]"); } catch (e) {}
+if (!Array.isArray(log)) log = [];
+function saveLog() { try { localStorage.setItem("botec-log", JSON.stringify(log.slice(-600))); } catch (e) {} }
+let decomp = { n: 0, better: 0 };
+try { const d = JSON.parse(localStorage.getItem("botec-decomp") || "null"); if (d && isFinite(d.n) && isFinite(d.better)) decomp = d; } catch (e) {}
+function saveDecomp() { try { localStorage.setItem("botec-decomp", JSON.stringify(decomp)); } catch (e) {} }
+
+/* ---------- Calculator ---------- */
+function evalExpr(src) {
+  const s = String(src).toLowerCase().replace(/,/g, "");
+  const suff = { thousand: 1e3, million: 1e6, billion: 1e9, trillion: 1e12, mil: 1e6, bn: 1e9, tn: 1e12, k: 1e3, m: 1e6, b: 1e9, t: 1e12 };
+  const toks = [];
+  let i = 0;
+  while (i < s.length) {
+    const c = s[i];
+    if (/\s/.test(c)) { i++; continue; }
+    const m = s.slice(i).match(/^(\d+\.?\d*|\.\d+)(e[+-]?\d+)?/);
+    if (m) {
+      let v = parseFloat(m[0]);
+      i += m[0].length;
+      const sm = s.slice(i).match(/^\s*(thousand|million|billion|trillion|mil|bn|tn|k|m|b|t)(?![a-z])/);
+      if (sm) { v *= suff[sm[1]]; i += sm[0].length; }
+      toks.push({ t: "n", v: v });
+      continue;
+    }
+    if (c === "x" || c === "\u00d7" || c === "*" || c === "\u00b7") { toks.push({ t: "*" }); i++; continue; }
+    if (c === "\u00f7" || c === "/") { toks.push({ t: "/" }); i++; continue; }
+    if (c === "\u2212" || c === "\u2013" || c === "-") { toks.push({ t: "-" }); i++; continue; }
+    if ("+^()%".indexOf(c) >= 0) { toks.push({ t: c }); i++; continue; }
+    return NaN;
+  }
+  if (!toks.length) return NaN;
+  let p = 0;
+  const peek = () => (toks[p] ? toks[p].t : null);
+  function expr() { let v = term(); while (peek() === "+" || peek() === "-") { const o = toks[p++].t; const r = term(); v = o === "+" ? v + r : v - r; } return v; }
+  function term() { let v = unary(); while (peek() === "*" || peek() === "/") { const o = toks[p++].t; const r = unary(); v = o === "*" ? v * r : v / r; } return v; }
+  function unary() { if (peek() === "-") { p++; return -unary(); } if (peek() === "+") { p++; return unary(); } return pow(); }
+  function pow() { const b = post(); if (peek() === "^") { p++; const e = unary(); return Math.pow(b, e); } return b; }
+  function post() { let v = prim(); while (peek() === "%") { p++; v /= 100; } return v; }
+  function prim() {
+    const t = toks[p];
+    if (!t) throw new Error("end");
+    if (t.t === "n") { p++; return t.v; }
+    if (t.t === "(") {
+      p++;
+      const v = expr();
+      if (peek() === ")") p++;
+      else if (p < toks.length) throw new Error("paren");
+      return v;
+    }
+    throw new Error("bad");
+  }
+  try {
+    const v = expr();
+    if (p < toks.length) return NaN;
+    return isFinite(v) ? v : NaN;
+  } catch (e) { return NaN; }
+}
+
+/* ---------- Formatting ---------- */
+function sig(x) { return parseFloat(x.toPrecision(3)); }
+function sci(n) { const e = Math.floor(Math.log10(n)); return sig(n / Math.pow(10, e)) + " x 10^" + e; }
+function fmt(n) {
+  if (n >= 1e15) return sci(n);
+  if (n >= 1e12) return sig(n / 1e12) + " trillion";
+  if (n >= 1e9) return sig(n / 1e9) + " billion";
+  if (n >= 1e6) return sig(n / 1e6) + " million";
+  if (n >= 1000) return Math.round(n).toLocaleString("en-US");
+  return String(sig(n));
+}
+function fmtFull(n) {
+  if (n >= 1e6 && n < 1e15) return fmt(n) + "  (" + Math.round(n).toLocaleString("en-US") + ")";
+  return fmt(n);
+}
+function short(n) {
+  if (n >= 1e15) return "10^" + Math.round(Math.log10(n));
+  if (n >= 1e12) return (n / 1e12) + "T";
+  if (n >= 1e9) return (n / 1e9) + "B";
+  if (n >= 1e6) return (n / 1e6) + "M";
+  if (n >= 1e3) return (n / 1e3) + "K";
+  return String(n);
+}
+function ratioText(guess, ans) {
+  const r = guess / ans;
+  const f = r >= 1 ? r : 1 / r;
+  if (Math.abs(Math.log10(r)) < 0.03) return "within 7 percent";
+  const num = f < 10 ? f.toFixed(1) : Math.round(f).toLocaleString("en-US");
+  return num + "x too " + (r >= 1 ? "high" : "low");
+}
+function shuffle(a) {
+  a = a.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = a[i]; a[i] = a[j]; a[j] = t;
+  }
+  return a;
+}
+
+/* ---------- Screens ---------- */
+function renderIntro() {
+  const best = getBest();
+  const left = pool(cat);
+  const total = QUESTIONS.filter(q => cat === "All" || q.cat === cat).length;
+  const sizes = [5, 8].filter(n => n < left.length);
+  const starters = QUESTIONS.filter(q => isStarter(q) && !mastered.has(q.id));
+  const newUser = !mastered.size && !Object.keys(seen).length && starters.length > 0;
+  let modes = "";
+  if (left.length === 0) {
+    modes = `<p class="good" style="font-weight:700;margin:16px 0 0">You have cleared every question in this set.</p>`;
+  } else {
+    sizes.forEach((n, i) => { modes += `<button data-n="${n}"${i === 0 && !newUser ? ' class="primary"' : ""}>${n === 5 ? "Quick round" : "Standard round"} <small>${n} questions</small></button>`; });
+    modes += `<button data-n="${left.length}"${sizes.length === 0 && !newUser ? ' class="primary"' : ""}>${sizes.length ? "Everything left" : "Last " + (left.length === 1 ? "question" : "questions")} <small>${left.length} questions</small></button>`;
+  }
+  const dpool = pool(cat).filter(q => q.split);
+  if (dpool.length) modes += `<button data-d="1">Decompose round <small>${Math.min(5, dpool.length)} questions, gut vs built in pieces</small></button>`;
+  if (starters.length) modes = `<button data-starter="1"${newUser ? ' class="primary"' : ""}>Starter round <small>${Math.min(5, starters.length)} easy questions, start here</small></button>` + modes;
+  modes += `<button data-flaw="1">Find the flaw <small>5 estimates, one bad input each</small></button>`;
+  app.innerHTML = `
+    <div class="card intro">
+      <h1 class="display" style="font-size:34px;line-height:1.05;font-weight:800;">BOTEC Gauntlet</h1>
+      <p>Estimate in your head, then use the built-in keypad to do the math. Type something like <b>50 x 5 x 6</b> or <b>3.2 million / 12</b> and lock it in.</p>
+      <div class="chips" role="group" aria-label="Topic">
+        ${CATS.map(c => `<button class="chip" data-cat="${c}" aria-pressed="${c === cat}">${c} <small>${pool(c).length}</small></button>`).join("")}
+      </div>
+      ${cat === "AI" ? '<p class="note">The AI topic mixes fact questions with scenario questions. Scenarios have no single right answer: you are scored on landing inside a plausible range built from the inputs given, and the result screen shows one reasonable chain of reasoning and what it means.</p>' : ''}
+      <div class="modes">${modes}</div>
+      <div class="rules">
+        ${left.length} of ${total} questions left in this topic. Land within 2x without a hint and the question is cleared for good.
+        Within 26 percent earns 100 points, within 2x earns 70, within 10x earns 20. A hint costs 25 percent. On fact questions, add an 80 percent range to train calibration.
+        ${best ? `<br>Your best average: <b>${best.toFixed(0)}</b> points per question.` : ""}
+      </div>
+      <button class="linkbtn" id="howBtn" style="margin-right:16px">How to play</button>
+      <button class="linkbtn" id="statsBtn" style="margin-right:16px">Your stats</button>
+      <button class="linkbtn" id="browseBtn" style="margin-right:16px">Browse all questions</button>
+      <button class="linkbtn" id="anchors" style="margin-right:16px">Anchor numbers to memorize</button>
+      <button class="linkbtn" id="aboutBtn" style="margin-right:16px">About this game</button>
+      ${mastered.size ? `<button class="linkbtn" id="reset">${confirmReset ? "Tap again to bring back all " + mastered.size + " cleared questions" : "Reset cleared questions (" + mastered.size + ")"}</button>` : ""}
+    </div>`;
+  app.querySelectorAll("[data-n]").forEach(b => b.addEventListener("click", () => start(parseInt(b.dataset.n, 10))));
+  app.querySelectorAll("[data-cat]").forEach(b => b.addEventListener("click", () => { cat = b.dataset.cat; confirmReset = false; renderIntro(); }));
+  document.getElementById("anchors").addEventListener("click", renderAnchors);
+  document.getElementById("statsBtn").addEventListener("click", () => { confirmStats = false; renderStats(); });
+  document.getElementById("browseBtn").addEventListener("click", renderBrowse);
+  app.querySelectorAll("[data-d]").forEach(b => b.addEventListener("click", startDecomp));
+  app.querySelectorAll("[data-flaw]").forEach(b => b.addEventListener("click", startFlaw));
+  app.querySelectorAll("[data-starter]").forEach(b => b.addEventListener("click", startStarter));
+  const hp = document.getElementById("howBtn"); if (hp) hp.addEventListener("click", () => renderPrimer(false));
+  document.getElementById("aboutBtn").addEventListener("click", renderAbout);
+  const rb = document.getElementById("reset");
+  if (rb) rb.addEventListener("click", () => {
+    if (!confirmReset) { confirmReset = true; renderIntro(); return; }
+    mastered = new Set(); saveMastered(); confirmReset = false; renderIntro();
+  });
+}
+
+const ANCHORS = [
+  ["World population", "8.2 billion"],
+  ["Births a year", "132 million"],
+  ["Deaths a year", "61 million"],
+  ["Life expectancy", "73 years"],
+  ["US population", "340 million"],
+  ["India and China", "1.45 billion and 1.4 billion"],
+  ["Sub-Saharan Africa", "1.2 billion"],
+  ["Nigeria, Bangladesh, DRC", "230 million, 173 million, 105 million"],
+  ["Under-5 deaths a year", "4.8 million"],
+  ["Extreme poverty ($3 a day)", "about 800 million"],
+  ["World GDP", "$110 trillion (US about $29 trillion)"],
+  ["Income per person, sub-Saharan Africa vs US", "$1,600 vs $85,000"],
+  ["Cost to save a life, top GiveWell charities", "about $5,000"],
+  ["Seconds in a year", "31.5 million (pi x 10^7)"],
+  ["Hours in a career", "80,000"],
+  ["Earth circumference", "40,000 km"],
+  ["Earth surface, land share", "510 million sq km, 29 percent land"],
+  ["Electricity generated a year", "30,000 TWh"],
+  ["CO2 from fossil fuels a year", "37 billion tonnes"]
+];
+
+function renderAbout() {
+  app.innerHTML = `
+    <div class="card about">
+      <h1 class="display" style="font-size:30px;line-height:1.05;font-weight:800;">About this game</h1>
+
+      <h2>Why it exists</h2>
+      <p>Back-of-the-envelope estimation is how people decide where to put money and attention before perfect data exists. I built this to practice it on the numbers that matter most in global health, climate, education, development and AI, so I can sanity check a claim in a meeting instead of nodding along.</p>
+
+      <h2>Why these numbers matter</h2>
+      <ul>
+        <li><b>Scale comes first.</b> Knowing there are about 4.8 million deaths of children under 5 a year, not 48,000 and not 48 million, changes what a program has to achieve to matter.</li>
+        <li><b>Funders compare cost per outcome.</b> A bed net costs a few dollars. A life saved costs a few thousand. Those units decide which programs get funded.</li>
+        <li><b>AI is moving fast.</b> The AI questions cover energy, cost, jobs and who is online, because who benefits depends on all four.</li>
+      </ul>
+
+      <h2>How to use it</h2>
+      <p>Estimate before you look anything up. Use the calculator to build the number from pieces you know. The result screen shows how far off you were, one way to get there, and the source. Questions you miss come back sooner. Questions you land within 2x of without a hint are cleared. The anchor numbers list on the home screen holds the few figures most estimates are built from.</p>
+      <p>On fact questions you can add an 80 percent range, a low and a high you are 80 percent sure contain the answer. Your stats screen tracks how often you hit and which topics you run high or low on. Decompose rounds ask for a gut guess first, then give you a ready split into pieces to estimate one at a time, so you can see whether splitting helps and which piece you misjudge.</p>
+      <p>Find the flaw shows a short estimate with one bad input: tap the one you would check first, then size how far off it makes the result. Your stats screen has a code to move your progress to another device.</p>
+
+      <h2>Accuracy</h2>
+      <p>There are ${QUESTIONS.length} questions. Every fact question links to its source. Figures are rounded and publishers revise them, so check the source before you quote a number. Scenario questions use assumptions marked in the question and are not official estimates. If you spot an error, please tell me.</p>
+
+      <h2>Who built it</h2>
+      <p>I'm Angela Ng. I work on AI for good, with a background in public health, water and sanitation, and international development. I built this game with Claude. To get in touch or report a mistake, visit <a href="https://angelang.org" target="_blank" rel="noopener noreferrer">angelang.org</a>.</p>
+
+      <div class="row" style="margin-top:18px"><button id="aboutBack" type="button" class="primary">Back</button></div>
+    </div>`;
+  document.getElementById("aboutBack").addEventListener("click", renderIntro);
+}
+
+function renderAnchors() {
+  app.innerHTML = `
+    <div class="card">
+      <h2 class="display" style="font-size:26px;font-weight:800;margin-bottom:6px">Anchor numbers</h2>
+      <p style="margin:0 0 8px;color:var(--muted);font-size:15px">Memorize these. Almost every estimate is built from a few of them multiplied or divided.</p>
+      <ul class="hist">
+        ${ANCHORS.map(a => `<li><span>${a[0]}</span><b>${a[1]}</b></li>`).join("")}
+      </ul>
+      <div class="row" style="margin-top:18px"><button id="back" type="button" class="primary">Back</button></div>
+    </div>`;
+  document.getElementById("back").addEventListener("click", renderIntro);
+}
+
+function buildDeck(n) {
+  const p = pool(cat);
+  const missed = shuffle(p.filter(q => seen[q.id]));
+  const fresh = shuffle(p.filter(q => !seen[q.id]));
+  const takeM = Math.min(missed.length, Math.ceil(n * 0.4));
+  let deck = missed.slice(0, takeM).concat(fresh.slice(0, n - takeM));
+  if (deck.length < n) deck = deck.concat(missed.slice(takeM, takeM + (n - deck.length)));
+  return shuffle(deck).slice(0, n);
+}
+
+function start(n) {
+  const deck = buildDeck(n);
+  state = { mode: "std", deck: deck, i: 0, total: 0, results: [], phase: "ask", hint: false, cleared: 0 };
+  renderQuestion();
+}
+
+function goHome() { renderIntro(); }
+
+function topbar() {
+  const n = state.deck.length;
+  const done = state.phase === "result" ? state.i + 1 : state.i;
+  const item = state.deck[state.i];
+  return `
+    <div class="topbar"><button type="button" class="homebtn" onclick="goHome()">Home</button><span>Question <strong>${state.i + 1}</strong> of ${n}, ${item.cat}</span>${state.mode === "decomp" ? "<span>Built beat gut <strong>" + state.better + "</strong></span>" : "<span>Score <strong>" + state.total + "</strong></span>"}</div>
+    <div class="bar"><i style="width:${(done / n) * 100}%"></i></div>`;
+}
+
+const KEYS = [
+  ["(", "ctl"], [")", "ctl"], ["^", "op"], ["\u232b", "ctl"], ["C", "ctl"],
+  ["7", ""], ["8", ""], ["9", ""], ["\u00f7", "op"], ["k", "sfx"],
+  ["4", ""], ["5", ""], ["6", ""], ["\u00d7", "op"], ["M", "sfx"],
+  ["1", ""], ["2", ""], ["3", ""], ["\u2212", "op"], ["B", "sfx"],
+  ["0", ""], [".", ""], ["000", ""], ["+", "op"], ["%", "op"]
+];
+
+function renderQuestion() {
+  const item = state.deck[state.i];
+  state.phase = "ask";
+  state.hint = false;
+  const isFact = !item.lo;
+  app.innerHTML = `
+    ${topbar()}
+    <div class="card">
+      <div class="q display">${item.q}</div>
+      <div class="unit">Answer in ${item.unit}</div>
+      ${item.given ? '<div class="given"><b>Scenario, no single right answer.</b> Given: ' + item.given + '</div>' : ''}
+      <label class="lab" for="g">Your calculation or estimate</label>
+      <input class="numin" id="g" type="text" inputmode="${IM()}" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="e.g. 50 x 5 x 6 or 5 million">
+      <div class="preview" id="preview" aria-live="polite"></div>
+      ${isFact ? `<div class="rangebox">
+        <div class="rt">Your 80% range <small>optional</small></div>
+        <div class="rs">Pick a low and a high you are 80% sure the answer sits between. Aim to be right 8 times in 10.</div>
+        <div class="rgrid">
+          <div><label class="lab" for="rlo">Low</label><input class="numin sm" id="rlo" type="text" inputmode="${IM()}" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="low"></div>
+          <div><label class="lab" for="rhi">High</label><input class="numin sm" id="rhi" type="text" inputmode="${IM()}" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="high"></div>
+        </div>
+        <div class="rpv" id="rpv" aria-live="polite"></div>
+      </div>` : ""}
+      <div class="err" id="err" role="alert"></div>
+      <div class="row">
+        <button id="hintBtn" type="button">Hint (costs 25%)</button>
+        <button id="go" type="button" class="primary">Lock in</button>
+      </div>
+      <div class="hint" id="hint" hidden>${item.hint}</div>
+      ${keypadHtml()}
+      ${kbToggleHtml()}
+    </div>`;
+  const preview = document.getElementById("preview");
+  const err = document.getElementById("err");
+
+  function rangePreview() {
+    const el = document.getElementById("rpv");
+    if (!el) return;
+    const a = document.getElementById("rlo").value.trim(), b = document.getElementById("rhi").value.trim();
+    if (!a && !b) { el.textContent = ""; return; }
+    const lo = evalExpr(a), hi = evalExpr(b);
+    if (isFinite(lo) && isFinite(hi) && lo > 0 && hi >= lo) el.textContent = fmt(lo) + " to " + fmt(hi) + " (" + spanText(hi / lo) + " wide)";
+    else el.textContent = "Fill in both ends, with the low below the high.";
+  }
+  function refresh() {
+    err.textContent = "";
+    livePreview(document.getElementById("g").value, preview, item.unit);
+    rangePreview();
+  }
+  onNumInput = refresh;
+  onEnter = () => {
+    if (isFact && activeNum && activeNum.id === "g") document.getElementById("rlo").focus();
+    else if (isFact && activeNum && activeNum.id === "rlo") document.getElementById("rhi").focus();
+    else submit();
+  };
+  activeNum = document.getElementById("g");
+  wireKeypad();
+  wireKbToggle();
+  document.getElementById("go").addEventListener("click", submit);
+  document.getElementById("hintBtn").addEventListener("click", () => {
+    state.hint = true;
+    document.getElementById("hint").hidden = false;
+    document.getElementById("hintBtn").disabled = true;
+    document.getElementById("hintBtn").textContent = "Hint shown";
+  });
+  activeNum.focus({ preventScroll: true });
+  refresh();
+}
+
+function submit() {
+  const item = state.deck[state.i];
+  const guess = evalExpr(document.getElementById("g").value);
+  const err = document.getElementById("err");
+  if (!isFinite(guess) || guess <= 0) {
+    err.textContent = "Enter a positive number or a calculation, like 50 x 5 x 6.";
+    return;
+  }
+  let range = null;
+  if (!item.lo) {
+    const ra = document.getElementById("rlo").value.trim(), rb = document.getElementById("rhi").value.trim();
+    if (ra || rb) {
+      const lo = evalExpr(ra), hi = evalExpr(rb);
+      if (!ra || !rb || !isFinite(lo) || !isFinite(hi) || lo <= 0 || hi <= 0) { err.textContent = "Fill in both ends of your range, or clear both to skip it."; return; }
+      if (lo > hi) { err.textContent = "Your low is above your high. Swap them."; return; }
+      if (guess < lo || guess > hi) { err.textContent = "Your estimate should sit inside your own range."; return; }
+      range = { lo: lo, hi: hi, hit: item.a >= lo && item.a <= hi };
+    }
+  }
+  let e, tier;
+  if (item.lo) {
+    e = guess < item.lo ? Math.log10(item.lo / guess) : (guess > item.hi ? Math.log10(guess / item.hi) : 0);
+    tier = SC_TIERS.find(t => e <= t.max);
+  } else {
+    e = Math.abs(Math.log10(guess / item.a));
+    tier = TIERS.find(t => e <= t.max);
+  }
+  let pts = tier.pts;
+  if (state.hint) pts = Math.round(pts * 0.75);
+  const cleared = (item.lo ? e === 0 : e <= CLEAR_ERR) && !state.hint;
+  seen[item.id] = true; saveSeen();
+  if (cleared) { mastered.add(item.id); saveMastered(); state.cleared++; }
+  if (!item.lo) {
+    log.push({ c: item.cat, s: +Math.log10(guess / item.a).toFixed(3), e: +e.toFixed(3), h: range ? (range.hit ? 1 : 0) : null, w: range ? +Math.log10(range.hi / range.lo).toFixed(2) : null });
+    saveLog();
+  }
+  state.total += pts;
+  state.results.push({ q: item.q, guess: guess, ans: item.a, err: e, signed: Math.log10(guess / item.a), pts: pts, cleared: cleared, range: range });
+  state.phase = "result";
+  renderResult(item, guess, e, tier, pts, cleared, range);
+}
+
+function numberLine(guess, ans, range) {
+  const lg = Math.log10(guess), la = Math.log10(ans);
+  const rl = range ? Math.log10(range.lo) : lg, rh = range ? Math.log10(range.hi) : lg;
+  let lo = Math.floor(Math.min(lg, la, rl)) - 1;
+  let hi = Math.ceil(Math.max(lg, la, rh)) + 1;
+  if (hi - lo < 4) { lo -= 1; hi += 1; }
+  const pos = v => ((v - lo) / (hi - lo)) * 100;
+  const step = (hi - lo) > 8 ? 2 : 1;
+  let ticks = "";
+  for (let k = lo; k <= hi; k += step) {
+    const p = pos(k);
+    ticks += `<div class="tick" style="left:${p}%"></div><div class="tl" style="left:${p}%">${k < 0 ? "10^" + k : short(Math.pow(10, k))}</div>`;
+  }
+  const py = pos(lg), pt = pos(la);
+  const band = range ? '<div class="band" style="left:' + pos(rl) + '%;width:' + Math.max(0.8, pos(rh) - pos(rl)) + '%"></div>' : "";
+  const clampL = p => Math.min(92, Math.max(8, p));
+  return `
+    <div class="nl" aria-label="Log scale showing your guess, your range if you set one, and the answer">
+      <div class="axis"></div>
+      ${band}
+      ${ticks}
+      <div class="stem y" style="left:${py}%"></div>
+      <div class="stem t" style="left:${pt}%"></div>
+      <div class="dot y" style="left:${py}%"></div>
+      <div class="dot t" style="left:${pt}%"></div>
+      <div class="mk y" style="left:${clampL(py)}%">You</div>
+      <div class="mk t" style="left:${clampL(pt)}%">Answer</div>
+    </div>`;
+}
+
+function renderResult(item, guess, e, tier, pts, cleared, range) {
+  const last = state.i === state.deck.length - 1;
+  const hintNote = state.hint ? " (hint used, 25% off)" : "";
+  let clearNote = "";
+  const rangeNote = range ? rangeNoteHtml(range) : "";
+  if (cleared) clearNote = `<div class="cleared" id="clearedNote">Cleared. You will not see this one again.</div><button type="button" class="linkbtn" id="keepBtn" style="display:block;margin:-6px 0 14px">I guessed. Keep it in my deck.</button>`;
+  else if (e <= CLEAR_ERR && state.hint) clearNote = `<div class="pts" style="margin-top:-8px">Close enough, but a hint was used. It stays in the deck.</div>`;
+  app.innerHTML = `
+    ${topbar()}
+    <div class="card">
+      <div class="verdict display ${tier.cls}">${tier.label}</div>
+      <div class="pts">+${pts} points${hintNote}</div>
+      ${clearNote}
+      ${numberLine(guess, item.a, range)}
+      <div class="kv">
+        <span class="k">Your estimate</span><span class="v y">${fmt(guess)}</span>
+        <span class="k">${item.lo ? "Plausible range" : "Reference answer"}</span><span class="v t">${item.lo ? fmt(item.lo) + " to " + fmt(item.hi) : fmt(item.a)}</span>
+        ${item.lo ? '<span class="k">Worked example lands at</span><span class="v">' + fmt(item.a) + '</span>' : ''}
+        <span class="k">Miss</span><span class="v">${item.lo ? (e === 0 ? "inside the range" : ratioText(guess, guess > item.hi ? item.hi : item.lo) + " than the range") : ratioText(guess, item.a)}</span>
+        ${range ? '<span class="k">Your 80% range</span><span class="v y">' + fmt(range.lo) + ' to ' + fmt(range.hi) + '</span><span class="k">Range result</span><span class="v ' + (range.hit ? 'good' : 'bad') + '">' + rangeResultText(range, item.a) + '</span>' : ''}
+      </div>
+      ${rangeNote}
+      <div class="why">${item.lo ? '<b>One reasonable chain of reasoning</b><ol class="steps">' + item.steps.map(t => '<li>' + t + '</li>').join('') + '</ol>' : ''}${item.why}${srcHtml(item)}<small>${item.lo ? 'This is a scenario, not a measured fact. Inputs marked as assumptions are for the exercise, and the range reflects reasonable variation in them.' : 'Figures are rounded and publishers revise them. Open the sources to check the exact number.'}</small></div>
+      <div class="row"><button id="next" type="button" class="primary">${last ? "See results" : "Next question"}</button></div>
+    </div>`;
+  const nb = document.getElementById("next");
+  nb.focus({ preventScroll: true });
+  nb.addEventListener("click", () => {
+    if (last) renderEnd(); else { state.i++; renderQuestion(); }
+  });
+  const kb = document.getElementById("keepBtn");
+  if (kb) kb.addEventListener("click", () => {
+    const r = state.results[state.results.length - 1];
+    const note = document.getElementById("clearedNote");
+    if (r.cleared) {
+      mastered.delete(item.id); saveMastered(); state.cleared--; r.cleared = false;
+      note.textContent = "Kept in your deck. You will see it again.";
+      note.style.color = "var(--muted)"; note.style.borderColor = "var(--muted)";
+      kb.textContent = "Clear it after all";
+    } else {
+      mastered.add(item.id); saveMastered(); state.cleared++; r.cleared = true;
+      note.textContent = "Cleared. You will not see this one again.";
+      note.style.color = ""; note.style.borderColor = "";
+      kb.textContent = "I guessed. Keep it in my deck.";
+    }
+  });
+}
+
+function renderEnd() {
+  const n = state.results.length;
+  const maxPts = n * 100;
+  const avgPts = state.total / n;
+  const avgErr = state.results.reduce((s, r) => s + r.err, 0) / n;
+  const bias = state.results.reduce((s, r) => s + r.signed, 0) / n;
+  const best = getBest();
+  const newBest = avgPts > best;
+  if (newBest) setBest(avgPts);
+  const within2 = state.results.filter(r => r.err <= CLEAR_ERR).length;
+  const left = pool(cat).length;
+
+  let rank;
+  if (avgPts >= 80) rank = "Fermi-grade";
+  else if (avgPts >= 60) rank = "Reliable estimator";
+  else if (avgPts >= 40) rank = "Getting calibrated";
+  else if (avgPts >= 20) rank = "Needs more reps";
+  else rank = "Warm-up round";
+
+  const rr = state.results.filter(r => r.range);
+  const rangeLine = rr.length ? `<p style="margin:0 0 6px">Ranges: you hit ${rr.filter(r => r.range.hit).length} of ${rr.length}. The target is about 8 in 10.</p>` : "";
+  let biasText;
+  if (Math.abs(bias) < 0.1) biasText = "No clear lean. Your misses balance out.";
+  else {
+    const f = Math.pow(10, Math.abs(bias));
+    biasText = `You run ${bias > 0 ? "high" : "low"} by about ${f.toFixed(1)}x on average. Adjust your gut accordingly.`;
+  }
+
+  app.innerHTML = `
+    <div class="card">
+      <div class="pts" style="margin:0">${rank}</div>
+      <div class="big display">${state.total}<span style="font-size:22px;color:var(--muted);font-weight:600"> / ${maxPts}</span></div>
+      ${newBest ? '<p class="good" style="margin:8px 0 0;font-weight:700">New best average.</p>' : ""}
+      <div class="stats">
+        <div class="stat"><b>${state.cleared} cleared</b><span>${left} left in ${cat === "All" ? "all topics" : cat}</span></div>
+        <div class="stat"><b>${Math.pow(10, avgErr).toFixed(1)}x</b><span>typical miss</span></div>
+      </div>
+      <p style="margin:0 0 6px">${biasText}</p>
+      ${rangeLine}
+      <ul class="hist">
+        ${state.results.map(r => `<li><span>${r.q}</span><b class="${r.pts >= 70 ? "good" : r.pts >= 20 ? "mid" : "bad"}">${r.pts}${r.cleared ? " cleared" : ""}</b></li>`).join("")}
+      </ul>
+      <div class="row" style="margin-top:18px">
+        <button id="again" type="button" class="primary">${left ? "Next round" : "Back to topics"}</button>
+        <button id="home" type="button">Change topic</button>
+      </div>
+    </div>`;
+  document.getElementById("again").addEventListener("click", () => {
+    if (left) start(Math.min(n, left)); else renderIntro();
+  });
+  document.getElementById("home").addEventListener("click", renderIntro);
+}
+
+/* ---------- Shared input helpers ---------- */
+let activeNum = null;
+let onNumInput = function () {};
+let onEnter = function () {};
+let confirmStats = false;
+let drows = [];
+
+function isTouch() { return !!(window.matchMedia && window.matchMedia("(pointer: coarse)").matches); }
+function IM() { return isTouch() ? "none" : "text"; }
+function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;"); }
+function spanText(r) { return (r < 10 ? r.toFixed(1) : Math.round(r).toLocaleString("en-US")) + "x"; }
+function keypadHtml() {
+  return '<div class="keypad" id="keypad">' + KEYS.map(k => '<button type="button" class="key ' + k[1] + '" data-k="' + k[0] + '" aria-label="' + k[0] + '">' + k[0] + '</button>').join("") + '</div>';
+}
+function kbToggleHtml() { return isTouch() ? '<button type="button" class="kbtoggle" id="kbt">Use my device keyboard instead</button>' : ""; }
+function livePreview(raw0, preview, unit) {
+  const raw = raw0.trim();
+  if (!raw) { preview.className = "preview muted"; preview.textContent = "Your answer shows here as you type"; return; }
+  const v = evalExpr(raw);
+  if (isFinite(v) && v > 0) { preview.className = "preview"; preview.innerHTML = "= " + fmtFull(v) + ' <span class="u">' + unit + "</span>"; }
+  else if (isFinite(v)) { preview.className = "preview muted"; preview.textContent = "Needs to be above zero"; }
+  else {
+    const t = raw.replace(/[+\-*\/^\u00d7\u00f7\u2212x(\s]+$/i, "");
+    const w = t ? evalExpr(t) : NaN;
+    preview.className = "preview muted";
+    preview.textContent = (isFinite(w) && w > 0) ? "So far: " + fmtFull(w) : "Keep typing";
+  }
+}
+function wireKeypad() {
+  const kp = document.getElementById("keypad");
+  kp.addEventListener("mousedown", e => e.preventDefault());
+  kp.querySelectorAll(".key").forEach(b => b.addEventListener("click", () => {
+    const input = (activeNum && document.body.contains(activeNum)) ? activeNum : document.querySelector(".numin");
+    if (!input) return;
+    activeNum = input;
+    const k = b.dataset.k;
+    const st = input.selectionStart == null ? input.value.length : input.selectionStart;
+    const en = input.selectionEnd == null ? input.value.length : input.selectionEnd;
+    if (k === "C") { input.value = ""; }
+    else if (k === "\u232b") {
+      if (st !== en) { input.setRangeText("", st, en, "end"); }
+      else if (st > 0) { input.setRangeText("", st - 1, st, "end"); }
+    } else {
+      const ins = k === "M" ? "m" : k === "B" ? "b" : k;
+      input.setRangeText(ins, st, en, "end");
+    }
+    onNumInput(input);
+  }));
+}
+function wireKbToggle() {
+  const kbt = document.getElementById("kbt");
+  if (!kbt) return;
+  kbt.addEventListener("click", () => {
+    const els = Array.from(document.querySelectorAll(".numin"));
+    if (!els.length) return;
+    const on = els[0].getAttribute("inputmode") === "none";
+    const keepId = (activeNum && document.body.contains(activeNum)) ? activeNum.id : els[0].id;
+    /* Swap in fresh inputs so the phone re-reads inputmode and opens the right keyboard */
+    els.forEach(el => {
+      const fresh = el.cloneNode(false);
+      fresh.value = el.value;
+      fresh.setAttribute("inputmode", on ? "text" : "none");
+      el.replaceWith(fresh);
+    });
+    activeNum = document.getElementById(keepId);
+    kbt.textContent = on ? "Use the built-in keypad only" : "Use my device keyboard instead";
+    activeNum.focus();
+    try { const l = activeNum.value.length; activeNum.setSelectionRange(l, l); } catch (e) {}
+  });
+}
+app.addEventListener("focusin", e => { if (e.target.classList && e.target.classList.contains("numin")) activeNum = e.target; });
+app.addEventListener("input", e => { if (e.target.classList && e.target.classList.contains("numin")) onNumInput(e.target); });
+app.addEventListener("keydown", e => { if (e.key === "Enter" && e.target.classList && e.target.classList.contains("numin")) onEnter(); });
+
+/* ---------- Range feedback ---------- */
+function rangeResultText(r, a) {
+  if (r.hit) return "Hit, " + spanText(r.hi / r.lo) + " wide";
+  const f = a > r.hi ? a / r.hi : r.lo / a;
+  return "Missed, answer " + (f < 10 ? f.toFixed(1) : Math.round(f).toLocaleString("en-US")) + "x " + (a > r.hi ? "above" : "below") + " your range";
+}
+function rangeNoteHtml(r) {
+  const span = r.hi / r.lo;
+  let t = "";
+  if (!r.hit && span < 3) t = "A narrow range that missed is the classic overconfidence pattern. Widen your next one.";
+  else if (r.hit && span >= 100) t = "That range spans 100x or more. It is easy to hit and says very little. Try tightening it.";
+  else if (!r.hit) t = "Missed. A few misses are healthy: you want to hit about 8 in 10, not all of them.";
+  return t ? '<p class="note" style="margin:-4px 0 12px">' + t + "</p>" : "";
+}
+
+/* ---------- Stats ---------- */
+function renderStats() {
+  const rs = log.filter(x => x.h === 0 || x.h === 1);
+  const n = rs.length, hits = rs.filter(x => x.h === 1).length;
+  let cal;
+  if (n === 0) {
+    cal = '<p class="note" style="margin-top:6px">No ranges yet. On any fact question, fill in an 80% range before you lock in. After 10 you get a reading.</p>';
+  } else {
+    const rate = hits / n;
+    let verdict, cls;
+    if (n < 10) { verdict = "Log " + (10 - n) + " more " + (10 - n === 1 ? "range" : "ranges") + " for a reliable reading."; cls = "mid"; }
+    else if (rate < 0.65) { verdict = "Overconfident. Your ranges are too tight. Widen them until you hit about 8 in 10."; cls = "bad"; }
+    else if (rate > 0.92) { verdict = "Too cautious. Your ranges are wider than they need to be. Tighten them."; cls = "mid"; }
+    else { verdict = "Well calibrated. Keep your ranges honest."; cls = "good"; }
+    const widths = rs.filter(x => isFinite(x.w));
+    const avgW = widths.length ? Math.pow(10, widths.reduce((s, x) => s + x.w, 0) / widths.length) : null;
+    const blocks = [];
+    for (let i = 0; i + 10 <= n; i += 10) blocks.push(rs.slice(i, i + 10).filter(x => x.h === 1).length / 10);
+    const shown = blocks.slice(-8);
+    const trend = shown.length ? `<div class="trend" role="img" aria-label="Hit rate for each block of 10 ranges, with the 80 percent target line"><div class="tgt"><span>80% target</span></div>${shown.map(r => `<i title="${Math.round(r * 100)}%" style="height:${Math.max(2, Math.round(r * 100))}%;background:${r >= 0.7 && r <= 0.9 ? "var(--good)" : "var(--mid)"}"></i>`).join("")}</div><p class="note" style="margin:0 0 8px">Each bar is a block of 10 ranges, oldest on the left.</p>` : "";
+    cal = `
+      <div class="stats">
+        <div class="stat"><b>${Math.round(rate * 100)}%</b><span>hit rate, ${hits} of ${n}</span></div>
+        <div class="stat"><b>${avgW ? spanText(avgW) : "n/a"}</b><span>typical range width</span></div>
+      </div>
+      <p class="${cls}" style="margin:0 0 4px;font-weight:700">${verdict}</p>
+      ${trend}`;
+  }
+  const rows = CATS.filter(c => c !== "All").map(c => {
+    const L = log.filter(x => x.c === c);
+    if (L.length < 3) return { c: c, n: L.length };
+    return { c: c, n: L.length, s: L.reduce((a, x) => a + x.s, 0) / L.length, e: L.reduce((a, x) => a + x.e, 0) / L.length };
+  });
+  const biasHtml = rows.map(r => {
+    if (r.s === undefined) return `<div class="brow"><div class="top"><span>${r.c} <small>${r.n} answered</small></span><small>needs ${3 - r.n} more</small></div></div>`;
+    const flat = Math.abs(r.s) < 0.1;
+    const pct = Math.min(50, Math.abs(r.s) * 50);
+    const txt = flat ? "balanced" : (r.s > 0 ? "runs high " : "runs low ") + Math.pow(10, Math.abs(r.s)).toFixed(1) + "x";
+    const bar = flat ? "" : `<i style="left:${r.s >= 0 ? 50 : 50 - pct}%;width:${pct}%;background:${r.s > 0 ? "var(--truth)" : "var(--you)"}"></i>`;
+    return `<div class="brow"><div class="top"><span>${r.c} <small>${r.n} answered</small></span><b>${txt}</b></div><div class="bias" role="img" aria-label="${r.c}: ${txt}"><div class="mid"></div>${bar}</div><small>typical miss ${Math.pow(10, r.e).toFixed(1)}x</small></div>`;
+  }).join("");
+  const dec = decomp.n ? `<p style="margin:6px 0 0">Building from pieces beat your gut on <b>${decomp.better} of ${decomp.n}</b> questions (${Math.round(decomp.better / decomp.n * 100)}%).</p>` : '<p class="note" style="margin-top:6px">No decompose rounds yet. Start one from the home screen.</p>';
+  const masteryHtml = CATS.filter(c => c !== "All").map(c => {
+    const p = catProgress(c), L = log.filter(x => x.c === c);
+    const miss = L.length >= 3 ? "typical miss " + Math.pow(10, L.reduce((a, x) => a + x.e, 0) / L.length).toFixed(1) + "x" : "typical miss needs " + (3 - L.length) + " more answers";
+    const flag = p.touched === 0 ? '<b class="bad">Untouched</b>' : "<b>" + p.cleared + " of " + p.total + " cleared</b>";
+    return `<div class="brow"><div class="top"><span>${c}</span>${flag}</div><div class="prog" role="img" aria-label="${c}: ${p.cleared} of ${p.total} cleared"><i style="width:${Math.round(p.frac * 100)}%"></i></div><small>${miss}</small></div>`;
+  }).join("");
+  const fl = flawStats.n ? `<p style="margin:6px 0 0">You spotted the flawed input in <b>${flawStats.found} of ${flawStats.n}</b> (${Math.round(flawStats.found / flawStats.n * 100)}%).</p>` + Object.keys(flawStats.types).map(k => `<div class="brow"><div class="top"><span>${k}</span><b>${flawStats.types[k].found} of ${flawStats.types[k].n}</b></div></div>`).join("") : '<p class="note" style="margin-top:6px">No Find the flaw rounds yet. Start one from the home screen.</p>';
+  const any = log.length || decomp.n || flawStats.n;
+  app.innerHTML = `
+    <div class="card">
+      <h2 class="display" style="font-size:26px;font-weight:800;margin-bottom:2px">Your stats</h2>
+      <p class="note" style="margin-top:0">Saved on this device and browser only. Calibration covers fact questions only.</p>
+      <h3 class="sec display">Topic mastery</h3>
+      <p class="note" style="margin:0 0 4px">Cleared questions per topic.</p>
+      ${masteryHtml}
+      <h3 class="sec display">Calibration</h3>
+      ${cal}
+      <h3 class="sec display">Bias by topic</h3>
+      <p class="note" style="margin:0 0 6px">Runs low means your guesses sit below the truth on average. Bars point left for low, right for high. One full side is 10x.</p>
+      ${biasHtml}
+      <h3 class="sec display">Decompose</h3>
+      ${dec}
+      <h3 class="sec display">Find the flaw</h3>
+      ${fl}
+      ${transferHtml()}
+      <div class="row" style="margin-top:18px"><button id="statsBack" type="button" class="primary">Back</button></div>
+      ${any ? `<button class="linkbtn" id="statsReset">${confirmStats ? "Tap again to erase all stats" : "Reset stats"}</button>` : ""}
+    </div>`;
+  document.getElementById("statsBack").addEventListener("click", () => { xfer = ""; xferMsg = ""; xferConfirm = false; renderIntro(); });
+  wireTransfer();
+  const rb = document.getElementById("statsReset");
+  if (rb) rb.addEventListener("click", () => {
+    if (!confirmStats) { confirmStats = true; renderStats(); return; }
+    log = []; saveLog(); decomp = { n: 0, better: 0 }; saveDecomp(); flawStats = { n: 0, found: 0, types: {}, done: {} }; saveFlaw(); confirmStats = false; renderStats();
+  });
+}
+
+/* ---------- Browse all questions ---------- */
+let browseCat = "All";
+function renderBrowse() {
+  const list = QUESTIONS.filter(q => browseCat === "All" || q.cat === browseCat);
+  const items = list.map(q => {
+    const ans = q.lo
+      ? 'Plausible range: <b>' + fmt(q.lo) + ' to ' + fmt(q.hi) + '</b> ' + q.unit + ' (worked example: ' + fmt(q.a) + ')'
+      : 'Answer: <b>' + fmt(q.a) + '</b> ' + q.unit;
+    const given = q.given ? '<p class="note" style="margin:4px 0"><b>Given:</b> ' + q.given + '</p>' : '';
+    const steps = q.steps ? '<ol class="steps">' + q.steps.map(s => '<li>' + s + '</li>').join('') + '</ol>' : '';
+    return '<details class="bq"><summary>' + q.q + '</summary><p style="margin:8px 0 4px">' + ans + '</p>' + given + steps +
+      '<p class="note" style="margin:4px 0"><b>Hint:</b> ' + q.hint + '</p><div class="why" style="border-top:none;padding-top:0;margin-top:4px">' + q.why + srcHtml(q) + '</div></details>';
+  }).join("");
+  app.innerHTML = `
+    <div class="card">
+      <h2 class="display" style="font-size:26px;font-weight:800;margin-bottom:2px">All questions</h2>
+      <p class="note" style="margin-top:0">${list.length} ${browseCat === "All" ? "questions" : "in " + browseCat}. Tap a question to see the answer, hint and sources. Spoilers ahead if you plan to play.</p>
+      <div class="chips" role="group" aria-label="Topic">
+        ${CATS.map(c => `<button class="chip" data-bcat="${c}" aria-pressed="${c === browseCat}">${c} <small>${c === "All" ? QUESTIONS.length : QUESTIONS.filter(q => q.cat === c).length}</small></button>`).join("")}
+      </div>
+      <div class="row"><button type="button" id="bOpen">Open all</button><button type="button" id="bClose">Close all</button></div>
+      <div style="margin-top:12px">${items}</div>
+      <div class="row" style="margin-top:18px"><button id="bBack" type="button" class="primary">Back</button></div>
+    </div>`;
+  app.querySelectorAll("[data-bcat]").forEach(b => b.addEventListener("click", () => { browseCat = b.dataset.bcat; renderBrowse(); }));
+  document.getElementById("bOpen").addEventListener("click", () => app.querySelectorAll("details.bq").forEach(d => { d.open = true; }));
+  document.getElementById("bClose").addEventListener("click", () => app.querySelectorAll("details.bq").forEach(d => { d.open = false; }));
+  document.getElementById("bBack").addEventListener("click", renderIntro);
+}
+
+/* ---------- Decompose mode ---------- */
+function startDecomp() {
+  const p = shuffle(pool(cat).filter(q => q.split)).slice(0, 5);
+  if (!p.length) return;
+  state = { mode: "decomp", deck: p, i: 0, total: 0, results: [], phase: "gut", hint: false, cleared: 0, better: 0, gut: null };
+  renderGut();
+}
+
+function renderGut() {
+  const item = state.deck[state.i];
+  state.phase = "gut";
+  app.innerHTML = `
+    ${topbar()}
+    <div class="card">
+      <div class="pts" style="margin:0 0 4px">Step 1 of 2: gut check</div>
+      <div class="q display">${item.q}</div>
+      <div class="unit">Answer in ${item.unit}</div>
+      <label class="lab" for="g">Your gut estimate, before any math</label>
+      <input class="numin" id="g" type="text" inputmode="${IM()}" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="e.g. 5 million">
+      <div class="preview" id="preview" aria-live="polite"></div>
+      <div class="err" id="err" role="alert"></div>
+      <div class="row"><button id="go" type="button" class="primary">Lock in gut, then build it</button></div>
+      ${keypadHtml()}
+      ${kbToggleHtml()}
+    </div>`;
+  const preview = document.getElementById("preview");
+  const err = document.getElementById("err");
+  onNumInput = () => { err.textContent = ""; livePreview(document.getElementById("g").value, preview, item.unit); };
+  function lock() {
+    const v = evalExpr(document.getElementById("g").value);
+    if (!isFinite(v) || v <= 0) { err.textContent = "Enter a positive number first."; return; }
+    state.gut = v;
+    drows = item.split.map(p => ({ l: p[0], op: p[1], v: "", ref: p[2], pct: /share/i.test(p[0]) }));
+    activeNum = null;
+    renderBuild();
+  }
+  onEnter = lock;
+  activeNum = document.getElementById("g");
+  wireKeypad();
+  wireKbToggle();
+  document.getElementById("go").addEventListener("click", lock);
+  activeNum.focus({ preventScroll: true });
+  onNumInput();
+}
+
+function syncRows() {
+  drows.forEach((r, i) => {
+    const v = document.getElementById("v" + i);
+    if (v) r.v = v.value;
+  });
+}
+function pieceVal(r) {
+  const raw = r.v.trim();
+  const x = evalExpr(raw);
+  return r.pct && raw.indexOf("%") < 0 ? x / 100 : x;
+}
+function pieceFmt(r, x) { return r.pct ? sig(x * 100) + "%" : fmt(x); }
+function calcRows() {
+  let tot = null, ok = true, used = 0;
+  drows.forEach(r => {
+    const raw = r.v.trim();
+    if (!raw) return;
+    const x = pieceVal(r);
+    if (!isFinite(x) || x <= 0 || (r.pct && x > 1)) { ok = false; return; }
+    used++;
+    tot = tot === null ? x : (r.op === "/" ? tot / x : tot * x);
+  });
+  return { tot: tot, ok: ok, used: used };
+}
+
+function renderBuild() {
+  const item = state.deck[state.i];
+  state.phase = "build";
+  const keepId = activeNum && document.body.contains(activeNum) ? activeNum.id : "v0";
+  app.innerHTML = `
+    ${topbar()}
+    <div class="card">
+      <div class="pts" style="margin:0 0 4px">Step 2 of 2: build it</div>
+      <div class="q display" style="font-size:20px">${item.q}</div>
+      <div class="unit">Your gut said <b>${fmt(state.gut)}</b>. Here is one way to split it. Estimate each piece on its own, then the pieces are combined for you.</div>
+      ${drows.map((r, i) => `
+        <div class="drow">
+          <span class="opfix">${i === 0 ? "start" : (r.op === "*" ? "\u00d7" : "\u00f7")}</span>
+          <div class="dfields">
+            <label class="lab" for="v${i}" style="margin:0">${esc(r.l)}${r.pct ? " (in percent)" : ""}</label>
+            <input class="numin sm" id="v${i}" type="text" inputmode="${IM()}" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="${r.pct ? "e.g. 25 for 25%" : "your estimate"}" value="${esc(r.v)}">
+          </div>
+        </div>`).join("")}
+      <div class="preview" id="preview" aria-live="polite"></div>
+      <div class="err" id="err" role="alert"></div>
+      <div class="row"><button id="go" type="button" class="primary">Compare with the answer</button></div>
+      ${keypadHtml()}
+      ${kbToggleHtml()}
+    </div>`;
+  const preview = document.getElementById("preview");
+  const err = document.getElementById("err");
+  function refresh() {
+    syncRows();
+    err.textContent = "";
+    const c = calcRows();
+    if (c.used === 0) { preview.className = "preview muted"; preview.textContent = "Your running total shows here"; return; }
+    preview.className = "preview" + (c.ok ? "" : " muted");
+    preview.innerHTML = c.ok ? "= " + fmtFull(c.tot) + ' <span class="u">' + item.unit + "</span>" : "Running total " + fmtFull(c.tot) + ", one piece is not a number yet";
+  }
+  onNumInput = refresh;
+  onEnter = () => {
+    const els = Array.from(document.querySelectorAll(".numin"));
+    const idx = els.indexOf(activeNum);
+    if (idx >= 0 && idx < els.length - 1) els[idx + 1].focus(); else compare();
+  };
+  function compare() {
+    syncRows();
+    const c = calcRows();
+    if (drows.some(r => !r.v.trim())) { err.textContent = "Estimate every piece, even a rough one."; return; }
+    if (!c.ok) { err.textContent = "One of your pieces is not a positive number. Shares go from 0 to 100 percent."; return; }
+    renderDecompResult(c.tot);
+  }
+  document.getElementById("go").addEventListener("click", compare);
+  wireKeypad();
+  wireKbToggle();
+  activeNum = document.getElementById(keepId) || document.getElementById("v0");
+  activeNum.focus({ preventScroll: true });
+  refresh();
+}
+
+function renderDecompResult(built) {
+  const item = state.deck[state.i], gut = state.gut;
+  const eg = Math.abs(Math.log10(gut / item.a)), eb = Math.abs(Math.log10(built / item.a));
+  const better = eb < eg - 0.05, worse = eg < eb - 0.05;
+  decomp.n++; if (better) decomp.better++; saveDecomp();
+  if (better) state.better++;
+  state.results.push({ q: item.q, eg: eg, eb: eb, res: better ? "Built won" : worse ? "Gut won" : "Tie", better: better });
+  state.phase = "result";
+  const last = state.i === state.deck.length - 1;
+  const verdict = better ? ["Building it beat your gut", "good"] : worse ? ["Your gut beat your build", "mid"] : ["Gut and build tied", "mid"];
+  const msg = better
+    ? "Splitting the question shrank your error. That is the habit to keep."
+    : worse
+      ? "Splitting did not help this time. The piece below that is furthest off is where the error came from."
+      : "Both landed about the same distance away.";
+  const w = e => Math.max(2, Math.min(100, (e / 1.5) * 100));
+  const pe = drows.map(r => { const y = pieceVal(r); return { r: r, y: y, e: Math.abs(Math.log10(y / r.ref)) }; });
+  const worst = pe.reduce((a, b) => (b.e > a.e ? b : a), pe[0]);
+  const stepsHtml = pe.map(p => "<li>" + esc(p.r.l) + ": you said <b>" + pieceFmt(p.r, p.y) + "</b>, reference <b>" + pieceFmt(p.r, p.r.ref) + "</b> (" + ratioText(p.y, p.r.ref) + ")" + (p === worst && p.e >= 0.1 ? " <b>\u2190 biggest miss</b>" : "") + "</li>").join("");
+  app.innerHTML = `
+    ${topbar()}
+    <div class="card">
+      <div class="verdict display ${verdict[1]}">${verdict[0]}</div>
+      <div class="pts">${msg}</div>
+      <div class="cmp">
+        <div class="cmprow"><span>Gut</span><div class="cbar"><i style="width:${w(eg)}%;background:var(--muted)"></i></div><b>${ratioText(gut, item.a)}</b></div>
+        <div class="cmprow"><span>Built</span><div class="cbar"><i style="width:${w(eb)}%;background:var(--you)"></i></div><b>${ratioText(built, item.a)}</b></div>
+      </div>
+      <div class="kv">
+        <span class="k">Your gut</span><span class="v">${fmt(gut)}</span>
+        <span class="k">Your build</span><span class="v y">${fmt(built)}</span>
+        <span class="k">Reference answer</span><span class="v t">${fmt(item.a)}</span>
+      </div>
+      <div class="why"><b>Your pieces against the references</b><ol class="steps">${stepsHtml}</ol>
+        ${item.why}${srcHtml(item)}<small>Figures are rounded and publishers revise them. Open the sources to check the exact number.</small></div>
+      <div class="row"><button id="next" type="button" class="primary">${last ? "See results" : "Next question"}</button></div>
+    </div>`;
+  const nb = document.getElementById("next");
+  nb.focus({ preventScroll: true });
+  nb.addEventListener("click", () => {
+    if (last) renderDecompEnd(); else { state.i++; state.gut = null; renderGut(); }
+  });
+}
+
+function renderDecompEnd() {
+  const n = state.results.length;
+  const avg = k => Math.pow(10, state.results.reduce((s, r) => s + r[k], 0) / n);
+  app.innerHTML = `
+    <div class="card">
+      <div class="pts" style="margin:0">Decompose round done</div>
+      <div class="big display">${state.better}<span style="font-size:22px;color:var(--muted);font-weight:600"> / ${n}</span></div>
+      <p style="margin:8px 0 0">Building from pieces beat your gut on ${state.better} of ${n} questions.</p>
+      <div class="stats">
+        <div class="stat"><b>${avg("eg").toFixed(1)}x</b><span>typical gut miss</span></div>
+        <div class="stat"><b>${avg("eb").toFixed(1)}x</b><span>typical built miss</span></div>
+      </div>
+      <ul class="hist">
+        ${state.results.map(r => `<li><span>${r.q}</span><b class="${r.better ? "good" : "mid"}">${r.res}</b></li>`).join("")}
+      </ul>
+      <div class="row" style="margin-top:18px">
+        <button id="again" type="button" class="primary">Another round</button>
+        <button id="home" type="button">Change topic</button>
+      </div>
+    </div>`;
+  document.getElementById("again").addEventListener("click", () => { if (pool(cat).filter(q => q.split).length) startDecomp(); else renderIntro(); });
+  document.getElementById("home").addEventListener("click", renderIntro);
+}
+
+/* ---------- Topic mastery ---------- */
+function catProgress(c) {
+  const all = QUESTIONS.filter(q => q.cat === c);
+  const cleared = all.filter(q => mastered.has(q.id)).length;
+  const touched = all.filter(q => seen[q.id] || mastered.has(q.id)).length;
+  return { c: c, total: all.length, cleared: cleared, touched: touched, frac: all.length ? cleared / all.length : 1 };
+}
+/* ---------- Progress transfer ---------- */
+let xfer = "", xferText = "", xferMsg = "", xferConfirm = false;
+function packProgress() {
+  const ci = CATS.slice(1);
+  return { v: 1, m: Array.from(mastered), s: Object.keys(seen).filter(k => seen[k]), b: getBest(),
+    l: log.slice(-300).map(x => [ci.indexOf(x.c), x.s, x.e, x.h, x.w]), d: decomp, f: flawStats };
+}
+function exportCode() { return "BOTEC1:" + btoa(JSON.stringify(packProgress())); }
+function parseCode(txt) {
+  const t = String(txt || "").replace(/\s+/g, "");
+  if (t.indexOf("BOTEC1:") !== 0) return null;
+  let p;
+  try { p = JSON.parse(atob(t.slice(7))); } catch (e) { return null; }
+  if (!p || p.v !== 1 || !Array.isArray(p.m) || !Array.isArray(p.s) || !Array.isArray(p.l)) return null;
+  const ci = CATS.slice(1);
+  const L = [];
+  for (let i = 0; i < p.l.length; i++) {
+    const r = p.l[i];
+    if (!Array.isArray(r) || r.length < 5 || !ci[r[0]] || !isFinite(r[1]) || !isFinite(r[2])) return null;
+    L.push({ c: ci[r[0]], s: r[1], e: r[2], h: (r[3] === 0 || r[3] === 1) ? r[3] : null, w: isFinite(r[4]) && r[4] !== null ? r[4] : null });
+  }
+  return { m: p.m.filter(x => typeof x === "string"), s: p.s.filter(x => typeof x === "string"), b: isFinite(p.b) ? p.b : 0, l: L, d: p.d, f: p.f };
+}
+function applyCode(p) {
+  mastered = new Set(p.m); saveMastered();
+  seen = {}; p.s.forEach(k => { seen[k] = true; }); saveSeen();
+  setBest(p.b);
+  log = p.l; saveLog();
+  if (p.d && isFinite(p.d.n) && isFinite(p.d.better)) { decomp = { n: p.d.n, better: p.d.better }; saveDecomp(); }
+  if (p.f && isFinite(p.f.n) && isFinite(p.f.found) && p.f.types && p.f.done) { flawStats = { n: p.f.n, found: p.f.found, types: p.f.types, done: p.f.done }; saveFlaw(); }
+}
+function transferHtml() {
+  let body = "";
+  if (xfer === "out") body = `<textarea class="codebox" id="xText" readonly aria-label="Your progress code">${exportCode()}</textarea><div class="row"><button type="button" id="xCopy">Copy code</button></div><p class="note" id="xMsg" style="margin:6px 0 0">${xferMsg}</p>`;
+  if (xfer === "in") body = `<textarea class="codebox" id="xText" placeholder="Paste your code here" aria-label="Paste a progress code">${esc(xferText)}</textarea><div class="row"><button type="button" id="xGo">${xferConfirm ? "Tap again to replace progress on this device" : "Import"}</button></div><p class="note" id="xMsg" style="margin:6px 0 0">${xferMsg}</p>`;
+  return `<h3 class="sec display">Move progress to another device</h3>
+    <p class="note" style="margin:0 0 6px">Your progress lives in this browser only. Make a code here, then paste it into the game on your other device. Importing replaces what is saved there.</p>
+    <div class="row"><button type="button" id="xOut">Make my code</button><button type="button" id="xIn">Import a code</button></div>${body}`;
+}
+function wireTransfer() {
+  const out = document.getElementById("xOut"), inn = document.getElementById("xIn");
+  if (!out) return;
+  out.addEventListener("click", () => { xfer = "out"; xferMsg = ""; xferConfirm = false; renderStats(); const xt = document.getElementById("xText"); if (xt && xt.scrollIntoView) xt.scrollIntoView({ block: "center" }); });
+  inn.addEventListener("click", () => { xfer = "in"; xferMsg = ""; xferConfirm = false; xferText = ""; renderStats(); const xt = document.getElementById("xText"); if (xt && xt.scrollIntoView) xt.scrollIntoView({ block: "center" }); });
+  const cp = document.getElementById("xCopy");
+  if (cp) cp.addEventListener("click", () => {
+    const ta = document.getElementById("xText"), msg = document.getElementById("xMsg");
+    const ok = () => { msg.textContent = "Copied."; };
+    const fb = () => { ta.focus(); ta.select(); try { document.execCommand("copy"); ok(); } catch (e) { msg.textContent = "Select the text and copy it by hand."; } };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(ta.value).then(ok, fb); else fb();
+  });
+  const go = document.getElementById("xGo");
+  if (go) go.addEventListener("click", () => {
+    const ta = document.getElementById("xText");
+    xferText = ta.value;
+    const p = parseCode(xferText);
+    if (!p) { xferMsg = "That code did not work. Copy the whole thing, starting with BOTEC1:"; xferConfirm = false; renderStats(); return; }
+    if (!xferConfirm) { xferConfirm = true; xferMsg = p.m.length + " cleared questions and " + p.l.length + " logged answers found."; renderStats(); return; }
+    applyCode(p); xferConfirm = false; xferText = ""; xfer = ""; xferMsg = ""; renderStats();
+  });
+}
+
+/* ---------- Find the flaw ---------- */
+let flawStats = { n: 0, found: 0, types: {}, done: {} };
+try { const f = JSON.parse(localStorage.getItem("botec-flaw") || "null"); if (f && isFinite(f.n) && isFinite(f.found) && f.types && f.done) flawStats = f; } catch (e) {}
+function saveFlaw() { try { localStorage.setItem("botec-flaw", JSON.stringify(flawStats)); } catch (e) {} }
+function S(key) { const q = QUESTIONS.find(x => x.q.indexOf(key) >= 0); if (!q) console.warn("flaw source key missing", key); return q ? q.src : []; }
+const FLAWS = [
+  { id: "f-cash", cat: "Development", type: "Swapped statistic", kind: "usd",
+    title: "Cash for everyone in extreme poverty",
+    claim: "Giving one standard GiveDirectly transfer to every household in extreme poverty would cost about this much.",
+    inputs: [
+      { l: "People living in extreme poverty", v: 2.2e9, d: "2.2 billion" },
+      { l: "People per household (assumption)", v: 5, d: "5" },
+      { l: "Standard cash transfer per household", v: 1000, d: "$1,000" }],
+    flaw: 0, fixV: 8e8, fixD: "about 800 million", calc: v => v[0] / v[1] * v[2],
+    why: "2.2 billion is the number of people without safely managed drinking water. The World Bank counts roughly 800 million people below $3 a day. Even corrected, the bill is around $160 billion, most of a year of all rich-country aid.",
+    src: S("$3 a day").concat(S("safely managed drinking water"), S("standard GiveDirectly")) },
+  { id: "f-power", cat: "Climate & energy", type: "Swapped statistic", kind: "pct",
+    title: "Powering the grid gap",
+    claim: "Giving everyone who lacks electricity 1,000 kWh a year would take this share of today's world electricity generation.",
+    inputs: [
+      { l: "World electricity generation per year", v: 30000, d: "30,000 TWh" },
+      { l: "People without electricity", v: 2.1e9, d: "2.1 billion" },
+      { l: "Electricity per person per year (assumption)", v: 1000, d: "1,000 kWh" }],
+    flaw: 1, fixV: 685e6, fixD: "about 685 million", calc: v => v[1] * v[2] / 1e9 / v[0] * 100,
+    why: "About 2.1 billion is the number of people who cook with wood, charcoal, dung or kerosene. The World Bank counted about 685 million without electricity in 2022. The corrected share is small: about 2 percent of today's generation.",
+    src: S("no access to electricity").concat(S("cook with wood"), S("electricity does the world generate")) },
+  { id: "f-school", cat: "Education", type: "Swapped statistic", kind: "pct",
+    title: "Putting every child in school",
+    claim: "Paying $400 a year for every out-of-school child would cost this share of one year of rich-country aid.",
+    inputs: [
+      { l: "Children and youth out of school", v: 754e6, d: "754 million" },
+      { l: "Cost per child per year (assumption)", v: 400, d: "$400" },
+      { l: "Rich-country aid in 2024", v: 212e9, d: "$212 billion" }],
+    flaw: 0, fixV: 272e6, fixD: "about 272 million", calc: v => v[0] * v[1] / v[2] * 100,
+    why: "754 million is the number of adults who cannot read or write a simple sentence. UNESCO counts about 272 million children and youth out of school. The claim goes from more than all aid to about half of it.",
+    src: S("out of school").concat(S("read or write a simple sentence"), S("official development assistance")) },
+  { id: "f-bride", cat: "Development", type: "Stock instead of flow", kind: "pct",
+    title: "Ending child marriage",
+    claim: "A $200-per-girl program that reaches every girl at risk each year would cost this share of one year of rich-country aid.",
+    inputs: [
+      { l: "Rich-country aid in 2024", v: 212e9, d: "$212 billion" },
+      { l: "Cost per girl (assumption)", v: 200, d: "$200" },
+      { l: "Girls to reach each year", v: 640e6, d: "640 million" }],
+    flaw: 2, fixV: 12e6, fixD: "about 12 million", calc: v => v[2] * v[1] / v[0] * 100,
+    why: "640 million is the stock: every woman alive today who was married as a child. The flow is about 12 million girls a year. A yearly program targets the flow, so the bill is roughly 50 times smaller: about 1 percent of aid, not 60 percent.",
+    src: S("married before age 18").concat(S("married as children each year"), S("official development assistance")) },
+  { id: "f-jobs", cat: "AI", type: "Wrong group's statistic", kind: "num",
+    title: "AI and jobs in a poor country",
+    claim: "In a low-income country with 10 million workers, this many jobs are exposed to AI and displaced rather than helped.",
+    inputs: [
+      { l: "Workers in the country (hypothetical)", v: 10e6, d: "10 million" },
+      { l: "Share of jobs exposed to AI", v: 0.4, d: "40%" },
+      { l: "Share of exposed jobs displaced (assumption)", v: 0.5, d: "50%" }],
+    flaw: 1, fixV: 0.26, fixD: "26%", calc: v => v[0] * v[1] * v[2],
+    why: "40 percent is the IMF's global figure. For low-income countries it estimates about 26 percent, because more work is farming and manual labour. This flaw changes the answer by only about 1.5x, so it is real but not the biggest thing in the estimate. The displacement share is the shakier input.",
+    src: S("low-income countries is exposed").concat(S("jobs worldwide")) },
+  { id: "f-dc", cat: "AI", type: "Anchor slip", kind: "pct",
+    title: "Data centers by 2030",
+    claim: "The IEA's projected growth in data center demand by 2030 equals this share of today's world electricity generation.",
+    inputs: [
+      { l: "Data center use today", v: 415, d: "415 TWh" },
+      { l: "IEA base case for 2030", v: 945, d: "945 TWh" },
+      { l: "World electricity generation per year", v: 3000, d: "3,000 TWh" }],
+    flaw: 2, fixV: 30000, fixD: "about 30,000 TWh", calc: v => (v[1] - v[0]) / v[2] * 100,
+    why: "World generation is about 30,000 TWh, ten times the figure shown. The growth of 530 TWh is a bit under 2 percent of that, not 18 percent. Keeping an anchor like world electricity in your head is what catches this slip.",
+    src: S("electricity does the world generate").concat(S("in 2030"), S("data centers use in a year")) },
+  { id: "f-remit", cat: "Development", type: "Swapped statistic", kind: "pct",
+    title: "The cost of sending money home",
+    claim: "At a 6 percent average fee, the fees on remittances to low and middle income countries equal this share of rich-country aid.",
+    inputs: [
+      { l: "Average fee (assumption)", v: 0.06, d: "6%" },
+      { l: "Money migrants send home each year", v: 212e9, d: "$212 billion" },
+      { l: "Rich-country aid in 2024", v: 212e9, d: "$212 billion" }],
+    flaw: 1, fixV: 685e9, fixD: "about $685 billion", calc: v => v[1] * v[0] / v[2] * 100,
+    why: "$212 billion is aid, which has been copied into the remittance line. The World Bank put remittances to low and middle income countries near $685 billion in 2024, more than three times aid. Fees alone then come to about a fifth of a year of aid.",
+    src: S("migrants send home").concat(S("official development assistance")) },
+  { id: "f-ida", cat: "Development", type: "Period mismatch", kind: "pct",
+    title: "Does the new package cover the debt bill?",
+    claim: "The World Bank's IDA21 package, per year, compared with what the poorest countries paid in debt service in a single year.",
+    inputs: [
+      { l: "IDA21 total financing", v: 100e9, d: "$100 billion" },
+      { l: "Years the package covers", v: 1, d: "1 year" },
+      { l: "Poorest countries' debt service in 2023", v: 96.2e9, d: "$96.2 billion" }],
+    flaw: 1, fixV: 3, fixD: "3 years", calc: v => v[0] / v[1] / v[2] * 100,
+    why: "IDA21 covers a three-year period (2025 to 2028), while the debt service figure is for one year. Per year the package is about $33 billion, roughly a third of that year's debt payments, not all of it. Always put flows on the same clock.",
+    src: [["Carbon Copy, IDA21 replenishment (three-year period)", "https://carboncopy.info/world-banks-ida21-replenishment-hits-100-billion-but-experts-call-it-insufficient"]].concat(S("IDA21"), S("poorest countries")) },
+  { id: "f-zero", cat: "Health", type: "Swapped statistic", kind: "pct",
+    title: "Reaching the children no vaccine has reached",
+    claim: "Fully vaccinating every child who got no routine vaccine at $50 a child would cost this share of a year of global health aid to low and middle income countries.",
+    inputs: [
+      { l: "Children with zero routine doses", v: 148e6, d: "148 million" },
+      { l: "Cost per child (assumption)", v: 50, d: "$50" },
+      { l: "Health aid to low and middle income countries", v: 50e9, d: "$50 billion" }],
+    flaw: 0, fixV: 14.5e6, fixD: "about 14.5 million", calc: v => v[0] * v[1] / v[2] * 100,
+    why: "148 million is the number of children under 5 who are stunted. The WHO counts about 14.5 million children with zero routine doses in 2023. The cost drops from about 15 percent of health aid to about 1.5 percent.",
+    src: S("zero doses").concat(S("children under 5 are stunted"), S("development assistance for health")) }
+];
+FLAWS.forEach(f => { f.src = f.src.filter((s, i, a) => a.findIndex(t => t[1] === s[1]) === i); });
+const FCH = [[1.25, "Under 1.5x"], [2, "About 2x"], [5, "About 5x"], [10, "About 10x"], [50, "30x or more"]];
+function resText(f, r) { return f.kind === "usd" ? "$" + fmt(r) : f.kind === "pct" ? sig(r) + "%" : fmt(r); }
+function startFlaw() {
+  const fresh = FLAWS.filter(f => !flawStats.done[f.id]);
+  const rest = FLAWS.filter(f => flawStats.done[f.id]);
+  const deck = shuffle(fresh).concat(shuffle(rest)).slice(0, 5);
+  state = { mode: "flaw", deck: deck, i: 0, total: 0, results: [], phase: "pick", pick: null };
+  renderFlaw();
+}
+function renderFlaw() {
+  const f = state.deck[state.i];
+  state.phase = "pick"; state.pick = null;
+  const vals = f.inputs.map(x => x.v);
+  app.innerHTML = `
+    ${topbar()}
+    <div class="card">
+      <div class="pts" style="margin:0">Find the flaw</div>
+      <div class="q display">${f.title}</div>
+      <p style="margin:0 0 4px">${f.claim}</p>
+      <div class="given"><b>One input below is wrong or does not fit.</b> Tap the one you would check first. Inputs marked assumption are fine for this exercise.</div>
+      <div id="fins">${f.inputs.map((x, i) => `<button type="button" class="fin" data-i="${i}"><span>${x.l}</span><b>${x.d}</b></button>`).join("")}</div>
+      <div class="kv" style="margin-top:14px"><span class="k">Claimed result</span><span class="v">${resText(f, f.calc(vals))}</span></div>
+      <div id="step2" hidden>
+        <p style="margin:12px 0 0;font-weight:700">If that input is wrong, how far off is the claimed result?</p>
+        <div class="fchoices">${FCH.map((c, i) => `<button type="button" data-f="${i}">${c[1]}</button>`).join("")}</div>
+      </div>
+    </div>`;
+  app.querySelectorAll(".fin").forEach(b => b.addEventListener("click", () => {
+    state.pick = parseInt(b.dataset.i, 10);
+    app.querySelectorAll(".fin").forEach(x => x.classList.toggle("sel", x === b));
+    document.getElementById("step2").hidden = false;
+  }));
+  app.querySelectorAll("[data-f]").forEach(b => b.addEventListener("click", () => submitFlaw(FCH[parseInt(b.dataset.f, 10)])));
+}
+function submitFlaw(choice) {
+  const f = state.deck[state.i];
+  const ok = state.pick === f.flaw;
+  const vals = f.inputs.map(x => x.v), fixed = vals.slice();
+  fixed[f.flaw] = f.fixV;
+  const rO = f.calc(vals), rF = f.calc(fixed);
+  const tf = Math.max(rO / rF, rF / rO);
+  let pts = 0, fpts = 0;
+  if (ok) { const err = Math.abs(Math.log10(choice[0] / tf)); fpts = err <= 0.2 ? 40 : err <= 0.45 ? 25 : err <= 0.8 ? 10 : 0; pts = 60 + fpts; }
+  const t = flawStats.types[f.type] || { n: 0, found: 0 };
+  t.n++; if (ok) t.found++; flawStats.types[f.type] = t;
+  flawStats.n++; if (ok) { flawStats.found++; flawStats.done[f.id] = true; }
+  saveFlaw();
+  state.total += pts;
+  state.results.push({ q: f.title, pts: pts, ok: ok });
+  state.phase = "result";
+  renderFlawResult(f, ok, choice, rO, rF, tf, pts, fpts);
+}
+function renderFlawResult(f, ok, choice, rO, rF, tf, pts, fpts) {
+  const last = state.i === state.deck.length - 1;
+  const fmtF = x => x < 10 ? x.toFixed(1) + "x" : Math.round(x).toLocaleString("en-US") + "x";
+  app.innerHTML = `
+    ${topbar()}
+    <div class="card">
+      <div class="verdict display ${ok ? "good" : "bad"}">${ok ? "Found it" : "Not that one"}</div>
+      <div class="pts">+${pts} points${ok ? " (60 for the flaw, " + fpts + " for the size)" : ""}</div>
+      <div class="q display" style="font-size:20px">${f.title}</div>
+      <div id="fins">${f.inputs.map((x, i) => `<div class="fin ${i === f.flaw ? "flaw" : ""} ${i === state.pick && i !== f.flaw ? "sel" : ""}"><span>${x.l}${i === f.flaw ? '<small>Flawed. Sources say ' + f.fixD + '</small>' : (i === state.pick ? '<small>You picked this one. It is fine.</small>' : '')}</span><b>${i === f.flaw ? '<s>' + x.d + '</s>' : x.d}</b></div>`).join("")}</div>
+      <div class="kv" style="margin-top:14px">
+        <span class="k">Claimed result</span><span class="v y">${resText(f, rO)}</span>
+        <span class="k">Corrected result</span><span class="v t">${resText(f, rF)}</span>
+        <span class="k">Off by</span><span class="v">${fmtF(tf)}</span>
+        ${ok ? '<span class="k">Your guess</span><span class="v">' + choice[1] + '</span>' : ''}
+        <span class="k">Type of flaw</span><span class="v">${f.type}</span>
+      </div>
+      <div class="why">${f.why}${srcHtml(f)}<small>Assumptions are marked in the inputs. Figures are rounded and publishers revise them.</small></div>
+      <div class="row"><button id="next" type="button" class="primary">${last ? "See results" : "Next scenario"}</button></div>
+    </div>`;
+  const nb = document.getElementById("next");
+  nb.focus({ preventScroll: true });
+  nb.addEventListener("click", () => { if (last) renderFlawEnd(); else { state.i++; renderFlaw(); } });
+}
+function renderFlawEnd() {
+  const n = state.results.length, found = state.results.filter(r => r.ok).length;
+  app.innerHTML = `
+    <div class="card">
+      <div class="pts" style="margin:0">Find the flaw round done</div>
+      <div class="big display">${state.total}<span style="font-size:22px;color:var(--muted);font-weight:600"> / ${n * 100}</span></div>
+      <p style="margin:8px 0 0">You spotted the flawed input in ${found} of ${n}.</p>
+      <ul class="hist">${state.results.map(r => `<li><span>${r.q}</span><b class="${r.ok ? "good" : "bad"}">${r.pts}</b></li>`).join("")}</ul>
+      <div class="row" style="margin-top:18px"><button id="again" type="button" class="primary">Another round</button><button id="home" type="button">Home</button></div>
+    </div>`;
+  document.getElementById("again").addEventListener("click", startFlaw);
+  document.getElementById("home").addEventListener("click", renderIntro);
+}
+
+/* ---------- Starter round and primer ---------- */
+const STARTER_KEYS = ["seconds are in a year", "heart beat in an 80 year", "liters of water does one person drink", "working hours are there", "gas stations", "combined weight of every human", "total land area", "How far away is the Moon", "babies are born", "many people use the internet"];
+function isStarter(q) { return !q.lo && STARTER_KEYS.some(k => q.q.indexOf(k) >= 0); }
+function startStarter() {
+  const deck = shuffle(QUESTIONS.filter(q => isStarter(q) && !mastered.has(q.id))).slice(0, 5);
+  if (!deck.length) return;
+  state = { mode: "std", deck: deck, i: 0, total: 0, results: [], phase: "ask", hint: false, cleared: 0 };
+  renderQuestion();
+}
+function renderPrimer(first) {
+  try { localStorage.setItem("botec-primer", "1"); } catch (e) {}
+  const starters = QUESTIONS.filter(q => isStarter(q) && !mastered.has(q.id));
+  app.innerHTML = `
+    <div class="card about">
+      <h1 class="display" style="font-size:30px;line-height:1.05;font-weight:800;">How this works</h1>
+      <p>A back-of-the-envelope estimate (BOTEC) means getting a number that is roughly right, fast, without looking anything up. You do it by splitting a hard question into pieces you can guess.</p>
+
+      <h2>One question, start to finish</h2>
+      <div class="given"><b>How many gas stations are in the United States?</b></div>
+      <ol class="steps">
+        <li><b>Gut guess.</b> Say a number before any math. Maybe 50,000? Write it down.</li>
+        <li><b>Split it.</b> Gas stations serve people. About 340 million people live in the US. How many people does one station serve? Maybe 2,000.</li>
+        <li><b>Do the math.</b> 340 million \u00f7 2,000 = 170,000.</li>
+        <li><b>Check it.</b> The real answer is about 145,000. You are off by 1.2x. Your gut guess was off by 3x, so splitting helped.</li>
+      </ol>
+
+      <h2>How the game scores you</h2>
+      <ul>
+        <li>You are judged by how many times too high or too low you were, not by the raw gap. 1.2x off is excellent. 2x off still clears the question for good. 10x off means a wrong order of magnitude.</li>
+        <li>Type math straight into the box, like <b>340 million / 2000</b>. The keypad has k, M and B for thousands, millions and billions.</li>
+        <li>Questions you miss come back sooner. A hint costs 25 percent of the points.</li>
+        <li>The optional 80% range asks for a low and a high you are 80 percent sure the answer falls between. It trains you to know how unsure you are. Missing about 2 in 10 is the goal, not 0.</li>
+      </ul>
+
+      <h2>Start easy</h2>
+      <p>The starter round uses ${starters.length ? "easy questions built from numbers most people can reason about" : "easy questions"}, such as seconds in a year, heartbeats in a lifetime and gas stations. Move on to the other topics when you feel warmed up.</p>
+
+      <div class="row" style="margin-top:18px">
+        ${starters.length ? '<button id="pStart" type="button" class="primary">Start the starter round</button>' : ""}
+        <button id="pHome" type="button"${starters.length ? "" : ' class="primary"'}>${first ? "Skip to the home screen" : "Back"}</button>
+      </div>
+    </div>`;
+  const s = document.getElementById("pStart");
+  if (s) s.addEventListener("click", startStarter);
+  document.getElementById("pHome").addEventListener("click", renderIntro);
+}
+let seenPrimer = false;
+try { seenPrimer = !!localStorage.getItem("botec-primer"); } catch (e) {}
+
+if (!seenPrimer && !mastered.size && !Object.keys(seen).length) renderPrimer(true); else renderIntro();
+</script>
+</body>
+</html>
